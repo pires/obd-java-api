@@ -8,6 +8,6 @@ OBD-II Java API
 <dependency>
   <groupId>pt.lighthouselabs.obd</groupId>
   <artifactId>obd-api</artifactId>
-  <version>1.4</version>
+  <version>0.1</version>
 </dependency>
 ```
