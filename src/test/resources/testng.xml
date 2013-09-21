@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CommandsSuite" verbose="1"
+  object-factory="org.powermock.modules.testng.PowerMockObjectFactory">
+  <test name="Commands">
+    <packages>
+      <package name="pt.lighthouselabs.obd.commands.*" />
+    </packages>
+  </test>
+</suite>
