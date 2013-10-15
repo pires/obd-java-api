@@ -11,7 +11,7 @@ OBD-II Java API
 ```
 <dependency>
   <groupId>pt.lighthouselabs.obd</groupId>
-  <artifactId>obd-api</artifactId>
+  <artifactId>obd-java-api</artifactId>
   <version>0.1</version>
 </dependency>
 ```
