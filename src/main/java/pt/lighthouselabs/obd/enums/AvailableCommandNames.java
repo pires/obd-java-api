@@ -37,7 +37,8 @@ public enum AvailableCommandNames {
   FUEL_ECONOMY_WITHOUT_MAF("Fuel Economy 3"),
   TIMING_ADVANCE("Timing Advance"),
   DTC_NUMBER("Diagnostic Trouble Codes"),
-  EQUIV_RATIO("Command Equivalence Ratio");
+  EQUIV_RATIO("Command Equivalence Ratio"),
+  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared");
 
   private final String value;
 
