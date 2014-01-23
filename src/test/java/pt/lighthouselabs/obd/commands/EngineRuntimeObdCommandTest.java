@@ -58,8 +58,8 @@ public class EngineRuntimeObdCommandTest {
     expectLastCall().andReturn((byte) '4');
     expectLastCall().andReturn((byte) '1');
     expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '3');
     expectLastCall().andReturn((byte) '1');
+    expectLastCall().andReturn((byte) 'F');
     expectLastCall().andReturn((byte) ' ');
     expectLastCall().andReturn((byte) 'F');
     expectLastCall().andReturn((byte) 'F');
@@ -90,8 +90,8 @@ public class EngineRuntimeObdCommandTest {
     expectLastCall().andReturn((byte) '4');
     expectLastCall().andReturn((byte) '1');
     expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '3');
     expectLastCall().andReturn((byte) '1');
+    expectLastCall().andReturn((byte) 'F');
     expectLastCall().andReturn((byte) ' ');
     expectLastCall().andReturn((byte) '4');
     expectLastCall().andReturn((byte) '5');
@@ -122,8 +122,8 @@ public class EngineRuntimeObdCommandTest {
     expectLastCall().andReturn((byte) '4');
     expectLastCall().andReturn((byte) '1');
     expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '3');
     expectLastCall().andReturn((byte) '1');
+    expectLastCall().andReturn((byte) 'F');
     expectLastCall().andReturn((byte) ' ');
     expectLastCall().andReturn((byte) '0');
     expectLastCall().andReturn((byte) '0');
