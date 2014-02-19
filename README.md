@@ -12,13 +12,13 @@ OBD-II Java API
 <dependency>
   <groupId>pt.lighthouselabs.obd</groupId>
   <artifactId>obd-java-api</artifactId>
-  <version>0.2</version>
+  <version>0.3</version>
 </dependency>
 ```
 
 ### Gradle ###
 ```
 dependencies {
-    compile 'pt.lighthouselabs.obd:obd-java-api:0.2'
+    compile 'pt.lighthouselabs.obd:obd-java-api:0.3'
 }
 ```
