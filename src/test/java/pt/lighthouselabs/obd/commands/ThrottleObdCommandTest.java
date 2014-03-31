@@ -68,7 +68,7 @@ public class ThrottleObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "100.0%");
+    assertEquals(command.getPercentage(), 100f);
 
     verifyAll();
   }
@@ -97,7 +97,7 @@ public class ThrottleObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "58.4%");
+    assertEquals(command.getPercentage(), 58.431374f);
 
     verifyAll();
   }
@@ -126,7 +126,7 @@ public class ThrottleObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "0.0%");
+    assertEquals(command.getPercentage(), 0f);
 
     verifyAll();
   }

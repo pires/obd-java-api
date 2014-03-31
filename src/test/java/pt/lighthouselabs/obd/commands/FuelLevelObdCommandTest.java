@@ -66,7 +66,7 @@ public class FuelLevelObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "100.0%");
+    assertEquals(command.getFuelLevel(), 100f);
 
     verifyAll();
   }
@@ -95,7 +95,7 @@ public class FuelLevelObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "78.4%");
+    assertEquals(command.getFuelLevel(), 78.43137f);
 
     verifyAll();
   }
@@ -124,7 +124,7 @@ public class FuelLevelObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "0.0%");
+    assertEquals(command.getFuelLevel(), 0f);
 
     verifyAll();
   }

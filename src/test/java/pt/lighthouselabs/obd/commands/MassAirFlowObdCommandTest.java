@@ -71,8 +71,7 @@ public class MassAirFlowObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.getFormattedResult();
-    assertEquals(command.getFormattedResult(), "655.35g/s");
+    assertEquals(command.getMAF(), 655.3499755859375d);
 
     verifyAll();
   }
@@ -104,8 +103,7 @@ public class MassAirFlowObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.getFormattedResult();
-    assertEquals(command.getFormattedResult(), "381.61g/s");
+    assertEquals(command.getMAF(), 381.6099853515625d);
 
     verifyAll();
   }
@@ -137,8 +135,7 @@ public class MassAirFlowObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.getFormattedResult();
-    assertEquals(command.getFormattedResult(), "0.00g/s");
+    assertEquals(command.getMAF(), 0d);
 
     verifyAll();
   }

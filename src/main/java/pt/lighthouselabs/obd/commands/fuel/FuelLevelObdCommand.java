@@ -43,4 +43,8 @@ public class FuelLevelObdCommand extends ObdCommand {
     return AvailableCommandNames.FUEL_LEVEL.getValue();
   }
 
+  public float getFuelLevel() {
+    return fuelLevel;
+  }
+
 }

@@ -69,7 +69,7 @@ public class AirIntakeTempObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "24C");
+    assertEquals(command.getTemperature(), 24f);
 
     verifyAll();
   }
@@ -99,7 +99,7 @@ public class AirIntakeTempObdCommandTest {
     // call the method to test
     command.readResult(mockIn);
     command.useImperialUnits = true;
-    assertEquals(command.getFormattedResult(), "84.2F");
+    assertEquals(command.getImperialUnit(), 84.2f);
 
     verifyAll();
   }
@@ -128,7 +128,7 @@ public class AirIntakeTempObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "0C");
+    assertEquals(command.getTemperature(), 0f);
 
     verifyAll();
   }

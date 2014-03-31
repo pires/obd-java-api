@@ -31,6 +31,9 @@ import pt.lighthouselabs.obd.enums.FuelTrim;
 
 /**
  * Tests for FuelTrimObdCommand class.
+ * 
+ * TODO replace integer values in expected values with strings, like in other
+ * tests.
  */
 @PrepareForTest(InputStream.class)
 public class FuelTrimObdCommandTest {
@@ -66,7 +69,7 @@ public class FuelTrimObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "99.22%");
+    assertEquals(command.getValue(), 99.22f);
 
     verifyAll();
   }
@@ -93,7 +96,7 @@ public class FuelTrimObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "56.25%");
+    assertEquals(command.getValue(), 56.25f);
 
     verifyAll();
   }
@@ -120,7 +123,7 @@ public class FuelTrimObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    assertEquals(command.getFormattedResult(), "-100.00%");
+    assertEquals(command.getValue(), -100f);
 
     verifyAll();
   }

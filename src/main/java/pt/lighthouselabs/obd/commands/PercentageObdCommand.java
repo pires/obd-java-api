@@ -48,4 +48,8 @@ public abstract class PercentageObdCommand extends ObdCommand {
     return String.format("%.1f%s", percentage, "%");
   }
 
+  public float getPercentage() {
+    return percentage;
+  }
+
 }

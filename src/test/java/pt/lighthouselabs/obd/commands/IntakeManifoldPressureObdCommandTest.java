@@ -69,8 +69,8 @@ public class IntakeManifoldPressureObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.useImperialUnits = false;
-    assertEquals(command.getFormattedResult(), "100kPa");
+    command.useImperialUnits(false);
+    assertEquals(command.getMetricUnit(), 100);
 
     verifyAll();
   }
@@ -99,8 +99,8 @@ public class IntakeManifoldPressureObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.useImperialUnits = true;
-    assertEquals(command.getFormattedResult(), "14.5psi");
+    command.useImperialUnits(true);
+    assertEquals(command.getImperialUnit(), 14.503774f);
 
     verifyAll();
   }

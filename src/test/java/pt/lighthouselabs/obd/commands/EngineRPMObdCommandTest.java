@@ -72,7 +72,6 @@ public class EngineRPMObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.getFormattedResult();
     assertEquals(command.getRPM(), 16383);
 
     verifyAll();
@@ -105,7 +104,6 @@ public class EngineRPMObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.getFormattedResult();
     assertEquals(command.getRPM(), 2575);
 
     verifyAll();
@@ -138,7 +136,6 @@ public class EngineRPMObdCommandTest {
 
     // call the method to test
     command.readResult(mockIn);
-    command.getFormattedResult();
     assertEquals(command.getRPM(), 640);
 
     verifyAll();
