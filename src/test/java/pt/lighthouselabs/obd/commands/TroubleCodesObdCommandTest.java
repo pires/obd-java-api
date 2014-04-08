@@ -22,6 +22,7 @@ import java.io.InputStream;
 
 import pt.lighthouselabs.obd.commands.control.TroubleCodesObdCommand;
 import pt.lighthouselabs.obd.commands.engine.ThrottlePositionObdCommand;
+import pt.lighthouselabs.obd.exceptions.NoDataException;
 
 import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.expectLastCall;
@@ -206,7 +207,7 @@ public class TroubleCodesObdCommandTest {
    *
    * @throws java.io.IOException
    */
-  @Test
+  @Test(expectedExceptions = NoDataException.class)
   public void noData() throws IOException {
     // mock InputStream read
     mockIn = createMock(InputStream.class);
@@ -224,14 +225,9 @@ public class TroubleCodesObdCommandTest {
     expectLastCall().andReturn((byte) '>');
 
     replayAll();
-    String res = "NODATA";
 
     // call the method to test
     command.readResult(mockIn);
-
-    assertEquals(command.getFormattedResult(), res);
-
-    verifyAll();
   }
 
   /**

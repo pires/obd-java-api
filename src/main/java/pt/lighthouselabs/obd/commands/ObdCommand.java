@@ -17,17 +17,29 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import pt.lighthouselabs.obd.exceptions.*;
+
 /**
  * Base OBD command.
  */
 public abstract class ObdCommand {
 
-  protected static final String NODATA = "NODATA";
-
   protected ArrayList<Integer> buffer = null;
   protected String cmd = null;
   protected boolean useImperialUnits = false;
   protected String rawData = null;
+
+  /**
+   * Error classes to be tested in order
+   */
+  private Class[] ERROR_CLASSES = {
+          UnableToConnectException.class,
+          BusInitException.class,
+          MisunderstoodCommandException.class,
+          NoDataException.class,
+          StoppedException.class,
+          UnknownObdErrorException.class
+  };
 
   /**
    * Default ctor to use
@@ -110,6 +122,7 @@ public abstract class ObdCommand {
    */
   protected void readResult(InputStream in) throws IOException {
     readRawData(in);
+    checkForErrors();
     fillBuffer();
     performCalculations();
   }
@@ -124,6 +137,12 @@ public abstract class ObdCommand {
    * 
    */
   protected void fillBuffer() {
+    rawData = rawData.replaceAll("\\s", "");
+
+    if (!rawData.matches("([0-9A-F]{2})+")) {
+      throw new NonNumericResponseException(rawData);
+    }
+
     // read string each two chars
     buffer.clear();
     int begin = 0;
@@ -141,8 +160,7 @@ public abstract class ObdCommand {
 
     // read until '>' arrives
     while ((char) (b = (byte) in.read()) != '>')
-      if ((char) b != ' ')
-        res.append((char) b);
+      res.append((char) b);
 
     /*
      * Imagine the following response 41 0c 00 0d.
@@ -162,13 +180,29 @@ public abstract class ObdCommand {
     rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
   }
 
+  void checkForErrors() {
+    for (Class<? extends ObdResponseException> errorClass : ERROR_CLASSES) {
+      ObdResponseException messageError;
+
+      try {
+        messageError = errorClass.newInstance();
+        messageError.setCommand(this.cmd);
+      } catch (InstantiationException e) {
+        throw new RuntimeException(e);
+      } catch (IllegalAccessException e) {
+        throw new RuntimeException(e);
+      }
+
+      if (messageError.isError(rawData)) {
+        throw messageError;
+      }
+    }
+  }
+
   /**
    * @return the raw command response in string representation.
    */
   public String getResult() {
-    rawData = rawData.contains("SEARCHING") || rawData.contains("DATA") ? NODATA
-        : rawData;
-
     return rawData;
   }
 
