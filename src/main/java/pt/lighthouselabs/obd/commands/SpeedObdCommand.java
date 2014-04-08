@@ -39,9 +39,8 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // Ignore first two bytes [hh hh] of the response.
-      metricSpeed = buffer.get(2);
+    // Ignore first two bytes [hh hh] of the response.
+    metricSpeed = buffer.get(2);
   }
 
   public String getFormattedResult() {

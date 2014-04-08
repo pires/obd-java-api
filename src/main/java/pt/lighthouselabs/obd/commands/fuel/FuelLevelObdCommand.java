@@ -28,9 +28,8 @@ public class FuelLevelObdCommand extends ObdCommand {
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // ignore first two bytes [hh hh] of the response
-      fuelLevel = 100.0f * buffer.get(2) / 255.0f;
+    // ignore first two bytes [hh hh] of the response
+    fuelLevel = 100.0f * buffer.get(2) / 255.0f;
   }
 
   @Override

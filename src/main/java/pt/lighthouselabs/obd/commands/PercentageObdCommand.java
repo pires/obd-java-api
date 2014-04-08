@@ -35,9 +35,8 @@ public abstract class PercentageObdCommand extends ObdCommand {
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // ignore first two bytes [hh hh] of the response
-      percentage = (buffer.get(2) * 100.0f) / 255.0f;
+    // ignore first two bytes [hh hh] of the response
+    percentage = (buffer.get(2) * 100.0f) / 255.0f;
   }
 
   /**

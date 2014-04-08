@@ -40,9 +40,8 @@ public class MassAirFlowObdCommand extends ObdCommand {
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // ignore first two bytes [hh hh] of the response
-      maf = (buffer.get(2) * 256 + buffer.get(3)) / 100.0f;
+    // ignore first two bytes [hh hh] of the response
+    maf = (buffer.get(2) * 256 + buffer.get(3)) / 100.0f;
   }
 
   @Override

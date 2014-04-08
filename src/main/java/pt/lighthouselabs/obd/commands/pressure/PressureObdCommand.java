@@ -55,9 +55,8 @@ public abstract class PressureObdCommand extends ObdCommand implements
   }
 
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // ignore first two bytes [hh hh] of the response
-      pressure = preparePressureValue();
+    // ignore first two bytes [hh hh] of the response
+    pressure = preparePressureValue();
   }
 
   @Override
