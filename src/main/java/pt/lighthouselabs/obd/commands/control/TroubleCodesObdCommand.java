@@ -12,115 +12,142 @@
  */
 package pt.lighthouselabs.obd.commands.control;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
 /**
- * In order to get ECU Trouble Codes, one must first send a DtcNumberObdCommand
- * and by so, determining the number of error codes available by means of
- * getTotalAvailableCodes().
+ * It is not needed no know how many DTC are stored. 
+ * Because when no DTC are stored response will be NO DATA
+ * And where are more messages it will be stored in frames that have 7 bytes.
+ * In one frame are stored 3 DTC.   
+ * If we find out DTC P0000 that mean no message are we can end.
+ * 
  * <p>
- * If none are available (totalCodes < 1), don't instantiate this command.
  */
 public class TroubleCodesObdCommand extends ObdCommand {
 
-  protected final static char[] dtcLetters = { 'P', 'C', 'B', 'U' };
+	protected final static char[] dtcLetters = { 'P', 'C', 'B', 'U' };
+	protected final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
-  private StringBuffer codes = null;
-  private int howManyTroubleCodes = 0;
+	private StringBuffer codes = null;
+	private int howManyTroubleCodes = 0;
 
-  /**
-   * Default ctor.
-   */
-  public TroubleCodesObdCommand(int howManyTroubleCodes) {
-    super("03");
+	
+	public TroubleCodesObdCommand() {
+		super("03");
 
-    codes = new StringBuffer();
-    this.howManyTroubleCodes = howManyTroubleCodes;
-  }
+		codes = new StringBuffer();
+	}
+	
+	/**
+	 * Not needed constructor left for working current view.
+	 */
+	public TroubleCodesObdCommand(int howManyTroubleCodes) {
+		super("03");
 
-  /**
-   * Copy ctor.
-   * 
-   * @param other
-   */
-  public TroubleCodesObdCommand(TroubleCodesObdCommand other) {
-    super(other);
-    codes = new StringBuffer();
-  }
+		codes = new StringBuffer();
+		this.howManyTroubleCodes = howManyTroubleCodes;
+	}
 
-  @Override
-  protected void performCalculations() {
-    if (!NODATA.equals(getResult())) {
-      /*
-       * Ignore first byte [43] of the response and then read each two bytes.
-       */
-      int begin = 2; // start at 2nd byte
-      int end = 6; // end at 4th byte
+	/**
+	 * Copy ctor.
+	 * 
+	 * @param other
+	 */
+	public TroubleCodesObdCommand(TroubleCodesObdCommand other) {
+		super(other);
+		codes = new StringBuffer();
+	}
+	
+	@Override
+	protected void readResult(InputStream in) throws IOException {
+		readRawData(in);
+		performCalculations();
+	}
 
-      for (int i = 0; i < howManyTroubleCodes * 2; i++) {
-        // read and jump 2 bytes
-        byte b1 = Byte.parseByte(getResult().substring(begin, end));
-        begin += 2;
-        end += 2;
+	@Override
+	protected void performCalculations() {
 
-        // read and jump 2 bytes
-        byte b2 = Byte.parseByte(getResult().substring(begin, end));
-        begin += 2;
-        end += 2;
+		String workingData = getResult().replaceAll("[\r\n]", "");	
+		
+		if(workingData.contains(NODATA)){
+			codes.append("No fault codes stored");
+			return;
+		}
+		
+		int begin = 0; // start at 2nd byte
+		int end = 2; // end at 4th byte
 
-        int tempValue = b1 << 8 | b2;
-      }
-    }
+		for (int i = 0; end < workingData.length() ; i++) {
+			begin += 2;
+			end += 2;
+			
+			for (int j = 0; j < 3; j++) {
+				
+				byte b1 = Byte.parseByte(workingData.substring(begin, end));
+				
+				int ch1 = ((b1 & 0xC0) >> 6);
+			    int ch2 = ((b1 & 0x30) >> 4);
+			    int ch3 = (b1 & 0x0F);
+			    
+				begin += 2;
+				end += 2;
 
-    String[] ress = getResult().split("\r");
-    for (String r : ress) {
-      String k = r.replace("\r", "");
-      codes.append(k);
-      codes.append("\n");
-    }
-  }
+				// read and jump 2 bytes
+				byte b2 = Byte.parseByte(workingData.substring(begin, end));
+				
+				int ch4 = ((b2 & 0xF0) >> 4);
+			    int ch5 = (b2 & 0x0F);
+			    
+				begin += 2;
+				end += 2;
+				
+				if((ch1 == 0) && (ch2 == 0) && (ch4 == 0) && (ch5 == 0)){
+					return;
+				}
+				
+				codes.append(dtcLetters[ch1]);
+				codes.append(hexArray[ch2]);
+				codes.append(hexArray[ch3]);
+				codes.append(hexArray[ch4]);
+				codes.append(hexArray[ch5]);
+				codes.append("\n");
+				
+			}
+		}
+	}
 
-  // TODO clean
-  // int count = numCmd.getCodeCount();
-  // int dtcNum = (count + 2) / 3;
-  // for (int i = 0; i < dtcNum; i++) {
-  // sendCommand(cmd);
-  // String res = getResult();
-  // for (int j = 0; j < 3; j++) {
-  // String byte1 = res.substring(3 + j * 6, 5 + j * 6);
-  // String byte2 = res.substring(6 + j * 6, 8 + j * 6);
-  // int b1 = Integer.parseInt(byte1, 16);
-  // int b2 = Integer.parseInt(byte2, 16);
-  // int val = (b1 << 8) + b2;
-  // if (val == 0) {
-  // break;
-  // }
-  // String code = "P";
-  // if ((val & 0xC000) > 14) {
-  // code = "C";
-  // }
-  // code += Integer.toString((val & 0x3000) >> 12);
-  // code += Integer.toString((val & 0x0fff));
-  // codes.append(code);
-  // codes.append("\n");
-  // }
+	public String formatResult() {
+		return codes.toString();
+	}
 
-  /**
-   * @return the formatted result of this command in string representation.
-   */
-  public String formatResult() {
-    return codes.toString();
-  }
+	@Override
+	protected void readRawData(InputStream in) throws IOException {
+		byte b = 0;
+		StringBuilder res = new StringBuilder();
 
-  @Override
-  public String getFormattedResult() {
-    return codes.toString();
-  }
+		// read until '>' arrives
+		while ((char) (b = (byte) in.read()) != '>') {
+			if ((char) b != ' ') {
+				res.append((char) b);
+			}
+		}
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.TROUBLE_CODES.getValue();
-  }
-  
+		rawData = res.toString().trim();
+
+	}
+
+	@Override
+	public String getFormattedResult() {
+		return codes.toString();
+	}
+
+	@Override
+	public String getName() {
+		return AvailableCommandNames.TROUBLE_CODES.getValue();
+	}
+
 }
