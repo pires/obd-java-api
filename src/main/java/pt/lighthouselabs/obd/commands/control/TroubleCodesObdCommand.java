@@ -61,17 +61,14 @@ public class TroubleCodesObdCommand extends ObdCommand {
 		super(other);
 		codes = new StringBuffer();
 	}
-	
-	@Override
-	protected void readResult(InputStream in) throws IOException {
-		readRawData(in);
-		performCalculations();
-	}
+
+    @Override
+    protected void fillBuffer() {}
 
 	@Override
 	protected void performCalculations() {
 
-		String workingData = getResult().replaceAll("[\r\n]", "");	
+		String workingData = getResult().replaceAll("[\r\n]", "");
 		
 		if(workingData.contains(NODATA)){
 			codes.append("No fault codes stored");
@@ -79,46 +76,39 @@ public class TroubleCodesObdCommand extends ObdCommand {
 		}
 		
 		int begin = 0; // start at 2nd byte
-		int end = 2; // end at 4th byte
 
-		for (int i = 0; end < workingData.length() ; i++) {
+		for (int i = 0; begin < workingData.length() ; i++) {
 			begin += 2;
-			end += 2;
 			
 			for (int j = 0; j < 3; j++) {
-				
-				byte b1 = Byte.parseByte(workingData.substring(begin, end));
-				
+				String dtc = "";
+
+				byte b1 = hexStringToByteArray(workingData.charAt(begin));
+
 				int ch1 = ((b1 & 0xC0) >> 6);
 			    int ch2 = ((b1 & 0x30) >> 4);
-			    int ch3 = (b1 & 0x0F);
-			    
-				begin += 2;
-				end += 2;
 
-				// read and jump 2 bytes
-				byte b2 = Byte.parseByte(workingData.substring(begin, end));
-				
-				int ch4 = ((b2 & 0xF0) >> 4);
-			    int ch5 = (b2 & 0x0F);
-			    
-				begin += 2;
-				end += 2;
-				
-				if((ch1 == 0) && (ch2 == 0) && (ch4 == 0) && (ch5 == 0)){
-					return;
-				}
-				
-				codes.append(dtcLetters[ch1]);
-				codes.append(hexArray[ch2]);
-				codes.append(hexArray[ch3]);
-				codes.append(hexArray[ch4]);
-				codes.append(hexArray[ch5]);
-				codes.append("\n");
-				
+                dtc +=  dtcLetters[ch1];
+                dtc += hexArray[ch2];
+
+                begin ++;
+
+                dtc += workingData.substring(begin, begin+3);
+
+                if(dtc.equals("P0000")){
+                    return;
+                }
+
+                codes.append(dtc);
+                codes.append('\n');
+                begin += 3;
 			}
 		}
 	}
+
+    private byte hexStringToByteArray(char s) {
+          return (byte) ((Character.digit(s, 16) << 4));
+    }
 
 	public String formatResult() {
 		return codes.toString();
