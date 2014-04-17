@@ -202,6 +202,39 @@ public class TroubleCodesObdCommandTest {
     }
 
     /**
+     * Test for no data
+     *
+     * @throws java.io.IOException
+     */
+    @Test
+    public void noData() throws IOException {
+        // mock InputStream read
+        mockIn = createMock(InputStream.class);
+        mockIn.read();
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) '3');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) 'N');
+        expectLastCall().andReturn((byte) 'O');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) 'D');
+        expectLastCall().andReturn((byte) 'A');
+        expectLastCall().andReturn((byte) 'T');
+        expectLastCall().andReturn((byte) 'A');
+        expectLastCall().andReturn((byte) '>');
+
+        replayAll();
+        String res = "NODATA";
+
+        // call the method to test
+        command.readResult(mockIn);
+
+        assertEquals(command.getFormattedResult(), res);
+
+        verifyAll();
+    }
+
+    /**
      * Clear resources.
      */
     @AfterClass

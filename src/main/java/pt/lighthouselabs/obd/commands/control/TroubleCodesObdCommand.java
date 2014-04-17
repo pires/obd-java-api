@@ -71,7 +71,7 @@ public class TroubleCodesObdCommand extends ObdCommand {
 		String workingData = getResult().replaceAll("[\r\n]", "");
 		
 		if(workingData.contains(NODATA)){
-			codes.append("No fault codes stored");
+			codes.append("NODATA");
 			return;
 		}
 		
