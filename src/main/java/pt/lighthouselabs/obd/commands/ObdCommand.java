@@ -135,7 +135,7 @@ public abstract class ObdCommand {
     }
   }
 
-  void readRawData(InputStream in) throws IOException {
+  protected void readRawData(InputStream in) throws IOException {
     byte b = 0;
     StringBuilder res = new StringBuilder();
 
