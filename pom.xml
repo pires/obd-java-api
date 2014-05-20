@@ -10,7 +10,7 @@
 
   <groupId>pt.lighthouselabs.obd</groupId>
   <artifactId>obd-java-api</artifactId>
-  <version>0.6-SNAPSHOT</version>
+  <version>0.5.1</version>
   <packaging>jar</packaging>
 
   <name>OBD Java API</name>
@@ -29,7 +29,7 @@
     <connection>scm:git:git@github.com:pires/obd-java-api.git</connection>
     <developerConnection>scm:git:git@github.com:pires/obd-java-api.git</developerConnection>
     <url>git@github.com:pires/obd-java-api.git</url>
-    <tag>HEAD</tag>
+    <tag>obd-java-api-0.5.1</tag>
   </scm>
 
   <developers>
