@@ -40,10 +40,8 @@ public class EngineRPMObdCommand extends ObdCommand {
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult())) {
-      // ignore first two bytes [41 0C] of the response
-      rpm = (buffer.get(2) * 256 + buffer.get(3)) / 4;
-    }
+    // ignore first two bytes [41 0C] of the response
+    rpm = (buffer.get(2) * 256 + buffer.get(3)) / 4;
   }
 
   /**

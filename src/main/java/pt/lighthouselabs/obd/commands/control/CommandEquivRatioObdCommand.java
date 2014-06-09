@@ -49,12 +49,10 @@ public class CommandEquivRatioObdCommand extends ObdCommand {
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult())) {
-      // ignore first two bytes [hh hh] of the response
-      int a = buffer.get(2);
-      int b = buffer.get(3);
-      ratio = (a * 256 + b) / 32768;
-    }
+    // ignore first two bytes [hh hh] of the response
+    int a = buffer.get(2);
+    int b = buffer.get(3);
+    ratio = (a * 256 + b) / 32768;
   }
 
   /**

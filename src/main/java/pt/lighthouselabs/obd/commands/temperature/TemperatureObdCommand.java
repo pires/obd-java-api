@@ -43,9 +43,8 @@ public abstract class TemperatureObdCommand extends ObdCommand implements
 
   @Override
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // ignore first two bytes [hh hh] of the response
-      temperature = buffer.get(2) - 40;
+    // ignore first two bytes [hh hh] of the response
+    temperature = buffer.get(2) - 40;
   }
 
   /**

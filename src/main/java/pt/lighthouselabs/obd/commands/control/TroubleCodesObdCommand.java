@@ -71,11 +71,6 @@ public class TroubleCodesObdCommand extends ObdCommand {
 
     String workingData = getResult().replaceAll("[\r\n]", "");
 
-    if (workingData.contains(NODATA)) {
-      codes.append("NODATA");
-      return;
-    }
-
     int begin = 0; // start at 2nd byte
 
     for (int i = 0; begin < workingData.length(); i++) {

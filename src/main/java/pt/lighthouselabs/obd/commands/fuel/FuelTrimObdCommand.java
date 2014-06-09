@@ -43,9 +43,8 @@ public class FuelTrimObdCommand extends ObdCommand {
   }
 
   protected void performCalculations() {
-    if (!NODATA.equals(getResult()))
-      // ignore first two bytes [hh hh] of the response
-      fuelTrimValue = prepareTempValue(buffer.get(2));
+    // ignore first two bytes [hh hh] of the response
+    fuelTrimValue = prepareTempValue(buffer.get(2));
   }
 
   @Override
