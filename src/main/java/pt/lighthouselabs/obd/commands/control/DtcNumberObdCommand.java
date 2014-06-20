@@ -38,7 +38,7 @@ public class DtcNumberObdCommand extends ObdCommand {
   /**
    * Copy ctor.
    * 
-   * @param other
+   * @param other DtcNumberObdCommand that is to be copied
    */
   public DtcNumberObdCommand(DtcNumberObdCommand other) {
     super(other);
@@ -54,8 +54,7 @@ public class DtcNumberObdCommand extends ObdCommand {
 
   public String getFormattedResult() {
     final String res = milOn ? "MIL is ON" : "MIL is OFF";
-    return new StringBuilder().append(res).append(codeCount).append(" codes")
-        .toString();
+    return res + codeCount + " codes";
   }
 
   /**
