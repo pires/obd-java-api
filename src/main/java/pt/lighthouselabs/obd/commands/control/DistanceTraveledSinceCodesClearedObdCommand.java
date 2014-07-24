@@ -49,7 +49,7 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
 
   @Override
   public String getFormattedResult() {
-    return String.format("%.2f%s", km, "km");
+    return String.format("%.2f%s", (float)km, "km");
   }
 
   @Override
