@@ -5,6 +5,19 @@ OBD-II Java API
 
 [![Build Status](https://drone.io/github.com/pires/obd-java-api/status.png)](https://drone.io/github.com/pires/obd-java-api/latest)
 
+## Build ##
+
+### Requisites ###
+
+* JDK 7
+* Maven 3.1.0 or newer
+
+### Compile, package and install locally ###
+
+```
+mvn clean install
+```
+
 ## Usage ##
 
 ### Maven ###
