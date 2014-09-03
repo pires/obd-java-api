@@ -47,7 +47,11 @@ public class FindFuelTypeObdCommand extends ObdCommand {
 
   @Override
   public String getFormattedResult() {
-    return FuelType.fromValue(fuelType).getDescription();
+    try {
+      return FuelType.fromValue(fuelType).getDescription();
+    } catch(Exception e) {
+      return "-";
+    }
   }
 
   @Override
