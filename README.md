@@ -55,3 +55,19 @@ try {
   // handle errors
 }
 ```
+
+## Troubleshooting ##
+
+As @dembol noted:
+```
+Have you checked your ELM327 adapter with Torque or Scanmaster to see if it works with your car? Maybe the problem is with your device?
+
+Popular OBD diagnostic tools reset state and disable echo, spaces etc before protocol selection. Download some elm327 terminal for android and try following commands in order:
+ATD
+ATZ
+AT E0
+AT L0
+AT S0
+AT H0
+AT SP 0
+```
