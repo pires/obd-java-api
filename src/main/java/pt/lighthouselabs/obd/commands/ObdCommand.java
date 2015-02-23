@@ -90,11 +90,9 @@ public abstract class ObdCommand {
    */
   protected void sendCommand(OutputStream out) throws IOException,
       InterruptedException {
-    // add the carriage return char
-    cmd += "\r";
-
-    // write to OutputStream (i.e.: a BluetoothSocket)
-    out.write(cmd.getBytes());
+    // write to OutputStream (i.e.: a BluetoothSocket) with an added
+    // Carriage return
+    out.write((cmd + "\r").getBytes());
     out.flush();
 
     /*
