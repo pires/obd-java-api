@@ -58,14 +58,30 @@ public enum FuelType {
     this.description = description;
   }
 
+  /**
+   * <p>Getter for the field <code>value</code>.</p>
+   *
+   * @return a int.
+   */
   public int getValue() {
     return value;
   }
 
+  /**
+   * <p>Getter for the field <code>description</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   public String getDescription() {
     return description;
   }
 
+  /**
+   * <p>fromValue.</p>
+   *
+   * @param value a int.
+   * @return a {@link pt.lighthouselabs.obd.enums.FuelType} object.
+   */
   public static FuelType fromValue(final int value) {
     return map.get(value);
   }

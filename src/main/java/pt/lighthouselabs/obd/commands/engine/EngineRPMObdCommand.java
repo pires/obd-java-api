@@ -31,8 +31,8 @@ public class EngineRPMObdCommand extends ObdCommand {
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.engine.EngineRPMObdCommand} object.
    */
   public EngineRPMObdCommand(EngineRPMObdCommand other) {
     super(other);
@@ -57,6 +57,9 @@ public class EngineRPMObdCommand extends ObdCommand {
     return AvailableCommandNames.ENGINE_RPM.getValue();
   }
 
+  /**
+   * @return a int.
+   */
   public int getRPM() {
     return rpm;
   }

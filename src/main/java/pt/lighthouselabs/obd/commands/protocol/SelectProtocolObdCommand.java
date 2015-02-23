@@ -22,7 +22,8 @@ public class SelectProtocolObdCommand extends ObdProtocolCommand {
   private final ObdProtocols protocol;
 
   /**
-   * @param protocol
+   *
+   * @param protocol a {@link pt.lighthouselabs.obd.enums.ObdProtocols} object.
    */
   public SelectProtocolObdCommand(final ObdProtocols protocol) {
     super("AT SP " + protocol.getValue());

@@ -50,7 +50,7 @@ public enum AvailableCommandNames {
   }
 
   /**
-   * @return
+   * @return a {@link java.lang.String} object.
    */
   public final String getValue() {
     return value;

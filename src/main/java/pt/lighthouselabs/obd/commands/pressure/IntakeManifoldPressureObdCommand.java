@@ -28,8 +28,8 @@ public class IntakeManifoldPressureObdCommand extends PressureObdCommand {
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.pressure.IntakeManifoldPressureObdCommand} object.
    */
   public IntakeManifoldPressureObdCommand(IntakeManifoldPressureObdCommand other) {
     super(other);

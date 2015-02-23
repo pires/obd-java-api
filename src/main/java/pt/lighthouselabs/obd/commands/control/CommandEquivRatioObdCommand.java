@@ -40,8 +40,8 @@ public class CommandEquivRatioObdCommand extends ObdCommand {
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.control.CommandEquivRatioObdCommand} object.
    */
   public CommandEquivRatioObdCommand(CommandEquivRatioObdCommand other) {
     super(other);
@@ -64,7 +64,7 @@ public class CommandEquivRatioObdCommand extends ObdCommand {
   }
 
   /**
-   * @return
+   * @return a double.
    */
   public double getRatio() {
     return ratio;

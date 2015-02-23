@@ -26,8 +26,8 @@ public abstract class PressureObdCommand extends ObdCommand implements
 
   /**
    * Default ctor
-   * 
-   * @param cmd
+   *
+   * @param cmd a {@link java.lang.String} object.
    */
   public PressureObdCommand(String cmd) {
     super(cmd);
@@ -35,8 +35,8 @@ public abstract class PressureObdCommand extends ObdCommand implements
 
   /**
    * Copy ctor.
-   * 
-   * @param cmd
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.pressure.PressureObdCommand} object.
    */
   public PressureObdCommand(PressureObdCommand other) {
     super(other);
@@ -47,8 +47,8 @@ public abstract class PressureObdCommand extends ObdCommand implements
    * order to determine the final kPa value.
    * 
    * *NEED* to read tempValue
-   * 
-   * @return
+   *
+   * @return a int.
    */
   protected int preparePressureValue() {
     return buffer.get(2);

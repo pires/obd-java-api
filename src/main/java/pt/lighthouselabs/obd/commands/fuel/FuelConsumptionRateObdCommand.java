@@ -26,6 +26,11 @@ public class FuelConsumptionRateObdCommand extends ObdCommand {
     super("01 5E");
   }
 
+  /**
+   * <p>Constructor for FuelConsumptionRateObdCommand.</p>
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.fuel.FuelConsumptionRateObdCommand} object.
+   */
   public FuelConsumptionRateObdCommand(FuelConsumptionRateObdCommand other) {
     super(other);
   }
@@ -41,6 +46,9 @@ public class FuelConsumptionRateObdCommand extends ObdCommand {
     return String.format("%.1f%s", fuelRate, "");
   }
 
+  /**
+   * @return a float.
+   */
   public float getLitersPerHour() {
     return fuelRate;
   }

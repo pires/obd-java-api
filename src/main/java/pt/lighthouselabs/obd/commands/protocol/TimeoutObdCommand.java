@@ -28,7 +28,7 @@ public class TimeoutObdCommand extends ObdProtocolCommand {
   }
 
   /**
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.protocol.TimeoutObdCommand} object.
    */
   public TimeoutObdCommand(TimeoutObdCommand other) {
     super(other);

@@ -37,8 +37,8 @@ public class DtcNumberObdCommand extends ObdCommand {
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.control.DtcNumberObdCommand} object.
    */
   public DtcNumberObdCommand(DtcNumberObdCommand other) {
     super(other);
@@ -52,6 +52,9 @@ public class DtcNumberObdCommand extends ObdCommand {
     codeCount = mil & 0x7F;
   }
 
+  /**
+   * @return a {@link java.lang.String} object.
+   */
   public String getFormattedResult() {
     final String res = milOn ? "MIL is ON" : "MIL is OFF";
     return new StringBuilder().append(res).append(codeCount).append(" codes")

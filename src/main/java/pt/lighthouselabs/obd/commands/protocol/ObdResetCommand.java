@@ -22,7 +22,8 @@ public class ObdResetCommand extends ObdProtocolCommand {
   }
 
   /**
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.protocol.ObdResetCommand} object.
    */
   public ObdResetCommand(ObdResetCommand other) {
     super(other);

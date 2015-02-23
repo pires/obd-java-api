@@ -65,14 +65,23 @@ public class FuelEconomyObdCommand extends ObdCommand {
         "mpg") : String.format("%.1f %s", kml, "l/100km");
   }
 
+  /**
+   * @return a float.
+   */
   public float getLitersPer100Km() {
     return kml;
   }
 
+  /**
+   * @return a float.
+   */
   public float getMilesPerUSGallon() {
     return 235.2f / kml;
   }
 
+  /**
+   * @return a float.
+   */
   public float getMilesPerUKGallon() {
     return 282.5f / kml;
   }

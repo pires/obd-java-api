@@ -18,6 +18,9 @@ package pt.lighthouselabs.obd.commands;
  */
 public interface SystemOfUnits {
 
+        /**
+         * @return a float.
+         */
 	float getImperialUnit();
 
 }

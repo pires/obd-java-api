@@ -33,8 +33,8 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.control.DistanceTraveledSinceCodesClearedObdCommand} object.
    */
   public DistanceTraveledSinceCodesClearedObdCommand(
       DistanceTraveledSinceCodesClearedObdCommand other) {
@@ -57,10 +57,18 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
     return new Double(km * 0.621371192).floatValue();
   }
 
+  /**
+   * @return a int.
+   */
   public int getKm() {
     return km;
   }
 
+  /**
+   * <p>Setter for the field <code>km</code>.</p>
+   *
+   * @param km a int.
+   */
   public void setKm(int km) {
     this.km = km;
   }

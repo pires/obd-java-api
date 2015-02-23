@@ -88,6 +88,11 @@ public enum ObdProtocols {
     this.value = value;
   }
 
+  /**
+   * <p>Getter for the field <code>value</code>.</p>
+   *
+   * @return a char.
+   */
   public char getValue() {
     return value;
   }

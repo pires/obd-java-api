@@ -20,14 +20,14 @@ public abstract class PercentageObdCommand extends ObdCommand {
   private float percentage = 0f;
 
   /**
-   * @param command
+   * @param command a {@link java.lang.String} object.
    */
   public PercentageObdCommand(String command) {
     super(command);
   }
 
   /**
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.PercentageObdCommand} object.
    */
   public PercentageObdCommand(PercentageObdCommand other) {
     super(other);
@@ -47,6 +47,9 @@ public abstract class PercentageObdCommand extends ObdCommand {
     return String.format("%.1f%s", percentage, "%");
   }
 
+  /**
+   * @return a float.
+   */
   public float getPercentage() {
     return percentage;
   }

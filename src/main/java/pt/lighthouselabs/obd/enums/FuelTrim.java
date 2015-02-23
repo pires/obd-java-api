@@ -40,20 +40,38 @@ public enum FuelTrim {
     this.bank = bank;
   }
 
+  /**
+   * <p>Getter for the field <code>value</code>.</p>
+   *
+   * @return a int.
+   */
   public int getValue() {
     return value;
   }
 
+  /**
+   * <p>Getter for the field <code>bank</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   public String getBank() {
     return bank;
   }
 
+  /**
+   * <p>fromValue.</p>
+   *
+   * @param value a int.
+   * @return a {@link pt.lighthouselabs.obd.enums.FuelTrim} object.
+   */
   public static FuelTrim fromValue(final int value) {
     return map.get(value);
   }
 
   /**
-   * @return
+   * <p>buildObdCommand.</p>
+   *
+   * @return a {@link java.lang.String} object.
    */
   public final String buildObdCommand() {
     return new String("01 " + value);

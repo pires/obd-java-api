@@ -23,15 +23,25 @@ public class ObdResponseException extends RuntimeException {
 
   private String command;
 
+  /**
+   * @param message a {@link java.lang.String} object.
+   */
   protected ObdResponseException(String message) {
     this.message = message;
   }
 
+  /**
+   * @param response a {@link java.lang.String} object.
+   * @return a boolean.
+   */
   public boolean isError(String response) {
     this.response = response;
     return clean(response).contains(clean(message));
   }
 
+  /**
+   * @param command a {@link java.lang.String} object.
+   */
   public void setCommand(String command) {
     this.command = command;
   }

@@ -17,6 +17,9 @@ package pt.lighthouselabs.obd.exceptions;
  */
 public class NonNumericResponseException extends RuntimeException {
 
+  /**
+   * @param message a {@link java.lang.String} object.
+   */
   public NonNumericResponseException(String message) {
     super("Error reading response: " + message);
   }

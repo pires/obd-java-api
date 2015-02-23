@@ -22,7 +22,7 @@ public class LineFeedOffObdCommand extends ObdProtocolCommand {
   }
 
   /**
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.protocol.LineFeedOffObdCommand} object.
    */
   public LineFeedOffObdCommand(LineFeedOffObdCommand other) {
     super(other);

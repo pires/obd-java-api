@@ -27,7 +27,7 @@ public class EngineCoolantTemperatureObdCommand extends TemperatureObdCommand {
   }
 
   /**
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.temperature.TemperatureObdCommand} object.
    */
   public EngineCoolantTemperatureObdCommand(TemperatureObdCommand other) {
     super(other);

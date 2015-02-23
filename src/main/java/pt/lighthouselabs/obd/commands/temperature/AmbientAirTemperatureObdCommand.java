@@ -20,14 +20,13 @@ import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 public class AmbientAirTemperatureObdCommand extends TemperatureObdCommand {
 
   /**
-   * @param cmd
    */
   public AmbientAirTemperatureObdCommand() {
     super("01 46");
   }
 
   /**
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.temperature.TemperatureObdCommand} object.
    */
   public AmbientAirTemperatureObdCommand(TemperatureObdCommand other) {
     super(other);

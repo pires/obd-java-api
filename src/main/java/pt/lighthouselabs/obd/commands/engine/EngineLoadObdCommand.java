@@ -25,7 +25,9 @@ public class EngineLoadObdCommand extends PercentageObdCommand {
   }
 
   /**
-   * @param other
+   * <p>Constructor for EngineLoadObdCommand.</p>
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.engine.EngineLoadObdCommand} object.
    */
   public EngineLoadObdCommand(EngineLoadObdCommand other) {
     super(other);

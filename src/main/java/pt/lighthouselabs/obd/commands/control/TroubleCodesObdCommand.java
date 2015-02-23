@@ -24,8 +24,6 @@ import pt.lighthouselabs.obd.enums.AvailableCommandNames;
  * And where are more messages it will be stored in frames that have 7 bytes.
  * In one frame are stored 3 DTC.
  * If we find out DTC P0000 that mean no message are we can end.
- * <p/>
- * <p/>
  */
 public class TroubleCodesObdCommand extends ObdCommand {
 
@@ -44,6 +42,8 @@ public class TroubleCodesObdCommand extends ObdCommand {
 
   /**
    * Not needed constructor left for working current view.
+   * 
+   * @param howManyTroubleCodes howManyTroubleCodes
    */
   public TroubleCodesObdCommand(int howManyTroubleCodes) {
     super("03");
@@ -55,7 +55,7 @@ public class TroubleCodesObdCommand extends ObdCommand {
   /**
    * Copy ctor.
    *
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.control.TroubleCodesObdCommand} object.
    */
   public TroubleCodesObdCommand(TroubleCodesObdCommand other) {
     super(other);

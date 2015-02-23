@@ -25,8 +25,8 @@ public abstract class TemperatureObdCommand extends ObdCommand implements
 
   /**
    * Default ctor.
-   * 
-   * @param cmd
+   *
+   * @param cmd a {@link java.lang.String} object.
    */
   public TemperatureObdCommand(String cmd) {
     super(cmd);
@@ -34,8 +34,8 @@ public abstract class TemperatureObdCommand extends ObdCommand implements
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.temperature.TemperatureObdCommand} object.
    */
   public TemperatureObdCommand(TemperatureObdCommand other) {
     super(other);
@@ -48,10 +48,10 @@ public abstract class TemperatureObdCommand extends ObdCommand implements
   }
 
   /**
+   * {@inheritDoc}
+   *
    * Get values from 'buff', since we can't rely on char/string for
    * calculations.
-   * 
-   * @return Temperature in Celsius or Fahrenheit.
    */
   @Override
   public String getFormattedResult() {

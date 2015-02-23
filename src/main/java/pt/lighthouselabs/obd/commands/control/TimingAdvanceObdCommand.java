@@ -24,6 +24,9 @@ public class TimingAdvanceObdCommand extends PercentageObdCommand {
     super("01 0E");
   }
 
+  /**
+   * @param other a {@link pt.lighthouselabs.obd.commands.control.TimingAdvanceObdCommand} object.
+   */
   public TimingAdvanceObdCommand(TimingAdvanceObdCommand other) {
     super(other);
   }

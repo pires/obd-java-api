@@ -28,6 +28,8 @@ public class FuelTrimObdCommand extends ObdCommand {
    * 
    * Will read the bank from parameters and construct the command accordingly.
    * Please, see FuelTrim enum for more details.
+   *
+   * @param bank a {@link pt.lighthouselabs.obd.enums.FuelTrim} object.
    */
   public FuelTrimObdCommand(final FuelTrim bank) {
     super(bank.buildObdCommand());

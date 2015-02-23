@@ -30,8 +30,8 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.SpeedObdCommand} object.
    */
   public SpeedObdCommand(SpeedObdCommand other) {
     super(other);
@@ -43,6 +43,9 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
     metricSpeed = buffer.get(2);
   }
 
+  /**
+   * @return a {@link java.lang.String} object.
+   */
   public String getFormattedResult() {
     return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), "mph")
         : String.format("%d%s", getMetricSpeed(), "km/h");
@@ -64,6 +67,8 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
 
   /**
    * Convert from km/h to mph
+   *
+   * @return a float.
    */
   public float getImperialUnit() {
     return new Double(metricSpeed * 0.621371192).floatValue();

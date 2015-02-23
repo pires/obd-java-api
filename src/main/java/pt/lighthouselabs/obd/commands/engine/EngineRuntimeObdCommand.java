@@ -31,8 +31,8 @@ public class EngineRuntimeObdCommand extends ObdCommand {
 
   /**
    * Copy ctor.
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.engine.EngineRuntimeObdCommand} object.
    */
   public EngineRuntimeObdCommand(EngineRuntimeObdCommand other) {
     super(other);

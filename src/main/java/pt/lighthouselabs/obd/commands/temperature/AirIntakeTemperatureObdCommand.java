@@ -23,6 +23,9 @@ public class AirIntakeTemperatureObdCommand extends TemperatureObdCommand {
     super("01 0F");
   }
 
+  /**
+   * @param other a {@link pt.lighthouselabs.obd.commands.temperature.AirIntakeTemperatureObdCommand} object.
+   */
   public AirIntakeTemperatureObdCommand(AirIntakeTemperatureObdCommand other) {
     super(other);
   }

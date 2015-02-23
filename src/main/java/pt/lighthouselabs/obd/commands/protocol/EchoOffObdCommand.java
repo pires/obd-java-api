@@ -22,7 +22,9 @@ public class EchoOffObdCommand extends ObdProtocolCommand {
 	}
 
 	/**
-	 * @param other
+         * <p>Constructor for EchoOffObdCommand.</p>
+         *
+         * @param other a {@link pt.lighthouselabs.obd.commands.protocol.EchoOffObdCommand} object.
 	 */
 	public EchoOffObdCommand(EchoOffObdCommand other) {
 		super(other);

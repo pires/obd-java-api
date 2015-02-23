@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 /**
- * Container for multiple {@link ObdMultiCommand} instances.
+ * Container for multiple {@link pt.lighthouselabs.obd.commands.ObdMultiCommand} instances.
  */
 public class ObdMultiCommand {
 
@@ -33,8 +33,8 @@ public class ObdMultiCommand {
 
   /**
    * Add ObdCommand to list of ObdCommands.
-   * 
-   * @param command
+   *
+   * @param command a {@link pt.lighthouselabs.obd.commands.ObdCommand} object.
    */
   public void add(ObdCommand command) {
     this.commands.add(command);
@@ -42,8 +42,8 @@ public class ObdMultiCommand {
 
   /**
    * Removes ObdCommand from the list of ObdCommands.
-   * 
-   * @param command
+   *
+   * @param command a {@link pt.lighthouselabs.obd.commands.ObdCommand} object.
    */
   public void remove(ObdCommand command) {
     this.commands.remove(command);
@@ -51,6 +51,11 @@ public class ObdMultiCommand {
 
   /**
    * Iterate all commands, send them and read response.
+   *
+   * @param in a {@link java.io.InputStream} object.
+   * @param out a {@link java.io.OutputStream} object.
+   * @throws java.io.IOException if any.
+   * @throws java.lang.InterruptedException if any.
    */
   public void sendCommands(InputStream in, OutputStream out)
       throws IOException, InterruptedException {
@@ -60,7 +65,7 @@ public class ObdMultiCommand {
 
   /**
    * 
-   * @return
+   * @return a {@link java.lang.String} object.
    */
   public String getFormattedResult() {
     StringBuilder res = new StringBuilder();

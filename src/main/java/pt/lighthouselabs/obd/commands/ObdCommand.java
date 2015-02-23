@@ -70,8 +70,13 @@ public abstract class ObdCommand {
 
   /**
    * Sends the OBD-II request and deals with the response.
-   * 
+   *
    * This method CAN be overriden in fake commands.
+   *
+   * @param in a {@link java.io.InputStream} object.
+   * @param out a {@link java.io.OutputStream} object.
+   * @throws java.io.IOException if any.
+   * @throws java.lang.InterruptedException if any.
    */
   public void run(InputStream in, OutputStream out) throws IOException,
       InterruptedException {
@@ -81,12 +86,14 @@ public abstract class ObdCommand {
 
   /**
    * Sends the OBD-II request.
-   * 
+   *
    * This method may be overriden in subclasses, such as ObMultiCommand or
    * TroubleCodesObdCommand.
-   * 
+   *
    * @param out
    *          The output stream.
+   * @throws java.io.IOException if any.
+   * @throws java.lang.InterruptedException if any.
    */
   protected void sendCommand(OutputStream out) throws IOException,
       InterruptedException {
@@ -106,6 +113,10 @@ public abstract class ObdCommand {
 
   /**
    * Resends this command.
+   *
+   * @param out a {@link java.io.OutputStream} object.
+   * @throws java.io.IOException if any.
+   * @throws java.lang.InterruptedException if any.
    */
   protected void resendCommand(OutputStream out) throws IOException,
       InterruptedException {
@@ -117,6 +128,9 @@ public abstract class ObdCommand {
    * Reads the OBD-II response.
    * <p>
    * This method may be overriden in subclasses, such as ObdMultiCommand.
+   *
+   * @param in a {@link java.io.InputStream} object.
+   * @throws java.io.IOException if any.
    */
   protected void readResult(InputStream in) throws IOException {
     readRawData(in);
@@ -152,6 +166,12 @@ public abstract class ObdCommand {
     }
   }
 
+  /**
+   * <p>readRawData.</p>
+   *
+   * @param in a {@link java.io.InputStream} object.
+   * @throws java.io.IOException if any.
+   */
   protected void readRawData(InputStream in) throws IOException {
     byte b = 0;
     StringBuilder res = new StringBuilder();
@@ -226,8 +246,8 @@ public abstract class ObdCommand {
   /**
    * Set to 'true' if you want to use imperial units, false otherwise. By
    * default this value is set to 'false'.
-   * 
-   * @param isImperial
+   *
+   * @param isImperial a boolean.
    */
   public void useImperialUnits(boolean isImperial) {
     this.useImperialUnits = isImperial;

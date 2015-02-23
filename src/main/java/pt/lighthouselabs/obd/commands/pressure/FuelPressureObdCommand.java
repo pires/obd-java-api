@@ -20,15 +20,17 @@ public class FuelPressureObdCommand extends PressureObdCommand {
     super("010A");
   }
 
+  /**
+   * @param other a {@link pt.lighthouselabs.obd.commands.pressure.FuelPressureObdCommand} object.
+   */
   public FuelPressureObdCommand(FuelPressureObdCommand other) {
     super(other);
   }
 
   /**
+   * {@inheritDoc}
+   *
    * TODO describe of why we multiply by 3
-   * 
-   * @param temp
-   * @return
    */
   @Override
   protected final int preparePressureValue() {

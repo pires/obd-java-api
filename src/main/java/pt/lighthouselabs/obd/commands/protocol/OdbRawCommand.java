@@ -17,6 +17,9 @@ package pt.lighthouselabs.obd.commands.protocol;
  */
 public class OdbRawCommand extends ObdProtocolCommand {
 
+    /**
+     * @param command a {@link java.lang.String} object.
+     */
     public OdbRawCommand(String command) {
         super(command);
     }

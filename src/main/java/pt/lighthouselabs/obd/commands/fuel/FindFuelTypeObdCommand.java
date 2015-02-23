@@ -32,8 +32,8 @@ public class FindFuelTypeObdCommand extends ObdCommand {
 
   /**
    * Copy ctor
-   * 
-   * @param other
+   *
+   * @param other a {@link pt.lighthouselabs.obd.commands.fuel.FindFuelTypeObdCommand} object.
    */
   public FindFuelTypeObdCommand(FindFuelTypeObdCommand other) {
     super(other);

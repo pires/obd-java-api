@@ -24,7 +24,7 @@ public class BarometricPressureObdCommand extends PressureObdCommand {
   }
 
   /**
-   * @param other
+   * @param other a {@link pt.lighthouselabs.obd.commands.pressure.PressureObdCommand} object.
    */
   public BarometricPressureObdCommand(PressureObdCommand other) {
     super(other);
