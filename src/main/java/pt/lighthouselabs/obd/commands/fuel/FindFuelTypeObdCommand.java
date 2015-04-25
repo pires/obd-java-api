@@ -49,7 +49,7 @@ public class FindFuelTypeObdCommand extends ObdCommand {
   public String getFormattedResult() {
     try {
       return FuelType.fromValue(fuelType).getDescription();
-    } catch(Exception e) {
+    } catch(NullPointerException e) {
       return "-";
     }
   }
