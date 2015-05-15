@@ -13,3 +13,5 @@ bin
 .classpath
 .idea
 *.iml
+/build/
+/gen/
