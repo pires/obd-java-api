@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import android.util.Log;
 import pt.lighthouselabs.obd.exceptions.*;
 
 /**
@@ -188,7 +189,7 @@ public abstract class ObdCommand {
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
      * processing..
      */
-    rawData = res.toString().trim();
+    rawData = res.toString().replace("SEARCHING...", "").trim();
 
     /*
      * Data may have echo or informative text like "INIT BUS..." or similar.
@@ -196,6 +197,8 @@ public abstract class ObdCommand {
      * everything from the last carriage return before those two (trimmed above).
      */
     rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
+
+    Log.d("ObdCommand", getName() + "( " + cmd + " ) -> " + rawData);
   }
 
   void checkForErrors() {
