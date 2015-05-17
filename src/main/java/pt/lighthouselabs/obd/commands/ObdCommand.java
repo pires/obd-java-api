@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.util.Log;
 import pt.lighthouselabs.obd.exceptions.*;
@@ -33,14 +34,14 @@ public abstract class ObdCommand {
   /**
    * Error classes to be tested in order
    */
-  private Class[] ERROR_CLASSES = {
-          UnableToConnectException.class,
-          BusInitException.class,
-          MisunderstoodCommandException.class,
-          NoDataException.class,
-          StoppedException.class,
-          UnknownObdErrorException.class
-  };
+  private static List<Class<? extends ObdResponseException>> ERROR_CLASSES = new ArrayList<>();
+  static{
+    ERROR_CLASSES.add(UnableToConnectException.class);
+    ERROR_CLASSES.add(BusInitException.class);
+    ERROR_CLASSES.add(MisunderstoodCommandException.class);
+    ERROR_CLASSES.add(NoDataException.class);
+    ERROR_CLASSES.add(UnknownObdErrorException.class);
+  }
 
   /**
    * Default ctor to use
