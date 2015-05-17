@@ -261,4 +261,7 @@ public abstract class ObdCommand {
    */
   public abstract String getName();
 
+  public String getCommand() {
+    return cmd;
+  }
 }
