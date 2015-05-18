@@ -34,7 +34,7 @@ public abstract class ObdCommand {
   /**
    * Error classes to be tested in order
    */
-  private static List<Class<? extends ObdResponseException>> ERROR_CLASSES = new ArrayList<>();
+  private static List<Class<? extends ObdResponseException>> ERROR_CLASSES = new ArrayList<Class<? extends ObdResponseException>>();
   static{
     ERROR_CLASSES.add(UnableToConnectException.class);
     ERROR_CLASSES.add(BusInitException.class);
