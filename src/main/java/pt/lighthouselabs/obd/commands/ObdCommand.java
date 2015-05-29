@@ -108,9 +108,9 @@ public abstract class ObdCommand {
      * HACK GOLDEN HAMMER ahead!!
      * 
      * Due to the time that some systems may take to respond, let's give it
-     * 200ms.
+     * 100ms.
      */
-    Thread.sleep(200);
+    Thread.sleep(100);
   }
 
   /**
@@ -265,4 +265,5 @@ public abstract class ObdCommand {
   public String getCommand() {
     return cmd;
   }
+
 }
