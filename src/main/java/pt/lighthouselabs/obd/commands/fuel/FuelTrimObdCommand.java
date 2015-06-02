@@ -46,7 +46,7 @@ public class FuelTrimObdCommand extends PercentageObdCommand {
 
   protected void performCalculations() {
     // ignore first two bytes [hh hh] of the response
-    fuelTrimValue = prepareTempValue(buffer.get(2));
+    percentage = prepareTempValue(buffer.get(2));
   }
 
     @Override
