@@ -14,4 +14,3 @@ bin
 .idea
 *.iml
 /build/
-/gen/

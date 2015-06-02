@@ -54,7 +54,7 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
 
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(km);
   }
 

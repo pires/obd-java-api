@@ -16,9 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
-import android.util.Log;
 import pt.lighthouselabs.obd.exceptions.*;
 
 /**
@@ -34,14 +32,14 @@ public abstract class ObdCommand {
   /**
    * Error classes to be tested in order
    */
-  private static List<Class<? extends ObdResponseException>> ERROR_CLASSES = new ArrayList<Class<? extends ObdResponseException>>();
-  static{
-    ERROR_CLASSES.add(UnableToConnectException.class);
-    ERROR_CLASSES.add(BusInitException.class);
-    ERROR_CLASSES.add(MisunderstoodCommandException.class);
-    ERROR_CLASSES.add(NoDataException.class);
-    ERROR_CLASSES.add(UnknownObdErrorException.class);
-  }
+  private Class[] ERROR_CLASSES = {
+          UnableToConnectException.class,
+          BusInitException.class,
+          MisunderstoodCommandException.class,
+          NoDataException.class,
+          StoppedException.class,
+          UnknownObdErrorException.class
+  };
 
   /**
    * Default ctor to use
@@ -108,9 +106,9 @@ public abstract class ObdCommand {
      * HACK GOLDEN HAMMER ahead!!
      * 
      * Due to the time that some systems may take to respond, let's give it
-     * 100ms.
+     * 200ms.
      */
-    Thread.sleep(50);
+    Thread.sleep(200);
   }
 
   /**
@@ -190,7 +188,7 @@ public abstract class ObdCommand {
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
      * processing..
      */
-    rawData = res.toString().replace("SEARCHING...", "").trim();
+    rawData = res.toString().trim();
 
     /*
      * Data may have echo or informative text like "INIT BUS..." or similar.
@@ -198,8 +196,6 @@ public abstract class ObdCommand {
      * everything from the last carriage return before those two (trimmed above).
      */
     rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
-
-    Log.d("ObdCommand", getName() + "( " + cmd + " ) -> " + rawData);
   }
 
   void checkForErrors() {
@@ -236,7 +232,7 @@ public abstract class ObdCommand {
   /**
    * @return a calculated command response in string representation.
    */
-  public abstract String getCaclulatedResult();
+  public abstract String getCalculatedResult();
 
   /**
    * @return the unit of the formatted command response in string representation.
@@ -271,9 +267,5 @@ public abstract class ObdCommand {
    * @return the OBD command name.
    */
   public abstract String getName();
-
-  public String getCommand() {
-    return cmd;
-  }
 
 }

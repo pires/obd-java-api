@@ -15,7 +15,6 @@ package pt.lighthouselabs.obd.commands.control;
 import java.io.IOException;
 import java.io.InputStream;
 
-import android.util.Log;
 import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
@@ -74,36 +73,32 @@ public class TroubleCodesObdCommand extends ObdCommand {
 
     int begin = 0; // start at 2nd byte
 
-    try {
-      for (int i = 0; begin < workingData.length(); i++) {
-        begin += 2;
+    for (int i = 0; begin < workingData.length(); i++) {
+      begin += 2;
 
-        for (int j = 0; j < 3; j++) {
-          String dtc = "";
+      for (int j = 0; j < 3; j++) {
+        String dtc = "";
 
-          byte b1 = hexStringToByteArray(workingData.charAt(begin));
+        byte b1 = hexStringToByteArray(workingData.charAt(begin));
 
-          int ch1 = ((b1 & 0xC0) >> 6);
-          int ch2 = ((b1 & 0x30) >> 4);
+        int ch1 = ((b1 & 0xC0) >> 6);
+        int ch2 = ((b1 & 0x30) >> 4);
 
-          dtc += dtcLetters[ch1];
-          dtc += hexArray[ch2];
+        dtc += dtcLetters[ch1];
+        dtc += hexArray[ch2];
 
-          begin++;
+        begin++;
 
-          dtc += workingData.substring(begin, begin + 3);
+        dtc += workingData.substring(begin, begin + 3);
 
-          if (dtc.equals("P0000")) {
-            return;
-          }
-
-          codes.append(dtc);
-          codes.append('\n');
-          begin += 3;
+        if (dtc.equals("P0000")) {
+          return;
         }
+
+        codes.append(dtc);
+        codes.append('\n');
+        begin += 3;
       }
-    } catch (Exception e) {
-      Log.e("performCalculations", String.valueOf(workingData), e);
     }
   }
 
@@ -141,7 +136,7 @@ public class TroubleCodesObdCommand extends ObdCommand {
 
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return String.valueOf(codes);
   }
 
