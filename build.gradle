@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+apply plugin: 'com.android.library'
+
+repositories {
+    jcenter()
+    maven { url 'http://download.crashlytics.com/maven' }
+    maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
+}
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion '22.0.1'
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+
+}
