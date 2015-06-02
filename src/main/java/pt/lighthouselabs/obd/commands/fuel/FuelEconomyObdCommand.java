@@ -62,7 +62,17 @@ public class FuelEconomyObdCommand extends ObdCommand {
   @Override
   public String getFormattedResult() {
     return useImperialUnits ? String.format("%.1f %s", getMilesPerUKGallon(),
-        "mpg") : String.format("%.1f %s", kml, "l/100km");
+            getResultUnit()) : String.format("%.1f %s", kml, getResultUnit());
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return useImperialUnits ? String.valueOf(getMilesPerUKGallon()) : String.valueOf(kml);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "mpg" : "l/100km";
   }
 
   /**
