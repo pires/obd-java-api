@@ -55,6 +55,17 @@ public class FindFuelTypeObdCommand extends ObdCommand {
   }
 
   @Override
+  public String getCaclulatedResult() {
+    return String.valueOf(fuelType);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "";
+  }
+
+
+  @Override
   public String getName() {
     return AvailableCommandNames.FUEL_TYPE.getValue();
   }

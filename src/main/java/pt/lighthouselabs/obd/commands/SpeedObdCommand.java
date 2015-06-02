@@ -47,8 +47,19 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
    * @return a {@link java.lang.String} object.
    */
   public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), "mph")
-        : String.format("%d%s", getMetricSpeed(), "km/h");
+    return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
+        : String.format("%d%s", getMetricSpeed(), getResultUnit());
+  }
+
+
+  @Override
+  public String getCaclulatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(getMetricSpeed());
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "mph" : "km/h";
   }
 
   /**

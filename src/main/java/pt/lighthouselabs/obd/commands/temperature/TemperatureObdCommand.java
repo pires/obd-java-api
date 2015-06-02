@@ -55,9 +55,21 @@ public abstract class TemperatureObdCommand extends ObdCommand implements
    */
   @Override
   public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "F")
-        : String.format("%.0f%s", temperature, "C");
+    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), getResultUnit())
+        : String.format("%.0f%s", temperature, getResultUnit());
   }
+
+
+  @Override
+  public String getCaclulatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(temperature);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "F" : "kPa";
+  }
+
 
   /**
    * @return the temperature in Celsius.

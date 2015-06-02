@@ -13,15 +13,15 @@
 package pt.lighthouselabs.obd.commands.fuel;
 
 import pt.lighthouselabs.obd.commands.ObdCommand;
+import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.FuelTrim;
 
 /**
  * Fuel Trim.
  */
-public class FuelTrimObdCommand extends ObdCommand {
+public class FuelTrimObdCommand extends PercentageObdCommand {
 
-  private float fuelTrimValue = 0.0f;
-  private final FuelTrim bank;
+    private final FuelTrim bank;
 
   /**
    * Default ctor.
@@ -49,24 +49,24 @@ public class FuelTrimObdCommand extends ObdCommand {
     fuelTrimValue = prepareTempValue(buffer.get(2));
   }
 
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.2f%s", fuelTrimValue, "%");
-  }
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.2f%s", percentage, "%");
+    }
 
-  /**
-   * @return the readed Fuel Trim percentage value.
-   */
-  public final float getValue() {
-    return fuelTrimValue;
-  }
+    /**
+     * @return the readed Fuel Trim percentage value.
+     */
+    public final float getValue() {
+        return percentage;
+    }
 
-  /**
-   * @return the name of the bank in string representation.
-   */
-  public final String getBank() {
-    return bank.getBank();
-  }
+    /**
+     * @return the name of the bank in string representation.
+     */
+    public final String getBank() {
+        return bank.getBank();
+    }
 
   @Override
   public String getName() {

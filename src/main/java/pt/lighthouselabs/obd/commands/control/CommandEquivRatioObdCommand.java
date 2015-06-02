@@ -13,6 +13,7 @@
 package pt.lighthouselabs.obd.commands.control;
 
 import pt.lighthouselabs.obd.commands.ObdCommand;
+import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
 /**
@@ -26,10 +27,8 @@ import pt.lighthouselabs.obd.enums.AvailableCommandNames;
  * equivalence ratio of 0.95, the commanded A/F ratio to the engine would be
  * 14.64 * 0.95 = 13.9 A/F.
  */
-public class CommandEquivRatioObdCommand extends ObdCommand {
+public class CommandEquivRatioObdCommand extends PercentageObdCommand {
 
-  // Equivalent ratio (%)
-  private double ratio = 0.00;
 
   /**
    * Default ctor.
@@ -52,22 +51,14 @@ public class CommandEquivRatioObdCommand extends ObdCommand {
     // ignore first two bytes [hh hh] of the response
     int a = buffer.get(2);
     int b = buffer.get(3);
-    ratio = (a * 256 + b) / 32768;
-  }
-
-  /**
-	 * 
-	 */
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", ratio, "%");
+    percentage = (a * 256 + b) / 32768;
   }
 
   /**
    * @return a double.
    */
   public double getRatio() {
-    return ratio;
+    return percentage;
   }
 
   @Override

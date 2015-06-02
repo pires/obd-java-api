@@ -46,7 +46,17 @@ public class MassAirFlowObdCommand extends ObdCommand {
 
   @Override
   public String getFormattedResult() {
-    return String.format("%.2f%s", maf, "g/s");
+    return String.format("%.2f%s", maf, getResultUnit());
+  }
+
+  @Override
+  public String getCaclulatedResult() {
+    return String.valueOf(maf);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "g/s";
   }
 
   /**

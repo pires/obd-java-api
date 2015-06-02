@@ -17,7 +17,7 @@ package pt.lighthouselabs.obd.commands;
  */
 public abstract class PercentageObdCommand extends ObdCommand {
 
-  private float percentage = 0f;
+  protected float percentage = 0f;
 
   /**
    * @param command a {@link java.lang.String} object.
@@ -44,9 +44,19 @@ public abstract class PercentageObdCommand extends ObdCommand {
 	 */
   @Override
   public String getFormattedResult() {
-    return String.format("%.1f%s", percentage, "%");
+    return String.format("%.1f%s", percentage, getResultUnit());
   }
 
+
+  @Override
+  public String getCaclulatedResult() {
+    return String.valueOf(percentage);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "%";
+  }
   /**
    * @return a float.
    */

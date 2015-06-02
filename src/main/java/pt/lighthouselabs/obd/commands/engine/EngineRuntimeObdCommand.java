@@ -54,6 +54,16 @@ public class EngineRuntimeObdCommand extends ObdCommand {
   }
 
   @Override
+  public String getCaclulatedResult() {
+    return String.valueOf(value);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "time";
+  }
+
+  @Override
   public String getName() {
     return AvailableCommandNames.ENGINE_RUNTIME.getValue();
   }
