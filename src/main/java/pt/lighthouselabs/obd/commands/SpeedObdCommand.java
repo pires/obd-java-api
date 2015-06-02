@@ -53,7 +53,7 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits {
 
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(getMetricSpeed());
   }
 

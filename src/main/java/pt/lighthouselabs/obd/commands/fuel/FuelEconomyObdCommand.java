@@ -66,7 +66,7 @@ public class FuelEconomyObdCommand extends ObdCommand {
   }
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return useImperialUnits ? String.valueOf(getMilesPerUKGallon()) : String.valueOf(kml);
   }
 

@@ -47,7 +47,7 @@ public class FuelConsumptionRateObdCommand extends ObdCommand {
   }
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return String.valueOf(fuelRate);
   }
 

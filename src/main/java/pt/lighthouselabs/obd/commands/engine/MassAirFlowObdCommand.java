@@ -50,7 +50,7 @@ public class MassAirFlowObdCommand extends ObdCommand {
   }
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return String.valueOf(maf);
   }
 

@@ -49,7 +49,7 @@ public abstract class PercentageObdCommand extends ObdCommand {
 
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return String.valueOf(percentage);
   }
 

@@ -232,7 +232,7 @@ public abstract class ObdCommand {
   /**
    * @return a calculated command response in string representation.
    */
-  public abstract String getCaclulatedResult();
+  public abstract String getCalculatedResult();
 
   /**
    * @return the unit of the formatted command response in string representation.

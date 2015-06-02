@@ -53,7 +53,7 @@ public class EngineRPMObdCommand extends ObdCommand {
   }
 
   @Override
-  public String getCaclulatedResult() {
+  public String getCalculatedResult() {
     return String.valueOf(rpm);
   }
 
