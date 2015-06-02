@@ -139,6 +139,17 @@ public class TroubleCodesObdCommand extends ObdCommand {
     return codes.toString();
   }
 
+
+  @Override
+  public String getCaclulatedResult() {
+    return String.valueOf(codes);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "";
+  }
+
   @Override
   public String getName() {
     return AvailableCommandNames.TROUBLE_CODES.getValue();

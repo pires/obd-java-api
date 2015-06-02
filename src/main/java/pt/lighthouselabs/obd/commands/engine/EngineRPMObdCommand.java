@@ -53,6 +53,16 @@ public class EngineRPMObdCommand extends ObdCommand {
   }
 
   @Override
+  public String getCaclulatedResult() {
+    return String.valueOf(rpm);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "RPM";
+  }
+
+  @Override
   public String getName() {
     return AvailableCommandNames.ENGINE_RPM.getValue();
   }

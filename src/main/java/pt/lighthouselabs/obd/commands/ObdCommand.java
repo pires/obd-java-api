@@ -45,7 +45,7 @@ public abstract class ObdCommand {
 
   /**
    * Default ctor to use
-   * 
+   *
    * @param command
    *          the command to send
    */
@@ -62,7 +62,7 @@ public abstract class ObdCommand {
 
   /**
    * Copy ctor.
-   * 
+   *
    * @param other
    *          the ObdCommand to copy.
    */
@@ -148,7 +148,7 @@ public abstract class ObdCommand {
   protected abstract void performCalculations();
 
   /**
-   * 
+   *
    */
   protected void fillBuffer() {
     rawData = rawData.replaceAll("\\s", "");
@@ -232,6 +232,16 @@ public abstract class ObdCommand {
    * @return a formatted command response in string representation.
    */
   public abstract String getFormattedResult();
+
+  /**
+   * @return a calculated command response in string representation.
+   */
+  public abstract String getCaclulatedResult();
+
+  /**
+   * @return the unit of the formatted command response in string representation.
+   */
+  public abstract String getResultUnit();
 
   /**
    * @return a list of integers

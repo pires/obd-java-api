@@ -65,6 +65,17 @@ public abstract class PressureObdCommand extends ObdCommand implements
         : String.format("%d%s", pressure, "kPa");
   }
 
+
+  @Override
+  public String getCaclulatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(pressure);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "psi" : "kPa";
+  }
+
   /**
    * @return the pressure in kPa
    */
