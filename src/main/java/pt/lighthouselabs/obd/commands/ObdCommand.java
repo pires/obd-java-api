@@ -38,7 +38,8 @@ public abstract class ObdCommand {
           MisunderstoodCommandException.class,
           NoDataException.class,
           StoppedException.class,
-          UnknownObdErrorException.class
+          UnknownObdErrorException.class,
+          UnsupportedCommandException.class
   };
 
   /**
