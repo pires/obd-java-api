@@ -53,24 +53,24 @@ public class FuelTrimObdCommand extends PercentageObdCommand {
     percentage = prepareTempValue(buffer.get(2));
   }
 
-    @Override
-    public String getFormattedResult() {
+  @Override
+  public String getFormattedResult() {
         return String.format("%.2f%s", percentage, "%");
-    }
+  }
 
-    /**
-     * @return the readed Fuel Trim percentage value.
-     */
-    public final float getValue() {
-        return percentage;
-    }
+  /**
+  * @return the readed Fuel Trim percentage value.
+  */
+  public final float getValue() {
+    return percentage;
+  }
 
-    /**
-     * @return the name of the bank in string representation.
-     */
-    public final String getBank() {
-        return bank.getBank();
-    }
+  /**
+  * @return the name of the bank in string representation.
+  */
+  public final String getBank() {
+    return bank.getBank();
+  }
 
   @Override
   public String getName() {
