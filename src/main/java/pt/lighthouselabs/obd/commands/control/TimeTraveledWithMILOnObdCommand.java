@@ -15,9 +15,7 @@ package pt.lighthouselabs.obd.commands.control;
 import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Distance traveled since codes cleared-up.
- */
+
 public class TimeTraveledWithMILOnObdCommand extends ObdCommand {
 
   private int min = 0;

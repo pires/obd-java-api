@@ -16,17 +16,7 @@ import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Fuel systems that use conventional oxygen sensor display the commanded open
- * loop equivalence ratio while the system is in open loop. Should report 100%
- * when in closed loop fuel.
- * <p>
- * To obtain the actual air/fuel ratio being commanded, multiply the
- * stoichiometric A/F ratio by the equivalence ratio. For example, gasoline,
- * stoichiometric is 14.64:1 ratio. If the fuel control system was commanded an
- * equivalence ratio of 0.95, the commanded A/F ratio to the engine would be
- * 14.64 * 0.95 = 13.9 A/F.
- */
+
 public class VinObdCommand extends ObdCommand {
 
 

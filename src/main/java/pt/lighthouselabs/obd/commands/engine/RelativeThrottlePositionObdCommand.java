@@ -16,7 +16,7 @@ import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
 /**
- * Read the throttle position in percentage.
+ * Read the relative throttle position in percentage.
  */
 public class RelativeThrottlePositionObdCommand extends PercentageObdCommand {
 

@@ -16,9 +16,7 @@ import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.commands.SystemOfUnits;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Distance traveled since codes cleared-up.
- */
+
 public class DistanceTraveledWithMILOnObdCommand extends ObdCommand
     implements SystemOfUnits {
 

@@ -13,7 +13,7 @@
 package pt.lighthouselabs.obd.exceptions;
 
 /**
- * Thrown when there is a "?" message.
+ * Thrown when there is a "7F 01 12" message.
  */
 public class UnsupportedCommandException extends ObdResponseException {
 
