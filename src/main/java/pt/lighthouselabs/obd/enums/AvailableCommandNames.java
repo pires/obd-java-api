@@ -38,7 +38,13 @@ public enum AvailableCommandNames {
   TIMING_ADVANCE("Timing Advance"),
   DTC_NUMBER("Diagnostic Trouble Codes"),
   EQUIV_RATIO("Command Equivalence Ratio"),
-  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared");
+  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared"),
+  VIN("Vehicle Identification Number (VIN)"),
+  DISTANCE_TRAVELED_MIL_ON("Distance traveled with malfunction indicator lamp (MIL) on"),
+  TIME_TRAVELED_MIL_ON ("Time run with MIL on"),
+  TIME_SINCE_TC_CLEARED("Time since trouble codes cleared"),
+  REL_THROTTLE_POS("Relative throttle position"),
+  PIDS("Available PIDs");
 
   private final String value;
 

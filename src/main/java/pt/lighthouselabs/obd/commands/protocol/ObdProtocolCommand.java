@@ -39,6 +39,18 @@ public abstract class ObdProtocolCommand extends ObdCommand {
     // ignore
   }
 
+
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(getResult());
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "";
+  }
+
+
   protected void fillBuffer() {
     // settings commands don't return a value appropriate to place into the
     // buffer, so do nothing

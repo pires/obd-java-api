@@ -10,62 +10,61 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package pt.lighthouselabs.obd.commands.engine;
+package pt.lighthouselabs.obd.commands.control;
 
 import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
 /**
- * Engine runtime.
+ * Distance traveled since codes cleared-up.
  */
-public class EngineRuntimeObdCommand extends ObdCommand {
+public class TimeSinceTCClearedObdCommand extends ObdCommand {
 
-  private int value = 0;
+  private int min = 0;
 
   /**
    * Default ctor.
    */
-  public EngineRuntimeObdCommand() {
-    super("01 1F");
+  public TimeSinceTCClearedObdCommand() {
+    super("01 4E");
   }
 
   /**
    * Copy ctor.
    *
-   * @param other a {@link pt.lighthouselabs.obd.commands.engine.EngineRuntimeObdCommand} object.
+   * @param other a {@link TimeSinceTCClearedObdCommand} object.
    */
-  public EngineRuntimeObdCommand(EngineRuntimeObdCommand other) {
+  public TimeSinceTCClearedObdCommand(
+          TimeSinceTCClearedObdCommand other) {
     super(other);
   }
 
   @Override
   protected void performCalculations() {
-    // ignore first two bytes [01 0C] of the response
-    value = buffer.get(2) * 256 + buffer.get(3);
+    // ignore first two bytes [01 31] of the response
+    min = buffer.get(2) * 256 + buffer.get(3);
+  }
+ 
+  public String getFormattedResult() {
+    return getCalculatedResult() + "" + getResultUnit();
   }
 
-  @Override
-  public String getFormattedResult() {
-    // determine time
-    final String hh = String.format("%02d", value / 3600);
-    final String mm = String.format("%02d", (value % 3600) / 60);
-    final String ss = String.format("%02d", value % 60);
-    return String.format("%s:%s:%s", hh, mm, ss);
-  }
 
   @Override
   public String getCalculatedResult() {
-    return String.valueOf(value);
+    return String.valueOf(min);
   }
 
   @Override
   public String getResultUnit() {
-    return "time";
+    return "min";
   }
+
 
   @Override
   public String getName() {
-    return AvailableCommandNames.ENGINE_RUNTIME.getValue();
+    return AvailableCommandNames.TIME_SINCE_TC_CLEARED
+        .getValue();
   }
 
 }
