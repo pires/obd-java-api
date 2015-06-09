@@ -40,7 +40,7 @@ public class EngineRPMObdCommand extends ObdCommand {
 
   @Override
   protected void performCalculations() {
-    // ignore first two bytes [41 0C] of the response
+    // ignore first two bytes [41 0C] of the response((A*256)+B)/4
     rpm = (buffer.get(2) * 256 + buffer.get(3)) / 4;
   }
 
@@ -50,6 +50,16 @@ public class EngineRPMObdCommand extends ObdCommand {
   @Override
   public String getFormattedResult() {
     return String.format("%d%s", rpm, " RPM");
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(rpm);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "RPM";
   }
 
   @Override

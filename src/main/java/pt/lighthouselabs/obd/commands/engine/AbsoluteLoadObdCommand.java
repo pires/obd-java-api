@@ -10,9 +10,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package pt.lighthouselabs.obd.commands.control;
+package pt.lighthouselabs.obd.commands.engine;
 
-import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
@@ -27,22 +26,22 @@ import pt.lighthouselabs.obd.enums.AvailableCommandNames;
  * equivalence ratio of 0.95, the commanded A/F ratio to the engine would be
  * 14.64 * 0.95 = 13.9 A/F.
  */
-public class CommandEquivRatioObdCommand extends PercentageObdCommand {
+public class AbsoluteLoadObdCommand extends PercentageObdCommand {
 
 
   /**
    * Default ctor.
    */
-  public CommandEquivRatioObdCommand() {
-    super("01 44");
+  public AbsoluteLoadObdCommand() {
+    super("01 43");
   }
 
   /**
    * Copy ctor.
    *
-   * @param other a {@link pt.lighthouselabs.obd.commands.control.CommandEquivRatioObdCommand} object.
+   * @param other a {@link AbsoluteLoadObdCommand} object.
    */
-  public CommandEquivRatioObdCommand(CommandEquivRatioObdCommand other) {
+  public AbsoluteLoadObdCommand(AbsoluteLoadObdCommand other) {
     super(other);
   }
 
@@ -51,7 +50,9 @@ public class CommandEquivRatioObdCommand extends PercentageObdCommand {
     // ignore first two bytes [hh hh] of the response
     int a = buffer.get(2);
     int b = buffer.get(3);
-    percentage = (a * 256 + b) / 32768;
+    percentage = (a * 256 + b) *100/255;
+
+//((A*256)+B)*100/255
   }
 
   /**

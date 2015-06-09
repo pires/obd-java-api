@@ -61,6 +61,16 @@ public class DtcNumberObdCommand extends ObdCommand {
         .toString();
   }
 
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(milOn) + " " + String.valueOf(codeCount);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "";
+  }
+
   /**
    * @return the number of trouble codes currently flaggd in the ECU.
    */
