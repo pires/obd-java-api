@@ -24,7 +24,7 @@ public class VinObdCommand extends ObdCommand {
    * Default ctor.
    */
   public VinObdCommand() {
-    super("00 02");
+    super("09 02");
   }
 
   /**
