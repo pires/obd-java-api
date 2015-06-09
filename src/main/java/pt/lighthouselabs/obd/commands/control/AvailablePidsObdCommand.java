@@ -10,43 +10,53 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package pt.lighthouselabs.obd.commands.fuel;
+package pt.lighthouselabs.obd.commands.control;
 
 import pt.lighthouselabs.obd.commands.ObdCommand;
-import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Get fuel level in percentage
- */
-public class FuelLevelObdCommand extends PercentageObdCommand {
+public class AvailablePidsObdCommand extends ObdCommand {
 
 
-  public FuelLevelObdCommand() {
-    super("01 2F");
+  /**
+   * Default ctor.
+   */
+  public AvailablePidsObdCommand() {
+    super("01 00");
+  }
+
+  /**
+   * Copy ctor.
+   *
+   * @param other a {@link AvailablePidsObdCommand} object.
+   */
+  public AvailablePidsObdCommand(AvailablePidsObdCommand other) {
+    super(other);
   }
 
   @Override
   protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    percentage = 100.0f * buffer.get(2) / 255.0f;
+
   }
 
   @Override
   public String getFormattedResult() {
-    return String.format("%.1f%s", percentage, "%");
+    return getCalculatedResult();
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(rawData);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return null;
   }
 
   @Override
   public String getName() {
-    return AvailableCommandNames.FUEL_LEVEL.getValue();
-  }
-
-  /**
-   * @return a float.
-   */
-  public float getFuelLevel() {
-    return percentage;
+    return AvailableCommandNames.PIDS.getValue();
   }
 
 }

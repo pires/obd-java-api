@@ -10,43 +10,51 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package pt.lighthouselabs.obd.commands.fuel;
+package pt.lighthouselabs.obd.commands.engine;
 
-import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.commands.PercentageObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Get fuel level in percentage
- */
-public class FuelLevelObdCommand extends PercentageObdCommand {
+
+public class AbsoluteLoadObdCommand extends PercentageObdCommand {
 
 
-  public FuelLevelObdCommand() {
-    super("01 2F");
+  /**
+   * Default ctor.
+   */
+  public AbsoluteLoadObdCommand() {
+    super("01 43");
+  }
+
+  /**
+   * Copy ctor.
+   *
+   * @param other a {@link AbsoluteLoadObdCommand} object.
+   */
+  public AbsoluteLoadObdCommand(AbsoluteLoadObdCommand other) {
+    super(other);
   }
 
   @Override
   protected void performCalculations() {
     // ignore first two bytes [hh hh] of the response
-    percentage = 100.0f * buffer.get(2) / 255.0f;
+    int a = buffer.get(2);
+    int b = buffer.get(3);
+    percentage = (a * 256 + b) *100/255;
+
+//((A*256)+B)*100/255
   }
 
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", percentage, "%");
+  /**
+   * @return a double.
+   */
+  public double getRatio() {
+    return percentage;
   }
 
   @Override
   public String getName() {
-    return AvailableCommandNames.FUEL_LEVEL.getValue();
-  }
-
-  /**
-   * @return a float.
-   */
-  public float getFuelLevel() {
-    return percentage;
+    return AvailableCommandNames.EQUIV_RATIO.getValue();
   }
 
 }

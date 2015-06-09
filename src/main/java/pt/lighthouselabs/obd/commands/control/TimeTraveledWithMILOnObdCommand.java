@@ -10,62 +10,59 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package pt.lighthouselabs.obd.commands.engine;
+package pt.lighthouselabs.obd.commands.control;
 
 import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Engine runtime.
- */
-public class EngineRuntimeObdCommand extends ObdCommand {
 
-  private int value = 0;
+public class TimeTraveledWithMILOnObdCommand extends ObdCommand {
+
+  private int min = 0;
 
   /**
    * Default ctor.
    */
-  public EngineRuntimeObdCommand() {
-    super("01 1F");
+  public TimeTraveledWithMILOnObdCommand() {
+    super("01 4D");
   }
 
   /**
    * Copy ctor.
    *
-   * @param other a {@link pt.lighthouselabs.obd.commands.engine.EngineRuntimeObdCommand} object.
+   * @param other a {@link TimeTraveledWithMILOnObdCommand} object.
    */
-  public EngineRuntimeObdCommand(EngineRuntimeObdCommand other) {
+  public TimeTraveledWithMILOnObdCommand(
+          TimeTraveledWithMILOnObdCommand other) {
     super(other);
   }
 
   @Override
   protected void performCalculations() {
-    // ignore first two bytes [01 0C] of the response
-    value = buffer.get(2) * 256 + buffer.get(3);
+    // ignore first two bytes [01 31] of the response
+    min = buffer.get(2) * 256 + buffer.get(3);
   }
 
-  @Override
   public String getFormattedResult() {
-    // determine time
-    final String hh = String.format("%02d", value / 3600);
-    final String mm = String.format("%02d", (value % 3600) / 60);
-    final String ss = String.format("%02d", value % 60);
-    return String.format("%s:%s:%s", hh, mm, ss);
+    return getCalculatedResult() + "" + getResultUnit();
   }
+
 
   @Override
   public String getCalculatedResult() {
-    return String.valueOf(value);
+    return String.valueOf(min);
   }
 
   @Override
   public String getResultUnit() {
-    return "time";
+    return "min";
   }
+
 
   @Override
   public String getName() {
-    return AvailableCommandNames.ENGINE_RUNTIME.getValue();
+    return AvailableCommandNames.TIME_TRAVELED_MIL_ON
+        .getValue();
   }
 
 }

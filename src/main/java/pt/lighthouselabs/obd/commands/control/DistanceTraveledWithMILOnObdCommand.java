@@ -16,10 +16,8 @@ import pt.lighthouselabs.obd.commands.ObdCommand;
 import pt.lighthouselabs.obd.commands.SystemOfUnits;
 import pt.lighthouselabs.obd.enums.AvailableCommandNames;
 
-/**
- * Distance traveled since codes cleared-up.
- */
-public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
+
+public class DistanceTraveledWithMILOnObdCommand extends ObdCommand
     implements SystemOfUnits {
 
   private int km = 0;
@@ -27,17 +25,17 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
   /**
    * Default ctor.
    */
-  public DistanceTraveledSinceCodesClearedObdCommand() {
-    super("01 31");
+  public DistanceTraveledWithMILOnObdCommand() {
+    super("01 21");
   }
 
   /**
    * Copy ctor.
    *
-   * @param other a {@link pt.lighthouselabs.obd.commands.control.DistanceTraveledSinceCodesClearedObdCommand} object.
+   * @param other a {@link DistanceTraveledWithMILOnObdCommand} object.
    */
-  public DistanceTraveledSinceCodesClearedObdCommand(
-      DistanceTraveledSinceCodesClearedObdCommand other) {
+  public DistanceTraveledWithMILOnObdCommand(
+          DistanceTraveledWithMILOnObdCommand other) {
     super(other);
   }
 
@@ -49,7 +47,7 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
  
   public String getFormattedResult() {
     return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
-            : String.format("%d%s", km, getResultUnit());
+            : String.format("%d%s", (float)km, getResultUnit());
   }
 
 
@@ -86,7 +84,7 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
 
   @Override
   public String getName() {
-    return AvailableCommandNames.DISTANCE_TRAVELED_AFTER_CODES_CLEARED
+    return AvailableCommandNames.DISTANCE_TRAVELED_MIL_ON
         .getValue();
   }
 
