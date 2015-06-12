@@ -49,6 +49,7 @@ public class EngineRPMObdCommand extends ObdCommand {
    */
   @Override
   public String getFormattedResult() {
+    performCalculations();
     return String.format("%d%s", rpm, " RPM");
   }
 
