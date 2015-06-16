@@ -38,7 +38,8 @@ public class FuelConsumptionRateObdCommand extends ObdCommand {
   @Override
   protected void performCalculations() {
     // ignore first two bytes [hh hh] of the response
-    fuelRate = (buffer.get(2) * 256 + buffer.get(3)) * 0.05f;
+    //The calc is defined as ((A*256)+B)*0.05
+    fuelRate = ((buffer.get(2) * 256) + buffer.get(3)) * 0.05f;
   }
 
   @Override
