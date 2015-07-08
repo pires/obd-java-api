@@ -38,7 +38,10 @@ public enum AvailableCommandNames {
   TIMING_ADVANCE("Timing Advance"),
   DTC_NUMBER("Diagnostic Trouble Codes"),
   EQUIV_RATIO("Command Equivalence Ratio"),
-  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared");
+  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared"),
+  CONTROL_MODULE_VOLTAGE("Control Module Power Supply "),
+  ENGINE_FUEL_RATE("Engine Fuel Rate"),
+  FUEL_RAIL_PRESSURE("Fuel Rail Pressure");
 
   private final String value;
 
@@ -50,7 +53,7 @@ public enum AvailableCommandNames {
   }
 
   /**
-   * @return a {@link java.lang.String} object.
+   * @return a {@link String} object.
    */
   public final String getValue() {
     return value;
