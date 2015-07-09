@@ -27,29 +27,15 @@ import pt.lighthouselabs.obd.enums.AvailableCommandNames;
  */
 public class TroubleCodesObdCommand extends ObdCommand {
 
-  protected final static char[] dtcLetters = { 'P', 'C', 'B', 'U' };
+  protected final static char[] dtcLetters = {'P', 'C', 'B', 'U'};
   protected final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
   private StringBuffer codes = null;
-  private int howManyTroubleCodes = 0;
-
 
   public TroubleCodesObdCommand() {
     super("03");
 
     codes = new StringBuffer();
-  }
-
-  /**
-   * Not needed constructor left for working current view.
-   * 
-   * @param howManyTroubleCodes howManyTroubleCodes
-   */
-  public TroubleCodesObdCommand(int howManyTroubleCodes) {
-    super("03");
-
-    codes = new StringBuffer();
-    this.howManyTroubleCodes = howManyTroubleCodes;
   }
 
   /**

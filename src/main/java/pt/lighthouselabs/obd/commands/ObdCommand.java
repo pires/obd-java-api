@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import pt.lighthouselabs.obd.commands.control.TroubleCodesObdCommand;
+import pt.lighthouselabs.obd.commands.protocol.ObdProtocolCommand;
 import pt.lighthouselabs.obd.exceptions.BusInitException;
 import pt.lighthouselabs.obd.exceptions.MisunderstoodCommandException;
 import pt.lighthouselabs.obd.exceptions.NoDataException;
@@ -40,13 +42,13 @@ public abstract class ObdCommand {
    * Error classes to be tested in order
    */
   private final Class[] ERROR_CLASSES = {
-          UnableToConnectException.class,
-          BusInitException.class,
-          MisunderstoodCommandException.class,
-          NoDataException.class,
-          StoppedException.class,
-          UnknownObdErrorException.class,
-          UnsupportedCommandException.class
+    UnableToConnectException.class,
+    BusInitException.class,
+    MisunderstoodCommandException.class,
+    NoDataException.class,
+    StoppedException.class,
+    UnknownObdErrorException.class,
+    UnsupportedCommandException.class
   };
 
   /**
@@ -58,6 +60,9 @@ public abstract class ObdCommand {
   public ObdCommand(String command) {
     this.cmd = command;
     this.buffer = new ArrayList<Integer>();
+    if (!(this instanceof ObdProtocolCommand) && !(this instanceof TroubleCodesObdCommand)) {
+      this.cmd += " 1";//speed up
+    }
   }
 
   /**
@@ -154,12 +159,12 @@ public abstract class ObdCommand {
   protected abstract void performCalculations();
 
   /**
-   * 
+   *
    */
   protected void fillBuffer() {
-    rawData = rawData.replaceAll("\\s", "");
+    rawData = rawData.replaceAll("\\s", ""); //removes all [ \t\n\x0B\f\r]
 
-    if (!rawData.matches("([0-9A-F]{2})+")) {
+    if (!rawData.matches("([0-9A-F])+")) {
       throw new NonNumericResponseException(rawData);
     }
 

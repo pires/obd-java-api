@@ -31,6 +31,11 @@ public abstract class PersistentObdCommand extends ObdCommand {
     super(command);
   }
 
+  public static void reset() {
+    knownValues = new HashMap<String, String>();
+    knownBuffers = new HashMap<String, ArrayList<Integer>>();
+  }
+
   public PersistentObdCommand(ObdCommand other) {
     this(other.cmd);
   }
@@ -55,4 +60,8 @@ public abstract class PersistentObdCommand extends ObdCommand {
     }
   }
 
+  public static boolean knows(Class cmd) {
+    String key = cmd.getSimpleName();
+    return knownValues.containsKey(key);
+  }
 }
