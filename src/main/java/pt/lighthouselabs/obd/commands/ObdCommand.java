@@ -16,8 +16,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
-import pt.lighthouselabs.obd.exceptions.*;
+import pt.lighthouselabs.obd.exceptions.BusInitException;
+import pt.lighthouselabs.obd.exceptions.MisunderstoodCommandException;
+import pt.lighthouselabs.obd.exceptions.NoDataException;
+import pt.lighthouselabs.obd.exceptions.NonNumericResponseException;
+import pt.lighthouselabs.obd.exceptions.ObdResponseException;
+import pt.lighthouselabs.obd.exceptions.StoppedException;
+import pt.lighthouselabs.obd.exceptions.UnableToConnectException;
+import pt.lighthouselabs.obd.exceptions.UnknownObdErrorException;
+import pt.lighthouselabs.obd.exceptions.UnsupportedCommandException;
 
 /**
  * Base OBD command.
@@ -32,7 +39,7 @@ public abstract class ObdCommand {
   /**
    * Error classes to be tested in order
    */
-  private Class[] ERROR_CLASSES = {
+  private final Class[] ERROR_CLASSES = {
           UnableToConnectException.class,
           BusInitException.class,
           MisunderstoodCommandException.class,

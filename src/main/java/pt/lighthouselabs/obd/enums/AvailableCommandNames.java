@@ -16,6 +16,7 @@ package pt.lighthouselabs.obd.enums;
  * Names of all available commands.
  */
 public enum AvailableCommandNames {
+
   AIR_INTAKE_TEMP("Air Intake Temperature"),
   AMBIENT_AIR_TEMP("Ambient Air Temperature"),
   ENGINE_COOLANT_TEMP("Engine Coolant Temperature"),
@@ -41,7 +42,13 @@ public enum AvailableCommandNames {
   DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared"),
   CONTROL_MODULE_VOLTAGE("Control Module Power Supply "),
   ENGINE_FUEL_RATE("Engine Fuel Rate"),
-  FUEL_RAIL_PRESSURE("Fuel Rail Pressure");
+  FUEL_RAIL_PRESSURE("Fuel Rail Pressure"),
+  VIN("Vehicle Identification Number (VIN)"),
+  DISTANCE_TRAVELED_MIL_ON("Distance traveled with MIL on"),
+  TIME_TRAVELED_MIL_ON("Time run with MIL on"),
+  TIME_SINCE_TC_CLEARED("Time since trouble codes cleared"),
+  REL_THROTTLE_POS("Relative throttle position"),
+  PIDS("Available PIDs");
 
   private final String value;
 
