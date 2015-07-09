@@ -8,7 +8,7 @@
     <version>7</version>
   </parent>
 
-  <groupId>pt.lighthouselabs.obd</groupId>
+  <groupId>com.pires.github</groupId>
   <artifactId>obd-java-api</artifactId>
   <version>0.11-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -134,8 +134,8 @@
           <header>${basedir}/COPYRIGHT.txt</header>
           <strictCheck>true</strictCheck>
           <includes>
-            <include>**/src/main/java/pt/lighthouselabs/**/*.java</include>
-            <include>**/src/test/java/pt/lighthouselabs/**/*.java</include>
+            <include>**/src/main/java/**/*.java</include>
+            <include>**/src/test/java/**/*.java</include>
           </includes>
           <useDefaultExcludes>true</useDefaultExcludes>
           <encoding>UTF-8</encoding>
