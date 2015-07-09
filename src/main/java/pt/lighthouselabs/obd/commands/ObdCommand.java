@@ -215,7 +215,7 @@ public abstract class ObdCommand {
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
      * processing..
      */
-    rawData = res.toString().trim();
+    rawData = res.toString().replace("SEARCHING...", "").trim();
 
     /*
      * Data may have echo or informative text like "INIT BUS..." or similar.
