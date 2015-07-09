@@ -25,14 +25,14 @@ mvn clean install
 <dependency>
   <groupId>pt.lighthouselabs.obd</groupId>
   <artifactId>obd-java-api</artifactId>
-  <version>0.9</version>
+  <version>0.10</version>
 </dependency>
 ```
 
 ### Gradle ###
 ```
 dependencies {
-    compile 'pt.lighthouselabs.obd:obd-java-api:0.9'
+    compile 'pt.lighthouselabs.obd:obd-java-api:0.10'
 }
 ```
 
