@@ -10,6 +10,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package pt.lighthouselabs.obd.commands;
 
 import java.io.IOException;
@@ -53,9 +65,9 @@ public abstract class ObdCommand {
 
   /**
    * Default ctor to use
-   * 
+   *
    * @param command
-   *          the command to send
+   * the command to send
    */
   public ObdCommand(String command) {
     this.cmd = command;
@@ -73,9 +85,9 @@ public abstract class ObdCommand {
 
   /**
    * Copy ctor.
-   * 
+   *
    * @param other
-   *          the ObdCommand to copy.
+   * the ObdCommand to copy.
    */
   public ObdCommand(ObdCommand other) {
     this(other.cmd);
@@ -104,7 +116,7 @@ public abstract class ObdCommand {
    * TroubleCodesObdCommand.
    *
    * @param out
-   *          The output stream.
+   * The output stream.
    * @throws java.io.IOException if any.
    * @throws java.lang.InterruptedException if any.
    */
@@ -117,7 +129,7 @@ public abstract class ObdCommand {
 
     /*
      * HACK GOLDEN HAMMER ahead!!
-     * 
+     *
      * Due to the time that some systems may take to respond, let's give it
      * 200ms.
      */
@@ -180,7 +192,8 @@ public abstract class ObdCommand {
   }
 
   /**
-   * <p>readRawData.</p>
+   * <p>
+   * readRawData.</p>
    *
    * @param in a {@link java.io.InputStream} object.
    * @throws java.io.IOException if any.
@@ -190,12 +203,13 @@ public abstract class ObdCommand {
     StringBuilder res = new StringBuilder();
 
     // read until '>' arrives
-    while ((char) (b = (byte) in.read()) != '>')
+    while ((char) (b = (byte) in.read()) != '>') {
       res.append((char) b);
+    }
 
     /*
      * Imagine the following response 41 0c 00 0d.
-     * 
+     *
      * ELM sends strings!! So, ELM puts spaces between each "byte". And pay
      * attention to the fact that I've put the word byte in quotes, because 41
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
