@@ -8,7 +8,7 @@
     <version>7</version>
   </parent>
 
-  <groupId>com.pires.github</groupId>
+  <groupId>com.github.pires</groupId>
   <artifactId>obd-java-api</artifactId>
   <version>1.0-RC2-SNAPSHOT</version>
   <packaging>jar</packaging>
