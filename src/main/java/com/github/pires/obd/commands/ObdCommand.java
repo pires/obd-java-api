@@ -210,6 +210,7 @@ public abstract class ObdCommand {
     String fullResponse = res.toString();
     if(fullResponse.contains("ERROR")){
       //no processing if the bus signals any kind of error
+      rawData = fullResponse;
       return;
     }
 
