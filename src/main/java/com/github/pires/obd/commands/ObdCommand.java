@@ -60,6 +60,7 @@ public abstract class ObdCommand {
   public ObdCommand(String command) {
     this.cmd = command;
     this.buffer = new ArrayList<Integer>();
+    //below condition is not fully correct; some commands do not support this.
     if (!(this instanceof ObdProtocolCommand) && !(this instanceof TroubleCodesObdCommand)) {
       this.cmd += " 1";//speed up
     }
