@@ -222,7 +222,8 @@ public abstract class ObdCommand {
      * The response ends with two carriage return characters. So we need to take
      * everything from the last carriage return before those two (trimmed above).
      */
-    rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
+    //kills multiline.. rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
+    rawData = rawData.replaceAll("\\s", "");//removes all [ \t\n\x0B\f\r]
   }
 
   void checkForErrors() {
