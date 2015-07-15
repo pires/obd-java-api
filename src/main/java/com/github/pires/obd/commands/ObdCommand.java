@@ -10,24 +10,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-/**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package com.github.pires.obd.commands;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
 import com.github.pires.obd.commands.control.TroubleCodesObdCommand;
 import com.github.pires.obd.commands.protocol.ObdProtocolCommand;
 import com.github.pires.obd.exceptions.BusInitException;
@@ -39,6 +23,10 @@ import com.github.pires.obd.exceptions.StoppedException;
 import com.github.pires.obd.exceptions.UnableToConnectException;
 import com.github.pires.obd.exceptions.UnknownObdErrorException;
 import com.github.pires.obd.exceptions.UnsupportedCommandException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Base OBD command.
@@ -175,7 +163,8 @@ public abstract class ObdCommand {
    */
   protected void fillBuffer() {
     rawData = rawData.replaceAll("\\s", ""); //removes all [ \t\n\x0B\f\r]
-
+    rawData = rawData.replaceAll("(BUS INIT)|(BUSINIT)|(\\.)", "");
+    
     if (!rawData.matches("([0-9A-F])+")) {
       throw new NonNumericResponseException(rawData);
     }
@@ -206,12 +195,6 @@ public abstract class ObdCommand {
     while ((char) (b = (byte) in.read()) != '>') {
       res.append((char) b);
     }
-    
-    String fullResponse = res.toString();
-    if(fullResponse.contains("ERROR")){
-      //no processing if the bus signals any kind of error
-      return;
-    }
 
     /*
      * Imagine the following response 41 0c 00 0d.
@@ -221,7 +204,7 @@ public abstract class ObdCommand {
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
      * processing..
      */
-    rawData = fullResponse.replaceAll("(SEARCHING)|(BUS INIT)|(\\.)", "");
+    rawData = res.toString().replaceAll("SEARCHING", "");
 
     /*
      * Data may have echo or informative text like "INIT BUS..." or similar.
