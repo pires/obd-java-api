@@ -206,6 +206,12 @@ public abstract class ObdCommand {
     while ((char) (b = (byte) in.read()) != '>') {
       res.append((char) b);
     }
+    
+    String fullResponse = res.toString();
+    if(fullResponse.contains("ERROR")){
+      //no processing if the bus signals any kind of error
+      return;
+    }
 
     /*
      * Imagine the following response 41 0c 00 0d.
@@ -215,7 +221,7 @@ public abstract class ObdCommand {
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
      * processing..
      */
-    rawData = res.toString().replace("SEARCHING...", "").trim();
+    rawData = fullResponse.replaceAll("(SEARCHING)|(BUS INIT)|(\\.)", "");
 
     /*
      * Data may have echo or informative text like "INIT BUS..." or similar.
