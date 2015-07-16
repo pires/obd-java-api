@@ -1,8 +1,7 @@
 /**
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * the License at http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
@@ -25,7 +24,7 @@ public class FuelTrimObdCommand extends ObdCommand {
 
   /**
    * Default ctor.
-   * 
+   *
    * Will read the bank from parameters and construct the command accordingly.
    * Please, see FuelTrim enum for more details.
    *
@@ -34,6 +33,10 @@ public class FuelTrimObdCommand extends ObdCommand {
   public FuelTrimObdCommand(final FuelTrim bank) {
     super(bank.buildObdCommand());
     this.bank = bank;
+  }
+
+  public FuelTrimObdCommand() {
+    this(FuelTrim.SHORT_TERM_BANK_1);
   }
 
   /**
