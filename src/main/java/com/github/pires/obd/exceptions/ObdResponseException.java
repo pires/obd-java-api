@@ -1,8 +1,7 @@
 /**
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * the License at http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
@@ -23,11 +22,18 @@ public class ObdResponseException extends RuntimeException {
 
   private String command;
 
+  private boolean matchRegex;
+
   /**
    * @param message a {@link java.lang.String} object.
    */
   protected ObdResponseException(String message) {
     this.message = message;
+  }
+
+  protected ObdResponseException(String message, boolean matchRegex) {
+    this.message = message;
+    this.matchRegex = matchRegex;
   }
 
   /**
@@ -36,7 +42,11 @@ public class ObdResponseException extends RuntimeException {
    */
   public boolean isError(String response) {
     this.response = response;
-    return clean(response).contains(clean(message));
+    if (matchRegex) {
+      return clean(response).matches(clean(message));
+    } else {
+      return clean(response).contains(clean(message));
+    }
   }
 
   /**
