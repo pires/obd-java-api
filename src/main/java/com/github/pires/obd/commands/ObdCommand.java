@@ -37,7 +37,7 @@ public abstract class ObdCommand {
   protected String cmd = null;
   protected boolean useImperialUnits = false;
   protected String rawData = null;
-
+  protected long responseTimeDelay = 200;
   /**
    * Error classes to be tested in order
    */
@@ -121,7 +121,7 @@ public abstract class ObdCommand {
      * Due to the time that some systems may take to respond, let's give it
      * 200ms.
      */
-    Thread.sleep(200);
+    Thread.sleep(responseTimeDelay);
   }
 
   /**
@@ -274,5 +274,21 @@ public abstract class ObdCommand {
    * @return the OBD command name.
    */
   public abstract String getName();
+  
+    /**
+   * Time the command waits before returning from #sendCommand()
+   * @return delay in ms
+   */
+  public long getResponseTimeDelay() {
+    return responseTimeDelay;
+  }
+
+  /**
+   * Time the command waits before returning from #sendCommand()
+   * @param responseTimeDelay
+   */
+  public void setResponseTimeDelay(long responseTimeDelay) {
+    this.responseTimeDelay = responseTimeDelay;
+  }
 
 }

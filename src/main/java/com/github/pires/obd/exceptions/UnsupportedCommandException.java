@@ -18,7 +18,7 @@ package com.github.pires.obd.exceptions;
 public class UnsupportedCommandException extends ObdResponseException {
 
   public UnsupportedCommandException() {
-    super("7F 01 12");
+    super("7F 0[0-9] 12", true);
   }
 
 }
