@@ -12,8 +12,6 @@
  */
 package com.github.pires.obd.commands;
 
-import com.github.pires.obd.commands.control.TroubleCodesObdCommand;
-import com.github.pires.obd.commands.protocol.ObdProtocolCommand;
 import com.github.pires.obd.exceptions.BusInitException;
 import com.github.pires.obd.exceptions.MisunderstoodCommandException;
 import com.github.pires.obd.exceptions.NoDataException;
@@ -246,7 +244,12 @@ public abstract class ObdCommand {
    * @return a formatted command response in string representation.
    */
   public abstract String getFormattedResult();
-
+  
+ /**
+  * @return the command response in string representation, without formatting.
+  */
+  public abstract String getCalculatedResult();
+  
   /**
    * @return a list of integers
    */
@@ -260,6 +263,14 @@ public abstract class ObdCommand {
   public boolean useImperialUnits() {
     return useImperialUnits;
   }
+  
+  /**
+  * The unit of the result, as used in {@link #getFormattedResult()}
+  * @return a String representing a unit or "", never null  
+  */
+  public String getResultUnit() {
+    return "";//no unit by default
+  } 
 
   /**
    * Set to 'true' if you want to use imperial units, false otherwise. By

@@ -52,6 +52,16 @@ public class EngineRuntimeObdCommand extends ObdCommand {
     final String ss = String.format("%02d", value % 60);
     return String.format("%s:%s:%s", hh, mm, ss);
   }
+  
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(value);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "s";
+  }
 
   @Override
   public String getName() {

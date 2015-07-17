@@ -39,13 +39,17 @@ public class AvailablePidsObdCommand extends PersistentObdCommand {
   }
 
   @Override
-  public String getFormattedResult() {
-    return String.valueOf(rawData);
-  }
-
-  @Override
   public String getName() {
     return AvailableCommandNames.PIDS.getValue();
   }
 
+  @Override
+  public String getFormattedResult() {
+    return getCalculatedResult();
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(rawData);
+  }
 }

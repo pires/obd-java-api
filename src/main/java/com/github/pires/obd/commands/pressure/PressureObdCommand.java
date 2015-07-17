@@ -61,8 +61,8 @@ public abstract class PressureObdCommand extends ObdCommand implements
 
   @Override
   public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "psi")
-        : String.format("%d%s", pressure, "kPa");
+    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), getResultUnit())
+        : String.format("%d%s", pressure, getResultUnit());
   }
 
   /**
@@ -77,6 +77,16 @@ public abstract class PressureObdCommand extends ObdCommand implements
    */
   public float getImperialUnit() {
     return new Double(pressure * 0.145037738).floatValue();
+  }
+  
+  @Override
+  public String getCalculatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(pressure);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "psi" : "kPa";
   }
 
 }

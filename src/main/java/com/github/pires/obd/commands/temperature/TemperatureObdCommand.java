@@ -47,16 +47,28 @@ public abstract class TemperatureObdCommand extends ObdCommand implements
     temperature = buffer.get(2) - 40;
   }
 
+  
   /**
    * {@inheritDoc}
    *
    * Get values from 'buff', since we can't rely on char/string for
    * calculations.
+   * @return 
    */
   @Override
   public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), "F")
-        : String.format("%.0f%s", temperature, "C");
+    return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), getResultUnit())
+        : String.format("%.0f%s", temperature, getResultUnit());
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(temperature);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "F" : "C";
   }
 
   /**

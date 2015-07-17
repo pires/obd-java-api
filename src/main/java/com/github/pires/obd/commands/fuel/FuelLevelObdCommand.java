@@ -13,14 +13,13 @@
 package com.github.pires.obd.commands.fuel;
 
 import com.github.pires.obd.commands.ObdCommand;
+import com.github.pires.obd.commands.PercentageObdCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 
 /**
  * Get fuel level in percentage
  */
-public class FuelLevelObdCommand extends ObdCommand {
-
-  private float fuelLevel = 0f;
+public class FuelLevelObdCommand extends PercentageObdCommand {
 
   public FuelLevelObdCommand() {
     super("01 2F");
@@ -29,14 +28,9 @@ public class FuelLevelObdCommand extends ObdCommand {
   @Override
   protected void performCalculations() {
     // ignore first two bytes [hh hh] of the response
-    fuelLevel = 100.0f * buffer.get(2) / 255.0f;
+    percentage = 100.0f * buffer.get(2) / 255.0f;
   }
-
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", fuelLevel, "%");
-  }
-
+  
   @Override
   public String getName() {
     return AvailableCommandNames.FUEL_LEVEL.getValue();
@@ -46,7 +40,7 @@ public class FuelLevelObdCommand extends ObdCommand {
    * @return a float.
    */
   public float getFuelLevel() {
-    return fuelLevel;
+    return percentage;
   }
 
 }
