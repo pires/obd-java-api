@@ -10,48 +10,47 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.github.pires.obd.commands;
+package com.github.pires.obd.commands.engine;
 
-/**
- * Abstract class for percentage commands.
- */
-public abstract class PercentageObdCommand extends ObdCommand {
-
-  protected float percentage = 0f;
+import com.github.pires.obd.commands.PercentageObdCommand;
+import com.github.pires.obd.enums.AvailableCommandNames;
+ 
+public class AbsoluteLoadObdCommand extends PercentageObdCommand {
 
   /**
-   * @param command a {@link java.lang.String} object.
+   * Default ctor.
    */
-  public PercentageObdCommand(String command) {
-    super(command);
+  public AbsoluteLoadObdCommand() {
+    super("01 43");
   }
 
   /**
-   * @param other a {@link com.github.pires.obd.commands.PercentageObdCommand} object.
+   * Copy ctor.
+   *
+   * @param other a {@link AbsoluteLoadObdCommand} object.
    */
-  public PercentageObdCommand(PercentageObdCommand other) {
+  public AbsoluteLoadObdCommand(AbsoluteLoadObdCommand other) {
     super(other);
   }
 
   @Override
   protected void performCalculations() {
     // ignore first two bytes [hh hh] of the response
-    percentage = (buffer.get(2) * 100.0f) / 255.0f;
+    int a = buffer.get(2);
+    int b = buffer.get(3);
+    percentage = (a * 256 + b) * 100 / 255;
   }
 
   /**
-	 * 
-	 */
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", percentage, "%");
-  }
-
-  /**
-   * @return a float.
+   * @return a double.
    */
-  public float getPercentage() {
+  public double getRatio() {
     return percentage;
+  }
+
+  @Override
+  public String getName() {
+    return AvailableCommandNames.ABS_LOAD.getValue();
   }
 
 }

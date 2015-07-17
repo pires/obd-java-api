@@ -54,7 +54,7 @@ public class DistanceTraveledSinceCodesClearedObdCommand extends ObdCommand
 
   @Override
   public float getImperialUnit() {
-    return new Double(km * 0.621371192).floatValue();
+    return Double.valueOf(km * 0.621371192).floatValue();
   }
 
   /**

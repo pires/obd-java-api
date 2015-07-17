@@ -38,6 +38,8 @@ public abstract class ObdCommand {
   protected boolean useImperialUnits = false;
   protected String rawData = null;
   protected long responseTimeDelay = 200;
+  private long start;
+  private long end;
   /**
    * Error classes to be tested in order
    */
@@ -54,13 +56,12 @@ public abstract class ObdCommand {
   /**
    * Default ctor to use
    *
-   * @param command
-   * the command to send
+   * @param command the command to send
    */
   public ObdCommand(String command) {
     this.cmd = command;
     this.buffer = new ArrayList<Integer>();
-    if (!(this instanceof ObdProtocolCommand) && !(this instanceof TroubleCodesObdCommand)) {
+    if (this instanceof ReturnAsapCommand) {
       this.cmd += " 1";//speed up
     }
   }
@@ -74,8 +75,7 @@ public abstract class ObdCommand {
   /**
    * Copy ctor.
    *
-   * @param other
-   * the ObdCommand to copy.
+   * @param other the ObdCommand to copy.
    */
   public ObdCommand(ObdCommand other) {
     this(other.cmd);
@@ -93,8 +93,10 @@ public abstract class ObdCommand {
    */
   public void run(InputStream in, OutputStream out) throws IOException,
       InterruptedException {
+    start = System.currentTimeMillis();
     sendCommand(out);
     readResult(in);
+    end = System.currentTimeMillis();
   }
 
   /**
@@ -103,8 +105,7 @@ public abstract class ObdCommand {
    * This method may be overriden in subclasses, such as ObMultiCommand or
    * TroubleCodesObdCommand.
    *
-   * @param out
-   * The output stream.
+   * @param out The output stream.
    * @throws java.io.IOException if any.
    * @throws java.lang.InterruptedException if any.
    */
@@ -164,7 +165,7 @@ public abstract class ObdCommand {
   protected void fillBuffer() {
     rawData = rawData.replaceAll("\\s", ""); //removes all [ \t\n\x0B\f\r]
     rawData = rawData.replaceAll("(BUS INIT)|(BUSINIT)|(\\.)", "");
-    
+
     if (!rawData.matches("([0-9A-F])+")) {
       throw new NonNumericResponseException(rawData);
     }
@@ -274,9 +275,10 @@ public abstract class ObdCommand {
    * @return the OBD command name.
    */
   public abstract String getName();
-  
-    /**
+
+  /**
    * Time the command waits before returning from #sendCommand()
+   *
    * @return delay in ms
    */
   public long getResponseTimeDelay() {
@@ -285,10 +287,28 @@ public abstract class ObdCommand {
 
   /**
    * Time the command waits before returning from #sendCommand()
+   *
    * @param responseTimeDelay
    */
   public void setResponseTimeDelay(long responseTimeDelay) {
     this.responseTimeDelay = responseTimeDelay;
+  }
+
+  //fixme resultunit
+  public long getStart() {
+    return start;
+  }
+
+  public void setStart(long start) {
+    this.start = start;
+  }
+
+  public long getEnd() {
+    return end;
+  }
+
+  public void setEnd(long end) {
+    this.end = end;
   }
 
 }

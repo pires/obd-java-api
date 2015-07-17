@@ -25,7 +25,7 @@ public class FuelTrimObdCommand extends ObdCommand {
 
   /**
    * Default ctor.
-   * 
+   *
    * Will read the bank from parameters and construct the command accordingly.
    * Please, see FuelTrim enum for more details.
    *
@@ -34,6 +34,10 @@ public class FuelTrimObdCommand extends ObdCommand {
   public FuelTrimObdCommand(final FuelTrim bank) {
     super(bank.buildObdCommand());
     this.bank = bank;
+  }
+
+  public FuelTrimObdCommand() {
+    this(FuelTrim.SHORT_TERM_BANK_1);
   }
 
   /**

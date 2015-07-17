@@ -39,7 +39,7 @@ public enum AvailableCommandNames {
   TIMING_ADVANCE("Timing Advance"),
   DTC_NUMBER("Diagnostic Trouble Codes"),
   EQUIV_RATIO("Command Equivalence Ratio"),
-  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance Traveled After Codes Cleared"),
+  DISTANCE_TRAVELED_AFTER_CODES_CLEARED("Distance since codes cleared"),
   CONTROL_MODULE_VOLTAGE("Control Module Power Supply "),
   ENGINE_FUEL_RATE("Engine Fuel Rate"),
   FUEL_RAIL_PRESSURE("Fuel Rail Pressure"),
@@ -48,7 +48,8 @@ public enum AvailableCommandNames {
   TIME_TRAVELED_MIL_ON("Time run with MIL on"),
   TIME_SINCE_TC_CLEARED("Time since trouble codes cleared"),
   REL_THROTTLE_POS("Relative throttle position"),
-  PIDS("Available PIDs");
+  PIDS("Available PIDs"),
+  ABS_LOAD("Absolute load");
 
   private final String value;
 
