@@ -44,14 +44,6 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits, Return
   }
 
   /**
-   * @return a {@link java.lang.String} object.
-   */
-  public String getFormattedResult() {
-    return useImperialUnits ? String.format("%.0f%s", getImperialUnit(), "mph")
-        : String.format("%d%s", getMetricSpeed(), "km/h");
-  }
-
-  /**
    * @return the speed in metric units.
    */
   public int getMetricSpeed() {
@@ -71,7 +63,25 @@ public class SpeedObdCommand extends ObdCommand implements SystemOfUnits, Return
    * @return a float.
    */
   public float getImperialUnit() {
-    return new Double(metricSpeed * 0.621371192).floatValue();
+    return Double.valueOf(metricSpeed * 0.621371192).floatValue();
+  }
+  
+   /**
+   * @return a {@link java.lang.String} object.
+   */
+  public String getFormattedResult() {
+    return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
+        : String.format("%d%s", getMetricSpeed(), getResultUnit());
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(getMetricSpeed());
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "mph" : "km/h";
   }
 
   @Override

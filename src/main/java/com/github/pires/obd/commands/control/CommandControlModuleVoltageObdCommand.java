@@ -56,11 +56,22 @@ public class CommandControlModuleVoltageObdCommand extends ObdCommand {
   }
 
   /**
-	 * 
-	 */
+   * 
+   * @return 
+   */
   @Override
   public String getFormattedResult() {
-    return String.format("%.1f%s", voltage, "V");
+    return String.format("%.1f%s", voltage, getResultUnit());
+  }
+  
+  @Override
+  public String getResultUnit(){
+    return "V";
+  }
+  
+  @Override
+  public String getCalculatedResult(){
+    return String.valueOf(voltage);
   }
 
   /**

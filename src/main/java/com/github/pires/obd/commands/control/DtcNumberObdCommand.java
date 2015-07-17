@@ -60,6 +60,11 @@ public class DtcNumberObdCommand extends ObdCommand {
     return new StringBuilder().append(res).append(codeCount).append(" codes")
         .toString();
   }
+  
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(codeCount);
+  }
 
   /**
    * @return the number of trouble codes currently flaggd in the ECU.

@@ -105,10 +105,17 @@ public class TroubleCodesObdCommand extends ObdCommand {
 
   /**
    * @return the formatted result of this command in string representation.
+   * @deprecated use #getCalculatedResult instead
    */
   public String formatResult() {
     return codes.toString();
   }
+  
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(codes);
+  }
+
 
   @Override
   protected void readRawData(InputStream in) throws IOException {

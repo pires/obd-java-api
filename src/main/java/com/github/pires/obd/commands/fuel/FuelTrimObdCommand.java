@@ -13,14 +13,14 @@
 package com.github.pires.obd.commands.fuel;
 
 import com.github.pires.obd.commands.ObdCommand;
+import com.github.pires.obd.commands.PercentageObdCommand;
 import com.github.pires.obd.enums.FuelTrim;
 
 /**
  * Fuel Trim.
  */
-public class FuelTrimObdCommand extends ObdCommand {
+public class FuelTrimObdCommand extends PercentageObdCommand {
 
-  private float fuelTrimValue = 0.0f;
   private final FuelTrim bank;
 
   /**
@@ -45,24 +45,20 @@ public class FuelTrimObdCommand extends ObdCommand {
    * @return
    */
   private float prepareTempValue(final int value) {
-    return new Double((value - 128) * (100.0 / 128)).floatValue();
+    return Double.valueOf((value - 128) * (100.0 / 128)).floatValue();
   }
 
   protected void performCalculations() {
     // ignore first two bytes [hh hh] of the response
-    fuelTrimValue = prepareTempValue(buffer.get(2));
-  }
-
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.2f%s", fuelTrimValue, "%");
+    percentage = prepareTempValue(buffer.get(2));
   }
 
   /**
    * @return the readed Fuel Trim percentage value.
+   * @deprecated use #getCalculatedResult()
    */
   public final float getValue() {
-    return fuelTrimValue;
+    return percentage;
   }
 
   /**
