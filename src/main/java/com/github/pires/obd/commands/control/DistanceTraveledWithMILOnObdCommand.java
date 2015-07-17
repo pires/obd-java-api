@@ -44,11 +44,19 @@ public class DistanceTraveledWithMILOnObdCommand extends ObdCommand
     km = buffer.get(2) * 256 + buffer.get(3);
   }
 
-  @Override
   public String getFormattedResult() {
-    return useImperialUnits
-        ? String.format("%.2f%s", getImperialUnit(), "m")
-        : String.format("%.2f%s", (float) km, "km");
+    return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
+            : String.format("%d%s", km, getResultUnit());
+  }
+
+  @Override
+  public String getCalculatedResult() {
+    return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(km);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return useImperialUnits ? "m" : "km";
   }
 
   @Override
@@ -61,16 +69,6 @@ public class DistanceTraveledWithMILOnObdCommand extends ObdCommand
    */
   public int getKm() {
     return km;
-  }
-
-  /**
-   * <p>
-   * Setter for the field <code>km</code>.</p>
-   *
-   * @param km a int.
-   */
-  public void setKm(int km) {
-    this.km = km;
   }
 
   @Override

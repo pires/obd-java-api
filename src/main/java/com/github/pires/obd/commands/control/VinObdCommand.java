@@ -61,6 +61,11 @@ public class VinObdCommand extends PersistentObdCommand {
   public String getName() {
     return AvailableCommandNames.VIN.getValue();
   }
+  
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(vin);
+  }
 
 }
 

@@ -60,7 +60,17 @@ public class EngineFuelRate extends ObdCommand {
 	 */
   @Override
   public String getFormattedResult() {
-    return String.format("%.1f%s", fuelrate, "L/h");
+    return String.format("%.1f%s", fuelrate, getResultUnit());
+  }
+  
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(fuelrate);
+  }
+
+  @Override
+  public String getResultUnit() {
+    return "L/h";
   }
 
   /**

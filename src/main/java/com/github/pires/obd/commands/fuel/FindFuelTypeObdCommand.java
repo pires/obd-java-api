@@ -53,6 +53,11 @@ public class FindFuelTypeObdCommand extends ObdCommand {
       return "-";
     }
   }
+  
+  @Override
+  public String getCalculatedResult() {
+    return String.valueOf(fuelType);
+  }
 
   @Override
   public String getName() {
