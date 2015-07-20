@@ -54,7 +54,7 @@ public class VinObdCommand extends PersistentObdCommand {
 
   @Override
   public String getFormattedResult() {
-    return String.valueOf(rawData);
+    return String.valueOf(vin);
   }
 
   @Override
