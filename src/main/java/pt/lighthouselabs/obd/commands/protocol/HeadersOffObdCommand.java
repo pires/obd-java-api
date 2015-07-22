@@ -13,7 +13,7 @@
 package com.github.pires.obd.commands.protocol;
 
 /**
- * This command will turn-off echo.
+ * This command will turn-off headers.
  */
 public class HeadersOffObdCommand extends ObdProtocolCommand {
 
@@ -22,7 +22,7 @@ public class HeadersOffObdCommand extends ObdProtocolCommand {
 	}
 
 	/**
-         * <p>Constructor for EchoOffObdCommand.</p>
+         * <p>Constructor for HeadersOffObdCommand.</p>
          *
          * @param other a {@link HeadersOffObdCommand} object.
 	 */
@@ -37,7 +37,7 @@ public class HeadersOffObdCommand extends ObdProtocolCommand {
 
 	@Override
 	public String getName() {
-		return "Echo Off";
+		return "Headers disabled";
 	}
 
 }
