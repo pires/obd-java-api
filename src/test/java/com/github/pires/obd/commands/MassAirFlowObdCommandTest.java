@@ -10,6 +10,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.github.pires.obd.commands;
 
 import static org.powermock.api.easymock.PowerMock.createMock;
@@ -33,120 +45,120 @@ import com.github.pires.obd.commands.engine.MassAirFlowObdCommand;
  */
 @PrepareForTest(InputStream.class)
 public class MassAirFlowObdCommandTest {
-  private MassAirFlowObdCommand command;
-  private InputStream mockIn;
+    private MassAirFlowObdCommand command;
+    private InputStream mockIn;
 
-  /**
-   * @throws Exception
-   */
-  @BeforeMethod
-  public void setUp() throws Exception {
-    command = new MassAirFlowObdCommand();
-  }
+    /**
+     * @throws Exception
+     */
+    @BeforeMethod
+    public void setUp() throws Exception {
+        command = new MassAirFlowObdCommand();
+    }
 
-  /**
-   * Test for valid InputStream read, maximum value of 655.35g/s
-   * 
-   * @throws IOException
-   */
-  @Test
-  public void testMaxMAFValue() throws IOException {
-    // mock InputStream read
-    mockIn = createMock(InputStream.class);
-    mockIn.read();
-    expectLastCall().andReturn((byte) '4');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) 'F');
-    expectLastCall().andReturn((byte) 'F');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) 'F');
-    expectLastCall().andReturn((byte) 'F');
-    expectLastCall().andReturn((byte) '>');
+    /**
+     * Test for valid InputStream read, maximum value of 655.35g/s
+     *
+     * @throws IOException
+     */
+    @Test
+    public void testMaxMAFValue() throws IOException {
+        // mock InputStream read
+        mockIn = createMock(InputStream.class);
+        mockIn.read();
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) 'F');
+        expectLastCall().andReturn((byte) 'F');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) 'F');
+        expectLastCall().andReturn((byte) 'F');
+        expectLastCall().andReturn((byte) '>');
 
-    replayAll();
+        replayAll();
 
-    // call the method to test
-    command.readResult(mockIn);
-    assertEquals(command.getMAF(), 655.3499755859375d);
+        // call the method to test
+        command.readResult(mockIn);
+        assertEquals(command.getMAF(), 655.3499755859375d);
 
-    verifyAll();
-  }
+        verifyAll();
+    }
 
-  /**
-   * Test for valid InputStream read, 381.61g/s
-   * 
-   * @throws IOException
-   */
-  @Test
-  public void testSomeMAFValue() throws IOException {
-    // mock InputStream read
-    mockIn = createMock(InputStream.class);
-    mockIn.read();
-    expectLastCall().andReturn((byte) '4');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '9');
-    expectLastCall().andReturn((byte) '5');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) '>');
+    /**
+     * Test for valid InputStream read, 381.61g/s
+     *
+     * @throws IOException
+     */
+    @Test
+    public void testSomeMAFValue() throws IOException {
+        // mock InputStream read
+        mockIn = createMock(InputStream.class);
+        mockIn.read();
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '9');
+        expectLastCall().andReturn((byte) '5');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '>');
 
-    replayAll();
+        replayAll();
 
-    // call the method to test
-    command.readResult(mockIn);
-    assertEquals(command.getMAF(), 381.6099853515625d);
+        // call the method to test
+        command.readResult(mockIn);
+        assertEquals(command.getMAF(), 381.6099853515625d);
 
-    verifyAll();
-  }
+        verifyAll();
+    }
 
-  /**
-   * Test for valid InputStream read, minimum value 0g/s
-   * 
-   * @throws IOException
-   */
-  @Test
-  public void testMinMAFValue() throws IOException {
-    // mock InputStream read
-    mockIn = createMock(InputStream.class);
-    mockIn.read();
-    expectLastCall().andReturn((byte) '4');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '1');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) ' ');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) '0');
-    expectLastCall().andReturn((byte) '>');
+    /**
+     * Test for valid InputStream read, minimum value 0g/s
+     *
+     * @throws IOException
+     */
+    @Test
+    public void testMinMAFValue() throws IOException {
+        // mock InputStream read
+        mockIn = createMock(InputStream.class);
+        mockIn.read();
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '>');
 
-    replayAll();
+        replayAll();
 
-    // call the method to test
-    command.readResult(mockIn);
-    assertEquals(command.getMAF(), 0d);
+        // call the method to test
+        command.readResult(mockIn);
+        assertEquals(command.getMAF(), 0d);
 
-    verifyAll();
-  }
+        verifyAll();
+    }
 
-  /**
-   * Clear resources.
-   */
-  @AfterClass
-  public void tearDown() {
-    command = null;
-    mockIn = null;
-  }
+    /**
+     * Clear resources.
+     */
+    @AfterClass
+    public void tearDown() {
+        command = null;
+        mockIn = null;
+    }
 
 }

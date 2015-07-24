@@ -10,6 +10,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.github.pires.obd.commands.engine;
 
 import com.github.pires.obd.commands.ObdCommand;
@@ -28,61 +40,61 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class EngineFuelRate extends ObdCommand {
 
-  // Equivalent ratio (L/h)
-  private double fuelrate = 0.00;
+    // Equivalent ratio (L/h)
+    private double fuelrate = 0.00;
 
-  /**
-   * Default ctor.
-   */
-  public EngineFuelRate() {
-    super("01 5E");
-  }
+    /**
+     * Default ctor.
+     */
+    public EngineFuelRate() {
+        super("01 5E");
+    }
 
-  /**
-   * Copy ctor.
-   *
-   * @param other a {@link EngineFuelRate} object.
-   */
-  public EngineFuelRate(EngineFuelRate other) {
-    super(other);
-  }
+    /**
+     * Copy ctor.
+     *
+     * @param other a {@link EngineFuelRate} object.
+     */
+    public EngineFuelRate(EngineFuelRate other) {
+        super(other);
+    }
 
-  @Override
-  protected void performCalculations() {
-    // ignore first two bytes [hh hh] of the response
-    int a = buffer.get(2);
-    int b = buffer.get(3);
-    fuelrate = ((a * 256) + b)*0.05;
-  }
+    @Override
+    protected void performCalculations() {
+        // ignore first two bytes [hh hh] of the response
+        int a = buffer.get(2);
+        int b = buffer.get(3);
+        fuelrate = ((a * 256) + b) * 0.05;
+    }
 
-  /**
-	 * 
-	 */
-  @Override
-  public String getFormattedResult() {
-    return String.format("%.1f%s", fuelrate, getResultUnit());
-  }
-  
-  @Override
-  public String getCalculatedResult() {
-    return String.valueOf(fuelrate);
-  }
+    /**
+     *
+     */
+    @Override
+    public String getFormattedResult() {
+        return String.format("%.1f%s", fuelrate, getResultUnit());
+    }
 
-  @Override
-  public String getResultUnit() {
-    return "L/h";
-  }
+    @Override
+    public String getCalculatedResult() {
+        return String.valueOf(fuelrate);
+    }
 
-  /**
-   * @return a double.
-   */
-  public double getVoltage() {
-    return fuelrate;
-  }
+    @Override
+    public String getResultUnit() {
+        return "L/h";
+    }
 
-  @Override
-  public String getName() {
-    return AvailableCommandNames.ENGINE_FUEL_RATE.getValue();
-  }
+    /**
+     * @return a double.
+     */
+    public double getVoltage() {
+        return fuelrate;
+    }
+
+    @Override
+    public String getName() {
+        return AvailableCommandNames.ENGINE_FUEL_RATE.getValue();
+    }
 
 }
