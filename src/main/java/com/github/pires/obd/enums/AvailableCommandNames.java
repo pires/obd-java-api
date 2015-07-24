@@ -49,7 +49,10 @@ public enum AvailableCommandNames {
   TIME_SINCE_TC_CLEARED("Time since trouble codes cleared"),
   REL_THROTTLE_POS("Relative throttle position"),
   PIDS("Available PIDs"),
-  ABS_LOAD("Absolute load");
+  ABS_LOAD("Absolute load"),
+  ENGINE_OIL_TEMP("Engine oil temperature"),
+  FUEL_AIR_COMMANDED("Air/Fuel Ratio"),
+  FUEL_AIR_WIDE_COMMANDED("Air/Fuel Wide Ratio");
 
   private final String value;
 
