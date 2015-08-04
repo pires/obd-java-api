@@ -114,7 +114,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>[3.3.3,)</version>
+                                    <version>[3.0.4,)</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <version>[1.8,)</version>

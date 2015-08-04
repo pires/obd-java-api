@@ -10,7 +10,7 @@ OBD-II Java API
 ### Requisites ###
 
 * JDK 8
-* Maven 3.3.3 or newer
+* Maven 3.1 or newer
 
 ### Compile, package and install locally ###
 
