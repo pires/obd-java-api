@@ -9,8 +9,8 @@ OBD-II Java API
 
 ### Requisites ###
 
-* JDK 7
-* Maven 3.1.0 or newer
+* JDK 8
+* Maven 3.3.3 or newer
 
 ### Compile, package and install locally ###
 
@@ -25,14 +25,14 @@ mvn clean install
 <dependency>
   <groupId>com.github.pires</groupId>
   <artifactId>obd-java-api</artifactId>
-  <version>1.0-RC5</version>
+  <version>1.0-RC8</version>
 </dependency>
 ```
 
 ### Gradle ###
 ```
 dependencies {
-    compile 'com.github.pires:obd-java-api:1.0-RC5'
+    compile 'com.github.pires:obd-java-api:1.0-RC8'
 }
 ```
 
@@ -46,11 +46,11 @@ socket = ...; // specific to the VM you're using (Java, Android, etc.)
 
 // execute commands
 try {
-  new EchoOffObdCommand().run(socket.getInputStream(), socket.getOutputStream());
-  new LineFeedOffObdCommand().run(socket.getInputStream(), socket.getOutputStream());
-  new TimeoutObdCommand().run(socket.getInputStream(), socket.getOutputStream());
-  new SelectProtocolObdCommand(ObdProtocols.AUTO).run(socket.getInputStream(), socket.getOutputStream());
-  new AmbientAirTemperatureObdCommand().run(socket.getInputStream(), socket.getOutputStream());
+  new EchoOffCommand().run(socket.getInputStream(), socket.getOutputStream());
+  new LineFeedOffCommand().run(socket.getInputStream(), socket.getOutputStream());
+  new TimeoutCommand().run(socket.getInputStream(), socket.getOutputStream());
+  new SelectProtocolCommand(ObdProtocols.AUTO).run(socket.getInputStream(), socket.getOutputStream());
+  new AmbientAirTemperatureCommand().run(socket.getInputStream(), socket.getOutputStream());
 } catch (Exception e) {
   // handle errors
 }
@@ -62,7 +62,7 @@ As *@dembol* noted:
 
 Have you checked your ELM327 adapter with Torque or Scanmaster to see if it works with your car? Maybe the problem is with your device?
 
-Popular OBD diagnostic tools reset state and disable echo, spaces etc before protocol selection. Download some elm327 terminal for android and try following commands in order:
+Popular OBD diagnostic tools reset state and disable echo, spaces etc before protocol selection. Download some ELM327 terminal for android and try following commands in order:
 ```
 ATD
 ATZ
