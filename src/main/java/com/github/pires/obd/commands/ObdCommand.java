@@ -1,38 +1,6 @@
-/**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-/**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package com.github.pires.obd.commands;
 
-import com.github.pires.obd.exceptions.BusInitException;
-import com.github.pires.obd.exceptions.MisunderstoodCommandException;
-import com.github.pires.obd.exceptions.NoDataException;
-import com.github.pires.obd.exceptions.NonNumericResponseException;
-import com.github.pires.obd.exceptions.ObdResponseException;
-import com.github.pires.obd.exceptions.StoppedException;
-import com.github.pires.obd.exceptions.UnableToConnectException;
-import com.github.pires.obd.exceptions.UnknownObdErrorException;
-import com.github.pires.obd.exceptions.UnsupportedCommandException;
+import com.github.pires.obd.exceptions.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,7 +21,7 @@ public abstract class ObdCommand {
             MisunderstoodCommandException.class,
             NoDataException.class,
             StoppedException.class,
-            UnknownObdErrorException.class,
+            UnknownErrorException.class,
             UnsupportedCommandException.class
     };
     protected ArrayList<Integer> buffer = null;
@@ -72,7 +40,7 @@ public abstract class ObdCommand {
     public ObdCommand(String command) {
         this.cmd = command;
         this.buffer = new ArrayList<Integer>();
-        if (this instanceof ReturnAsapCommand) {
+        if (this instanceof ReturnASAPCommand) {
             this.cmd += " 1";//speed up
         }
     }
@@ -94,12 +62,12 @@ public abstract class ObdCommand {
 
     /**
      * Sends the OBD-II request and deals with the response.
-     *
+     * <p>
      * This method CAN be overriden in fake commands.
      *
-     * @param in a {@link java.io.InputStream} object.
+     * @param in  a {@link java.io.InputStream} object.
      * @param out a {@link java.io.OutputStream} object.
-     * @throws java.io.IOException if any.
+     * @throws java.io.IOException            if any.
      * @throws java.lang.InterruptedException if any.
      */
     public void run(InputStream in, OutputStream out) throws IOException,
@@ -112,12 +80,12 @@ public abstract class ObdCommand {
 
     /**
      * Sends the OBD-II request.
-     *
+     * <p>
      * This method may be overriden in subclasses, such as ObMultiCommand or
-     * TroubleCodesObdCommand.
+     * TroubleCodesCommand.
      *
      * @param out The output stream.
-     * @throws java.io.IOException if any.
+     * @throws java.io.IOException            if any.
      * @throws java.lang.InterruptedException if any.
      */
     protected void sendCommand(OutputStream out) throws IOException,
@@ -140,7 +108,7 @@ public abstract class ObdCommand {
      * Resends this command.
      *
      * @param out a {@link java.io.OutputStream} object.
-     * @throws java.io.IOException if any.
+     * @throws java.io.IOException            if any.
      * @throws java.lang.InterruptedException if any.
      */
     protected void resendCommand(OutputStream out) throws IOException,
@@ -228,8 +196,8 @@ public abstract class ObdCommand {
     }
 
     void checkForErrors() {
-        for (Class<? extends ObdResponseException> errorClass : ERROR_CLASSES) {
-            ObdResponseException messageError;
+        for (Class<? extends ResponseException> errorClass : ERROR_CLASSES) {
+            ResponseException messageError;
 
             try {
                 messageError = errorClass.newInstance();
@@ -279,6 +247,7 @@ public abstract class ObdCommand {
 
     /**
      * The unit of the result, as used in {@link #getFormattedResult()}
+     *
      * @return a String representing a unit or "", never null
      */
     public String getResultUnit() {

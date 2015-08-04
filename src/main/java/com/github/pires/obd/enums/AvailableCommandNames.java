@@ -1,27 +1,3 @@
-/**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-/**
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package com.github.pires.obd.enums;
 
 /**
@@ -44,10 +20,7 @@ public enum AvailableCommandNames {
     TROUBLE_CODES("Trouble Codes"),
     FUEL_LEVEL("Fuel Level"),
     FUEL_TYPE("Fuel Type"),
-    FUEL_CONSUMPTION("Fuel Consumption"),
-    FUEL_ECONOMY("Fuel Economy"),
-    FUEL_ECONOMY_WITH_MAF("Fuel Economy 2"),
-    FUEL_ECONOMY_WITHOUT_MAF("Fuel Economy 3"),
+    FUEL_CONSUMPTION_RATE("Fuel Consumption Rate"),
     TIMING_ADVANCE("Timing Advance"),
     DTC_NUMBER("Diagnostic Trouble Codes"),
     EQUIV_RATIO("Command Equivalence Ratio"),
@@ -63,8 +36,8 @@ public enum AvailableCommandNames {
     PIDS("Available PIDs"),
     ABS_LOAD("Absolute load"),
     ENGINE_OIL_TEMP("Engine oil temperature"),
-    FUEL_AIR_COMMANDED("Air/Fuel Ratio"),
-    FUEL_AIR_WIDE_COMMANDED("Air/Fuel Wide Ratio");
+    AIR_FUEL_RATIO("Air/Fuel Ratio"),
+    WIDEBAND_AIR_FUEL_RATIO("Wideband Air/Fuel Ratio");
 
     private final String value;
 
