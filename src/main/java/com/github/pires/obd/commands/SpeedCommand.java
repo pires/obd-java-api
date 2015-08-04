@@ -5,7 +5,7 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Current speed.
  */
-public class SpeedCommand extends ObdCommand implements SystemOfUnits, ReturnASAPCommand {
+public class SpeedCommand extends ObdCommand implements SystemOfUnits, ReturnAsapCommand {
 
     private int metricSpeed = 0;
 

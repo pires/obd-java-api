@@ -40,7 +40,7 @@ public abstract class ObdCommand {
     public ObdCommand(String command) {
         this.cmd = command;
         this.buffer = new ArrayList<Integer>();
-        if (this instanceof ReturnASAPCommand) {
+        if (this instanceof ReturnAsapCommand) {
             this.cmd += " 1";//speed up
         }
     }
