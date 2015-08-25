@@ -99,16 +99,7 @@ public class TroubleCodesCommand extends ObdCommand {
         byte b = 0;
         StringBuilder res = new StringBuilder();
 
-        // commented by pdalfarr
-        /*
-        // read until '>' arrives
-        while ((char) (b = (byte) in.read()) != '>') {
-            if ((char) b != ' ') {
-                res.append((char) b);
-            }
-        }
-        */
-        // fix proposed by pdalfarr
+        // read until '>' arrives OR end of stream reached (and skip ' ')
         char c;
         while(true)
         {
