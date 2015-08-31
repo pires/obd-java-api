@@ -7,7 +7,7 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Distance traveled since codes cleared-up.
  */
-public class DistTravSinCCCommand extends ObdCommand
+public class DistanceSinceCCCommand extends ObdCommand
         implements SystemOfUnits {
 
     private int km = 0;
@@ -15,17 +15,17 @@ public class DistTravSinCCCommand extends ObdCommand
     /**
      * Default ctor.
      */
-    public DistTravSinCCCommand() {
+    public DistanceSinceCCCommand() {
         super("01 31");
     }
 
     /**
      * Copy ctor.
      *
-     * @param other a {@link DistTravSinCCCommand} object.
+     * @param other a {@link DistanceSinceCCCommand} object.
      */
-    public DistTravSinCCCommand(
-            DistTravSinCCCommand other) {
+    public DistanceSinceCCCommand(
+            DistanceSinceCCCommand other) {
         super(other);
     }
 

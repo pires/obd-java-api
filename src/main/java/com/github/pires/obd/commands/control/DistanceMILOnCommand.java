@@ -4,7 +4,7 @@ import com.github.pires.obd.commands.ObdCommand;
 import com.github.pires.obd.commands.SystemOfUnits;
 import com.github.pires.obd.enums.AvailableCommandNames;
 
-public class DistanceTraveledWithMILOnCommand extends ObdCommand
+public class DistanceMILOnCommand extends ObdCommand
         implements SystemOfUnits {
 
     private int km = 0;
@@ -12,17 +12,17 @@ public class DistanceTraveledWithMILOnCommand extends ObdCommand
     /**
      * Default ctor.
      */
-    public DistanceTraveledWithMILOnCommand() {
+    public DistanceMILOnCommand() {
         super("01 21");
     }
 
     /**
      * Copy ctor.
      *
-     * @param other a {@link DistanceTraveledWithMILOnCommand} object.
+     * @param other a {@link DistanceMILOnCommand} object.
      */
-    public DistanceTraveledWithMILOnCommand(
-            DistanceTraveledWithMILOnCommand other) {
+    public DistanceMILOnCommand(
+            DistanceMILOnCommand other) {
         super(other);
     }
 
