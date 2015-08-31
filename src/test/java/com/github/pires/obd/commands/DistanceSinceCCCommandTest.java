@@ -1,6 +1,6 @@
 package com.github.pires.obd.commands;
 
-import com.github.pires.obd.commands.control.DistanceTraveledSinceCodesClearedCommand;
+import com.github.pires.obd.commands.control.DistanceSinceCCCommand;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
@@ -16,9 +16,9 @@ import static org.testng.Assert.assertEquals;
  * Runtime since engine start in seconds, with a maximum value of 65535.
  */
 @PrepareForTest(InputStream.class)
-public class DistanceTraveledSinceCodesClearedCommandTest {
+public class DistanceSinceCCCommandTest {
 
-    private DistanceTraveledSinceCodesClearedCommand command;
+    private DistanceSinceCCCommand command;
     private InputStream mockIn;
 
     /**
@@ -26,7 +26,7 @@ public class DistanceTraveledSinceCodesClearedCommandTest {
      */
     @BeforeMethod
     public void setUp() throws Exception {
-        command = new DistanceTraveledSinceCodesClearedCommand();
+        command = new DistanceSinceCCCommand();
     }
 
     /**
