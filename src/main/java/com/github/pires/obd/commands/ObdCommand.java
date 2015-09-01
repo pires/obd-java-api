@@ -171,9 +171,21 @@ public abstract class ObdCommand {
         byte b = 0;
         StringBuilder res = new StringBuilder();
 
-        // read until '>' arrives
-        while ((char) (b = (byte) in.read()) != '>') {
-            res.append((char) b);
+        // read until '>' arrives OR end of stream reached
+        char c;
+        while(true)
+        {
+      	  b = (byte) in.read();
+      	  if(b == -1) // -1 if the end of the stream is reached
+      	  {
+      		  break;
+      	  }
+      	  c = (char)b;
+      	  if(c == '>') // read until '>' arrives
+      	  {
+      		  break;
+      	  }
+      	  res.append(c);
         }
 
     /*

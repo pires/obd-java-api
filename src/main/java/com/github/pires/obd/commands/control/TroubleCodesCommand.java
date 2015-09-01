@@ -99,11 +99,24 @@ public class TroubleCodesCommand extends ObdCommand {
         byte b = 0;
         StringBuilder res = new StringBuilder();
 
-        // read until '>' arrives
-        while ((char) (b = (byte) in.read()) != '>') {
-            if ((char) b != ' ') {
-                res.append((char) b);
-            }
+        // read until '>' arrives OR end of stream reached (and skip ' ')
+        char c;
+        while(true)
+        {
+      	  b = (byte) in.read();
+      	  if(b == -1) // -1 if the end of the stream is reached
+      	  {
+      		  break;
+      	  }
+      	  c = (char)b;
+      	  if(c == '>') // read until '>' arrives
+      	  {
+      		  break;
+      	  }
+      	  if(c != ' ') // skip ' '
+      	  {
+      		  res.append(c);
+      	  }
         }
 
         rawData = res.toString().trim();
