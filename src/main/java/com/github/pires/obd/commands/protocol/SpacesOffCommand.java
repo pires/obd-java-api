@@ -1,6 +1,5 @@
 package com.github.pires.obd.commands.protocol;
 
-import android.os.Parcel;
 
 /**
  * Turn-off spaces.
