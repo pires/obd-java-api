@@ -29,14 +29,4 @@ public class SpacesOffCommand extends ObdProtocolCommand {
     public String getName() {
         return "Spaces Off";
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
