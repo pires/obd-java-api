@@ -4,15 +4,15 @@ import com.github.pires.obd.commands.PersistentCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 
 /**
- * Retrieve available PIDs.
+ * Retrieve available PIDs ranging from 21 to 40.
  */
-public class AvailablePidsCommand extends PersistentCommand {
+public class AvailablePidsCommand_21_40 extends PersistentCommand {
 
     /**
      * Default ctor.
      */
-    public AvailablePidsCommand() {
-        super("01 00");
+    public AvailablePidsCommand_21_40() {
+        super("01 20");
     }
 
     /**
@@ -20,7 +20,7 @@ public class AvailablePidsCommand extends PersistentCommand {
      *
      * @param other a {@link AvailablePidsCommand} object.
      */
-    public AvailablePidsCommand(AvailablePidsCommand other) {
+    public AvailablePidsCommand_21_40(AvailablePidsCommand_21_40 other) {
         super(other);
     }
 
@@ -31,7 +31,7 @@ public class AvailablePidsCommand extends PersistentCommand {
 
     @Override
     public String getName() {
-        return AvailableCommandNames.PIDS.getValue();
+        return AvailableCommandNames.PIDS_21_40.getValue();
     }
 
     @Override
