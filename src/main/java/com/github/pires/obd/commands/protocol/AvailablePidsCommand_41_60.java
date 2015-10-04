@@ -6,7 +6,7 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Retrieve available PIDs ranging from 41 to 60.
  */
-public class AvailablePidsCommand_41_60 extends PersistentCommand {
+public class AvailablePidsCommand_41_60 extends AvailablePidsCommand {
 
     /**
      * Default ctor.
@@ -25,22 +25,7 @@ public class AvailablePidsCommand_41_60 extends PersistentCommand {
     }
 
     @Override
-    protected void performCalculations() {
-
-    }
-
-    @Override
     public String getName() {
         return AvailableCommandNames.PIDS_41_60.getValue();
-    }
-
-    @Override
-    public String getFormattedResult() {
-        return getCalculatedResult();
-    }
-
-    @Override
-    public String getCalculatedResult() {
-        return String.valueOf(rawData);
     }
 }
