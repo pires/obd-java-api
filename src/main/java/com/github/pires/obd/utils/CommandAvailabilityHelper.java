@@ -13,7 +13,11 @@ public abstract class CommandAvailabilityHelper {
      * @param availabilityString An 8*n (where n is an integer) character string containing only numbers and uppercase letters from A to F
      * @return An integer array containing the digested information
      */
+<<<<<<< HEAD
     public static int[] digestAvailabilityString(final String availabilityString) throws IllegalArgumentException {
+=======
+    public static int[] digestAvailabilityString(final String availabilityString) {
+>>>>>>> 603610d... Fixes #75.
         //The string must have 8*n characters, n being an integer
         if (availabilityString.length() % 8 != 0) {
             throw new IllegalArgumentException("Invalid length for Availability String supplied: " + availabilityString);
@@ -87,6 +91,7 @@ public abstract class CommandAvailabilityHelper {
     }
 
     /**
+<<<<<<< HEAD
      * Implementation of {@link #isAvailable(String, int[])} isAvailable} which returns the specified safetyReturn boolean instead of
      * throwing and exception in the event of supplying an availabilityString which doesn't include information about the specified command
      * <p/>
@@ -97,15 +102,22 @@ public abstract class CommandAvailabilityHelper {
     }
 
     /**
+=======
+>>>>>>> 603610d... Fixes #75.
      * Checks whether the command identified by commandPid is available, as noted by availabilityString.
      * <p/>
      * This is a direct call to {@link CommandAvailabilityHelper#isAvailable(String, int[])} with built-in String digestion
      */
+<<<<<<< HEAD
     public static boolean isAvailable(final String commandPid, final String availabilityString) throws IllegalArgumentException {
+=======
+    public static boolean isAvailable(final String commandPid, final String availabilityString) {
+>>>>>>> 603610d... Fixes #75.
         return isAvailable(commandPid, digestAvailabilityString(availabilityString));
     }
 
     /**
+<<<<<<< HEAD
      * Implementation of {@link #isAvailable(String, int[])} isAvailable} which returns the specified safetyReturn boolean instead of
      * throwing and exception in the event of supplying an availabilityString which doesn't include information about the specified command
      */
@@ -129,6 +141,15 @@ public abstract class CommandAvailabilityHelper {
         //Which byte from the array contains the info we want?
         int cmdNumber = Integer.parseInt(commandPid, 16);
         int arrayIndex = (cmdNumber - 1) / 8; //the -1 corrects the command code offset, as 00, 20, 40 are not the first commands in each response to be evaluated
+=======
+     * Checks whether the command identified by commandPid is available, as noted by availabilityArray
+     */
+    public static boolean isAvailable(final String commandPid, int[] availabilityArray) {
+        //Which byte from the array contains the info we want?
+        //Ignore first 3 characters from the command string, which are 2 for PID mode and 1 whitespace
+        int cmdNumber = Integer.parseInt(commandPid, 16);
+        int arrayIndex = cmdNumber / 8;
+>>>>>>> 603610d... Fixes #75.
 
         if (arrayIndex > availabilityArray.length - 1)
             throw new IllegalArgumentException("availabilityArray does not contain enough entries to check for command " + commandPid);
