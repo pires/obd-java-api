@@ -313,8 +313,6 @@ public abstract class ObdCommand {
         this.end = end;
     }
     
-        return cmd;
-
     public final String getCommandPID() {
         return cmd.substring(3);
     }
