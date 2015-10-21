@@ -43,6 +43,7 @@ public class CommandAvailabilityHelperTest {
 
     @Test
     public void testIsAvailable() throws Exception {
+        assertEquals(CommandAvailabilityHelper.isAvailable("00", "BE1FA813"), true);
         assertEquals(CommandAvailabilityHelper.isAvailable("02", "BE1FA813"), false);
         assertEquals(CommandAvailabilityHelper.isAvailable("07", "BE1FA813"), true);
         assertEquals(CommandAvailabilityHelper.isAvailable(new ThrottlePositionCommand().getCommandPID() /*11*/, "BE1FA813"), true);
