@@ -99,8 +99,12 @@ public abstract class CommandAvailabilityHelper {
      * Checks whether the command identified by commandPid is available, as noted by availabilityArray
      */
     public static boolean isAvailable(final String commandPid, int[] availabilityArray) {
+
+        //Command 00 is always supported
+        if (commandPid.equals("00"))
+            return true;
+
         //Which byte from the array contains the info we want?
-        //Ignore first 3 characters from the command string, which are 2 for PID mode and 1 whitespace
         int cmdNumber = Integer.parseInt(commandPid, 16);
         int arrayIndex = cmdNumber / 8;
 
