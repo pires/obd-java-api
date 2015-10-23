@@ -106,7 +106,7 @@ public abstract class CommandAvailabilityHelper {
 
         //Which byte from the array contains the info we want?
         int cmdNumber = Integer.parseInt(commandPid, 16);
-        int arrayIndex = cmdNumber / 8;
+        int arrayIndex = (cmdNumber-1) / 8; //the -1 corrects the command code offset, as 00, 20, 40 are not the first commands in each response to be evaluated
 
         if (arrayIndex > availabilityArray.length - 1)
             throw new IllegalArgumentException("availabilityArray does not contain enough entries to check for command " + commandPid);
