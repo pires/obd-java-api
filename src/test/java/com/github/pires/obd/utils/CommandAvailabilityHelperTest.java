@@ -1,6 +1,5 @@
 package com.github.pires.obd.utils;
 
-import com.github.pires.obd.commands.engine.ThrottlePositionCommand;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -78,6 +77,9 @@ public class CommandAvailabilityHelperTest {
         } catch (IllegalArgumentException e) {
             //test passed
         }
+
+        assertEquals(CommandAvailabilityHelper.isAvailable("2F", "BE1FA813", false), false);
+        assertEquals(CommandAvailabilityHelper.isAvailable("2F", "BE1FA813", true), true);
 
         assertEquals(CommandAvailabilityHelper.isAvailable("22", "BE1FA813BE1FA813"), false);
         assertEquals(CommandAvailabilityHelper.isAvailable("27", "BE1FA813BE1FA813"), true);
