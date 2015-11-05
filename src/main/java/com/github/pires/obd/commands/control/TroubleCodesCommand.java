@@ -21,7 +21,7 @@ public class TroubleCodesCommand extends ObdCommand {
     private StringBuffer codes = null;
 
     public TroubleCodesCommand() {
-        super("03");
+        super("01 03");
 
         codes = new StringBuffer();
     }
