@@ -317,4 +317,8 @@ public abstract class ObdCommand {
         return cmd.substring(3);
     }
 
+    public final String getCommandPID() {
+        return cmd.substring(3);
+    }
+
 }

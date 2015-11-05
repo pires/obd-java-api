@@ -5,7 +5,7 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class FuelPressureCommand extends PressureCommand {
 
     public FuelPressureCommand() {
-        super("010A");
+        super("01 0A");
     }
 
     /**
