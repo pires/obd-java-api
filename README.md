@@ -48,7 +48,7 @@ socket = ...; // specific to the VM you're using (Java, Android, etc.)
 try {
   new EchoOffCommand().run(socket.getInputStream(), socket.getOutputStream());
   new LineFeedOffCommand().run(socket.getInputStream(), socket.getOutputStream());
-  new TimeoutCommand().run(socket.getInputStream(), socket.getOutputStream());
+  new TimeoutCommand(125).run(socket.getInputStream(), socket.getOutputStream());
   new SelectProtocolCommand(ObdProtocols.AUTO).run(socket.getInputStream(), socket.getOutputStream());
   new AmbientAirTemperatureCommand().run(socket.getInputStream(), socket.getOutputStream());
 } catch (Exception e) {
