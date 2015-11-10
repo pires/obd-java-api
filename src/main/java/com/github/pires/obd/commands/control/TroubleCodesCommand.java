@@ -1,10 +1,10 @@
 package com.github.pires.obd.commands.control;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import com.github.pires.obd.commands.ObdCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * It is not needed no know how many DTC are stored.
@@ -101,22 +101,21 @@ public class TroubleCodesCommand extends ObdCommand {
 
         // read until '>' arrives OR end of stream reached (and skip ' ')
         char c;
-        while(true)
-        {
-      	  b = (byte) in.read();
-      	  if(b == -1) // -1 if the end of the stream is reached
-      	  {
-      		  break;
-      	  }
-      	  c = (char)b;
-      	  if(c == '>') // read until '>' arrives
-      	  {
-      		  break;
-      	  }
-      	  if(c != ' ') // skip ' '
-      	  {
-      		  res.append(c);
-      	  }
+        while (true) {
+            b = (byte) in.read();
+            if (b == -1) // -1 if the end of the stream is reached
+            {
+                break;
+            }
+            c = (char) b;
+            if (c == '>') // read until '>' arrives
+            {
+                break;
+            }
+            if (c != ' ') // skip ' '
+            {
+                res.append(c);
+            }
         }
 
         rawData = res.toString().trim();

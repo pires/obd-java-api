@@ -1,6 +1,5 @@
 package com.github.pires.obd.commands.fuel;
 
-import com.github.pires.obd.commands.ObdCommand;
 import com.github.pires.obd.commands.PercentageObdCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 

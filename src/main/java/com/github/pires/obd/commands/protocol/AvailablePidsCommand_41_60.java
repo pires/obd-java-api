@@ -1,6 +1,5 @@
 package com.github.pires.obd.commands.protocol;
 
-import com.github.pires.obd.commands.PersistentCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 
 /**

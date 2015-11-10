@@ -1,14 +1,14 @@
 package com.github.pires.obd.commands;
 
-import static org.powermock.api.easymock.PowerMock.*;
-import static org.testng.Assert.assertEquals;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import static org.powermock.api.easymock.PowerMock.*;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Test results with echo on and off.

@@ -8,7 +8,6 @@ public class CommandAvailabilityHelperTest {
 
     @Test
     public void testDigestAvailabilityString() throws Exception {
-
         int[] expected = new int[]{Integer.parseInt("10111110", 2), Integer.parseInt("00011111", 2),
                 Integer.parseInt("10101000", 2), Integer.parseInt("00010011", 2)};
         int[] result = CommandAvailabilityHelper.digestAvailabilityString("BE1FA813");

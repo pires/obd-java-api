@@ -1,20 +1,16 @@
 package com.github.pires.obd.commands;
 
-import static org.powermock.api.easymock.PowerMock.createMock;
-import static org.powermock.api.easymock.PowerMock.expectLastCall;
-import static org.powermock.api.easymock.PowerMock.replayAll;
-import static org.powermock.api.easymock.PowerMock.verifyAll;
-import static org.testng.Assert.assertEquals;
-
-import java.io.IOException;
-import java.io.InputStream;
-
+import com.github.pires.obd.commands.engine.RuntimeCommand;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.github.pires.obd.commands.engine.RuntimeCommand;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.powermock.api.easymock.PowerMock.*;
+import static org.testng.Assert.assertEquals;
 
 /**
  * Runtime since engine start in seconds, with a maximum value of 65535.

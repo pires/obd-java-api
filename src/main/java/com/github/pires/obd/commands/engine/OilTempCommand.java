@@ -1,6 +1,5 @@
 package com.github.pires.obd.commands.engine;
 
-import com.github.pires.obd.commands.ObdCommand;
 import com.github.pires.obd.commands.temperature.TemperatureCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 

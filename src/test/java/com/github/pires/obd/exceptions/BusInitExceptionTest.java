@@ -1,17 +1,15 @@
 package com.github.pires.obd.exceptions;
 
-import static org.powermock.api.easymock.PowerMock.*;
-import static org.testng.Assert.assertEquals;
+import com.github.pires.obd.commands.SpeedCommand;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import com.github.pires.obd.commands.SpeedCommand;
+import static org.powermock.api.easymock.PowerMock.*;
 
 /**
  * Test results with echo on and off.

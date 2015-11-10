@@ -33,7 +33,7 @@ public abstract class PressureCommand extends ObdCommand implements
     /**
      * Some PressureCommand subclasses will need to implement this method in
      * order to determine the final kPa value.
-     *
+     * <p>
      * *NEED* to read tempValue
      *
      * @return a int.

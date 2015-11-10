@@ -170,19 +170,18 @@ public abstract class ObdCommand {
 
         // read until '>' arrives OR end of stream reached
         char c;
-        while(true)
-        {
-      	  b = (byte) in.read();
-      	  if(b == -1) // -1 if the end of the stream is reached
-      	  {
-      		  break;
-      	  }
-      	  c = (char)b;
-      	  if(c == '>') // read until '>' arrives
-      	  {
-      		  break;
-      	  }
-      	  res.append(c);
+        while (true) {
+            b = (byte) in.read();
+            if (b == -1) // -1 if the end of the stream is reached
+            {
+                break;
+            }
+            c = (char) b;
+            if (c == '>') // read until '>' arrives
+            {
+                break;
+            }
+            res.append(c);
         }
 
     /*
@@ -312,7 +311,7 @@ public abstract class ObdCommand {
     public void setEnd(long end) {
         this.end = end;
     }
-    
+
     public final String getCommandPID() {
         return cmd.substring(3);
     }
