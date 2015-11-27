@@ -9,7 +9,7 @@ package com.github.pires.obd.commands.protocol;
 public class AdaptiveTimingCommand extends ObdProtocolCommand {
 
     public AdaptiveTimingCommand(int mode) {
-        super("AT" + mode);
+        super("AT AT" + mode);
     }
 
     /**
