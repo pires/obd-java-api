@@ -12,6 +12,9 @@ import java.io.InputStream;
  * And where are more messages it will be stored in frames that have 7 bytes.
  * In one frame are stored 3 DTC.
  * If we find out DTC P0000 that mean no message are we can end.
+ *
+ * Attention! Work only with ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
+ * CAN (ISO-15765) protocol format is different and not supported.
  */
 public class TroubleCodesCommand extends ObdCommand {
 
@@ -21,7 +24,7 @@ public class TroubleCodesCommand extends ObdCommand {
     private StringBuffer codes = null;
 
     public TroubleCodesCommand() {
-        super("01 03");
+        super("03");
 
         codes = new StringBuffer();
     }
@@ -42,33 +45,20 @@ public class TroubleCodesCommand extends ObdCommand {
 
     @Override
     protected void performCalculations() {
-
         String workingData = getResult().replaceAll("[\r\n]", "");
-
-        int begin = 0; // start at 2nd byte
-
-        for (int i = 0; begin < workingData.length(); i++) {
-            begin += 2;
-
-            for (int j = 0; j < 3; j++) {
+        for (int begin = 2; begin < workingData.length(); begin += 2) {// start at 2nd byte
+            for (int j = 0; j < 3; j++) {//read one line
                 String dtc = "";
-
                 byte b1 = hexStringToByteArray(workingData.charAt(begin));
-
                 int ch1 = ((b1 & 0xC0) >> 6);
                 int ch2 = ((b1 & 0x30) >> 4);
-
                 dtc += dtcLetters[ch1];
                 dtc += hexArray[ch2];
-
                 begin++;
-
                 dtc += workingData.substring(begin, begin + 3);
-
                 if (dtc.equals("P0000")) {
                     return;
                 }
-
                 codes.append(dtc);
                 codes.append('\n');
                 begin += 3;
@@ -96,7 +86,7 @@ public class TroubleCodesCommand extends ObdCommand {
 
     @Override
     protected void readRawData(InputStream in) throws IOException {
-        byte b = 0;
+        byte b;
         StringBuilder res = new StringBuilder();
 
         // read until '>' arrives OR end of stream reached (and skip ' ')

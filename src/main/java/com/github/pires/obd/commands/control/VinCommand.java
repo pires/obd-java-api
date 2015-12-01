@@ -35,7 +35,7 @@ public class VinCommand extends PersistentCommand {
         // ignore first two bytes [01 31] of the response
         StringBuilder b = new StringBuilder();
         for (int i : bufferUse) {
-            b.append(new Character((char) buffer.get(i).intValue()).toString());
+            b.append(Character.toString((char) buffer.get(i).intValue()));
         }
         vin = b.toString().replaceAll("[\u0000-\u001f]", "");
     }
