@@ -19,7 +19,7 @@ public class OdbRawCommand extends ObdProtocolCommand {
 
     @Override
     public String getName() {
-        return "Custom command " + getName();
+        return "Custom command " + getCommandPID();
     }
 
 }
