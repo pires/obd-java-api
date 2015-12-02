@@ -39,14 +39,16 @@ public enum AvailableCommandNames {
     ABS_LOAD("Absolute load"),
     ENGINE_OIL_TEMP("Engine oil temperature"),
     AIR_FUEL_RATIO("Air/Fuel Ratio"),
-    WIDEBAND_AIR_FUEL_RATIO("Wideband Air/Fuel Ratio");
+    WIDEBAND_AIR_FUEL_RATIO("Wideband Air/Fuel Ratio"),
+    DESCRIBE_PROTOCOL("Describe protocol"),
+    DESCRIBE_PROTOCOL_NUMBER("Describe protocol number");
 
     private final String value;
 
     /**
-     * @param value
+     * @param value Command description
      */
-    private AvailableCommandNames(String value) {
+    AvailableCommandNames(String value) {
         this.value = value;
     }
 
