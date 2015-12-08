@@ -27,6 +27,9 @@ public class TroubleCodesCommandTest {
     @BeforeMethod
     public void setUp() throws Exception {
         command = new TroubleCodesCommand();
+        // mock InputStream read
+        mockIn = createMock(InputStream.class);
+        mockIn.read();
     }
 
     /**
@@ -36,9 +39,6 @@ public class TroubleCodesCommandTest {
      */
     @Test
     public void twoFramesWithFourDTC() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
         expectLastCall().andReturn((byte) '4');
         expectLastCall().andReturn((byte) '3');
         expectLastCall().andReturn((byte) ' ');
@@ -103,9 +103,6 @@ public class TroubleCodesCommandTest {
      */
     @Test
     public void oneFrameWithThreeDTC() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
         expectLastCall().andReturn((byte) '4');
         expectLastCall().andReturn((byte) '3');
         expectLastCall().andReturn((byte) ' ');
@@ -148,9 +145,6 @@ public class TroubleCodesCommandTest {
      */
     @Test
     public void oneFrameWithTwoDTC() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
         expectLastCall().andReturn((byte) '4');
         expectLastCall().andReturn((byte) '3');
         expectLastCall().andReturn((byte) ' ');
@@ -186,15 +180,118 @@ public class TroubleCodesCommandTest {
     }
 
     /**
+     * Test for two frames with four dtc CAN (ISO-15765) format
+     *
+     * @throws IOException
+     */
+    @Test
+    public void twoFramesWithFourDTCCAN() throws IOException {
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) 'A');
+        expectLastCall().andReturn((byte) 13);
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ':');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) '3');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '8');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '8');
+        expectLastCall().andReturn((byte) 13);
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ':');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '9');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '2');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '>');
+
+        replayAll();
+        String res = "P0108\n";
+        res += "P0118\n";
+        res += "P0119\n";
+        res += "P0120\n";
+
+        // call the method to test
+        command.readResult(mockIn);
+
+        assertEquals(command.getFormattedResult(), res);
+
+        verifyAll();
+    }
+
+    /**
+     * Test for one frames with two dtc CAN (ISO-15765) format
+     *
+     * @throws IOException
+     */
+    @Test
+    public void oneFrameWithTwoDTCCAN() throws IOException {
+        expectLastCall().andReturn((byte) '4');
+        expectLastCall().andReturn((byte) '3');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '2');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '2');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '0');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) ' ');
+        expectLastCall().andReturn((byte) '2');
+        expectLastCall().andReturn((byte) '1');
+        expectLastCall().andReturn((byte) '>');
+
+        replayAll();
+        String res = "P0120\n";
+        res += "P0121\n";
+
+        // call the method to test
+        command.readResult(mockIn);
+
+        assertEquals(command.getFormattedResult(), res);
+
+        verifyAll();
+    }
+
+    /**
      * Test for no data
      *
      * @throws java.io.IOException
      */
     @Test(expectedExceptions = NoDataException.class)
     public void noData() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
         expectLastCall().andReturn((byte) '4');
         expectLastCall().andReturn((byte) '3');
         expectLastCall().andReturn((byte) ' ');

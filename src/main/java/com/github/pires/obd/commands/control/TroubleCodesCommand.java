@@ -12,21 +12,17 @@ import java.io.InputStream;
  * And where are more messages it will be stored in frames that have 7 bytes.
  * In one frame are stored 3 DTC.
  * If we find out DTC P0000 that mean no message are we can end.
- *
- * Attention! Work only with ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
- * CAN (ISO-15765) protocol format is different and not supported.
  */
 public class TroubleCodesCommand extends ObdCommand {
 
     protected final static char[] dtcLetters = {'P', 'C', 'B', 'U'};
     protected final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
-    private StringBuffer codes = null;
+    protected StringBuilder codes = null;
 
     public TroubleCodesCommand() {
         super("03");
-
-        codes = new StringBuffer();
+        codes = new StringBuilder();
     }
 
     /**
@@ -36,7 +32,7 @@ public class TroubleCodesCommand extends ObdCommand {
      */
     public TroubleCodesCommand(TroubleCodesCommand other) {
         super(other);
-        codes = new StringBuffer();
+        codes = new StringBuilder();
     }
 
     @Override
@@ -45,24 +41,31 @@ public class TroubleCodesCommand extends ObdCommand {
 
     @Override
     protected void performCalculations() {
-        String workingData = getResult().replaceAll("[\r\n]", "");
-        for (int begin = 2; begin < workingData.length(); begin += 2) {// start at 2nd byte
-            for (int j = 0; j < 3; j++) {//read one line
-                String dtc = "";
-                byte b1 = hexStringToByteArray(workingData.charAt(begin));
-                int ch1 = ((b1 & 0xC0) >> 6);
-                int ch2 = ((b1 & 0x30) >> 4);
-                dtc += dtcLetters[ch1];
-                dtc += hexArray[ch2];
-                begin++;
-                dtc += workingData.substring(begin, begin + 3);
-                if (dtc.equals("P0000")) {
-                    return;
-                }
-                codes.append(dtc);
-                codes.append('\n');
-                begin += 3;
+        final String result = getResult();
+        String workingData;
+        int startIndex = 0;//Header size.
+        if (result.length() % 4 == 0) {//CAN(ISO-15765) protocol one frame.
+            workingData = getResult();//43yy{codes}
+            startIndex = 4;//Header is 43yy, yy showing the number of data items.
+        } else if (result.contains(":")) {//CAN(ISO-15765) protocol two and more frames.
+            workingData = getResult().replaceAll("[\r\n].:", "");//xxx43yy{codes}
+            startIndex = 7;//Header is xxx43yy, xxx is bytes of information to follow, yy showing the number of data items.
+        } else {//ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
+            workingData = result.replaceAll("[\r\n]?43", "");
+        }
+        for (int begin = startIndex; begin < workingData.length(); begin += 4) {
+            String dtc = "";
+            byte b1 = hexStringToByteArray(workingData.charAt(begin));
+            int ch1 = ((b1 & 0xC0) >> 6);
+            int ch2 = ((b1 & 0x30) >> 4);
+            dtc += dtcLetters[ch1];
+            dtc += hexArray[ch2];
+            dtc += workingData.substring(begin+1, begin + 4);
+            if (dtc.equals("P0000")) {
+                return;
             }
+            codes.append(dtc);
+            codes.append('\n');
         }
     }
 
