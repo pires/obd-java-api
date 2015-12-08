@@ -12,14 +12,22 @@ import java.io.InputStream;
  * And where are more messages it will be stored in frames that have 7 bytes.
  * In one frame are stored 3 DTC.
  * If we find out DTC P0000 that mean no message are we can end.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public class TroubleCodesCommand extends ObdCommand {
 
+    /** Constant <code>dtcLetters={'P', 'C', 'B', 'U'}</code> */
     protected final static char[] dtcLetters = {'P', 'C', 'B', 'U'};
+    /** Constant <code>hexArray="0123456789ABCDEF".toCharArray()</code> */
     protected final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     protected StringBuilder codes = null;
 
+    /**
+     * <p>Constructor for TroubleCodesCommand.</p>
+     */
     public TroubleCodesCommand() {
         super("03");
         codes = new StringBuilder();
@@ -28,17 +36,19 @@ public class TroubleCodesCommand extends ObdCommand {
     /**
      * Copy ctor.
      *
-     * @param other a {@link TroubleCodesCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.control.TroubleCodesCommand} object.
      */
     public TroubleCodesCommand(TroubleCodesCommand other) {
         super(other);
         codes = new StringBuilder();
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void fillBuffer() {
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
         final String result = getResult();
@@ -74,6 +84,8 @@ public class TroubleCodesCommand extends ObdCommand {
     }
 
     /**
+     * <p>formatResult.</p>
+     *
      * @return the formatted result of this command in string representation.
      * @deprecated use #getCalculatedResult instead
      */
@@ -81,12 +93,14 @@ public class TroubleCodesCommand extends ObdCommand {
         return codes.toString();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return String.valueOf(codes);
     }
 
 
+    /** {@inheritDoc} */
     @Override
     protected void readRawData(InputStream in) throws IOException {
         byte b;
@@ -115,11 +129,13 @@ public class TroubleCodesCommand extends ObdCommand {
 
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getFormattedResult() {
         return codes.toString();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.TROUBLE_CODES.getValue();

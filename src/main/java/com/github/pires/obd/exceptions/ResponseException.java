@@ -2,6 +2,9 @@ package com.github.pires.obd.exceptions;
 
 /**
  * Generic message error
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public class ResponseException extends RuntimeException {
 
@@ -14,12 +17,20 @@ public class ResponseException extends RuntimeException {
     private boolean matchRegex;
 
     /**
+     * <p>Constructor for ResponseException.</p>
+     *
      * @param message a {@link java.lang.String} object.
      */
     protected ResponseException(String message) {
         this.message = message;
     }
 
+    /**
+     * <p>Constructor for ResponseException.</p>
+     *
+     * @param message a {@link java.lang.String} object.
+     * @param matchRegex a boolean.
+     */
     protected ResponseException(String message, boolean matchRegex) {
         this.message = message;
         this.matchRegex = matchRegex;
@@ -30,6 +41,8 @@ public class ResponseException extends RuntimeException {
     }
 
     /**
+     * <p>isError.</p>
+     *
      * @param response a {@link java.lang.String} object.
      * @return a boolean.
      */
@@ -43,12 +56,15 @@ public class ResponseException extends RuntimeException {
     }
 
     /**
+     * <p>Setter for the field <code>command</code>.</p>
+     *
      * @param command a {@link java.lang.String} object.
      */
     public void setCommand(String command) {
         this.command = command;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getMessage() {
         return "Error running " + command + ", response: " + response;

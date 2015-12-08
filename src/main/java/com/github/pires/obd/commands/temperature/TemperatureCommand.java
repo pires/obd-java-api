@@ -5,6 +5,9 @@ import com.github.pires.obd.commands.SystemOfUnits;
 
 /**
  * Abstract temperature command.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public abstract class TemperatureCommand extends ObdCommand implements
         SystemOfUnits {
@@ -23,12 +26,13 @@ public abstract class TemperatureCommand extends ObdCommand implements
     /**
      * Copy ctor.
      *
-     * @param other a {@link TemperatureCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.temperature.TemperatureCommand} object.
      */
     public TemperatureCommand(TemperatureCommand other) {
         super(other);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
         // ignore first two bytes [hh hh] of the response
@@ -41,8 +45,6 @@ public abstract class TemperatureCommand extends ObdCommand implements
      * <p>
      * Get values from 'buff', since we can't rely on char/string for
      * calculations.
-     *
-     * @return
      */
     @Override
     public String getFormattedResult() {
@@ -50,17 +52,21 @@ public abstract class TemperatureCommand extends ObdCommand implements
                 : String.format("%.0f%s", temperature, getResultUnit());
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(temperature);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getResultUnit() {
         return useImperialUnits ? "F" : "C";
     }
 
     /**
+     * <p>Getter for the field <code>temperature</code>.</p>
+     *
      * @return the temperature in Celsius.
      */
     public float getTemperature() {
@@ -68,6 +74,8 @@ public abstract class TemperatureCommand extends ObdCommand implements
     }
 
     /**
+     * <p>getImperialUnit.</p>
+     *
      * @return the temperature in Fahrenheit.
      */
     public float getImperialUnit() {
@@ -75,6 +83,8 @@ public abstract class TemperatureCommand extends ObdCommand implements
     }
 
     /**
+     * <p>getKelvin.</p>
+     *
      * @return the temperature in Kelvin.
      */
     public float getKelvin() {
@@ -82,6 +92,8 @@ public abstract class TemperatureCommand extends ObdCommand implements
     }
 
     /**
+     * <p>getName.</p>
+     *
      * @return the OBD command name.
      */
     public abstract String getName();

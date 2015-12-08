@@ -2,14 +2,25 @@ package com.github.pires.obd.commands.pressure;
 
 import com.github.pires.obd.enums.AvailableCommandNames;
 
+/**
+ * <p>FuelRailPressureCommand class.</p>
+ *
+ * @author pires
+ * @version $Id: $Id
+ */
 public class FuelRailPressureCommand extends PressureCommand {
 
+    /**
+     * <p>Constructor for FuelRailPressureCommand.</p>
+     */
     public FuelRailPressureCommand() {
         super("01 23");
     }
 
     /**
-     * @param other a {@link FuelRailPressureCommand} object.
+     * <p>Constructor for FuelRailPressureCommand.</p>
+     *
+     * @param other a {@link com.github.pires.obd.commands.pressure.FuelRailPressureCommand} object.
      */
     public FuelRailPressureCommand(FuelRailPressureCommand other) {
         super(other);
@@ -27,6 +38,7 @@ public class FuelRailPressureCommand extends PressureCommand {
         return ((a * 256) + b) * 10;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.FUEL_RAIL_PRESSURE.getValue();

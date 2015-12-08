@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 /**
  * Container for multiple {@link com.github.pires.obd.commands.ObdMultiCommand} instances.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public class ObdMultiCommand {
 
@@ -52,6 +55,8 @@ public class ObdMultiCommand {
     }
 
     /**
+     * <p>getFormattedResult.</p>
+     *
      * @return a {@link java.lang.String} object.
      */
     public String getFormattedResult() {

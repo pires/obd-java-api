@@ -10,6 +10,9 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  * Perhaps in the future we'll extend this to read the 3rd, 4th and 5th bytes of
  * the response in order to store information about the availability and
  * completeness of certain on-board tests.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public class DtcNumberCommand extends ObdCommand {
 
@@ -26,12 +29,13 @@ public class DtcNumberCommand extends ObdCommand {
     /**
      * Copy ctor.
      *
-     * @param other a {@link DtcNumberCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.control.DtcNumberCommand} object.
      */
     public DtcNumberCommand(DtcNumberCommand other) {
         super(other);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
         // ignore first two bytes [hh hh] of the response
@@ -41,6 +45,8 @@ public class DtcNumberCommand extends ObdCommand {
     }
 
     /**
+     * <p>getFormattedResult.</p>
+     *
      * @return a {@link java.lang.String} object.
      */
     public String getFormattedResult() {
@@ -48,12 +54,15 @@ public class DtcNumberCommand extends ObdCommand {
         return res + codeCount + " codes";
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return String.valueOf(codeCount);
     }
 
     /**
+     * <p>getTotalAvailableCodes.</p>
+     *
      * @return the number of trouble codes currently flaggd in the ECU.
      */
     public int getTotalAvailableCodes() {
@@ -61,12 +70,15 @@ public class DtcNumberCommand extends ObdCommand {
     }
 
     /**
+     * <p>Getter for the field <code>milOn</code>.</p>
+     *
      * @return the state of the check engine light state.
      */
     public boolean getMilOn() {
         return milOn;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.DTC_NUMBER.getValue();

@@ -5,6 +5,9 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 
 /**
  * Displays the current engine Oil temperature.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public class OilTempCommand extends TemperatureCommand {
 
@@ -18,12 +21,13 @@ public class OilTempCommand extends TemperatureCommand {
     /**
      * Copy ctor.
      *
-     * @param other a {@link OilTempCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.engine.OilTempCommand} object.
      */
     public OilTempCommand(OilTempCommand other) {
         super(other);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.ENGINE_OIL_TEMP.getValue();

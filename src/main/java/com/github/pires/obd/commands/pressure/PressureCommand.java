@@ -5,6 +5,9 @@ import com.github.pires.obd.commands.SystemOfUnits;
 
 /**
  * Abstract pressure command.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public abstract class PressureCommand extends ObdCommand implements
         SystemOfUnits {
@@ -24,7 +27,7 @@ public abstract class PressureCommand extends ObdCommand implements
     /**
      * Copy ctor.
      *
-     * @param other a {@link PressureCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.pressure.PressureCommand} object.
      */
     public PressureCommand(PressureCommand other) {
         super(other);
@@ -42,11 +45,15 @@ public abstract class PressureCommand extends ObdCommand implements
         return buffer.get(2);
     }
 
+    /**
+     * <p>performCalculations.</p>
+     */
     protected void performCalculations() {
         // ignore first two bytes [hh hh] of the response
         pressure = preparePressureValue();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getFormattedResult() {
         return useImperialUnits ? String.format("%.1f%s", getImperialUnit(), getResultUnit())
@@ -54,6 +61,8 @@ public abstract class PressureCommand extends ObdCommand implements
     }
 
     /**
+     * <p>getMetricUnit.</p>
+     *
      * @return the pressure in kPa
      */
     public int getMetricUnit() {
@@ -61,17 +70,21 @@ public abstract class PressureCommand extends ObdCommand implements
     }
 
     /**
+     * <p>getImperialUnit.</p>
+     *
      * @return the pressure in psi
      */
     public float getImperialUnit() {
         return Double.valueOf(pressure * 0.145037738).floatValue();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return useImperialUnits ? String.valueOf(getImperialUnit()) : String.valueOf(pressure);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getResultUnit() {
         return useImperialUnits ? "psi" : "kPa";

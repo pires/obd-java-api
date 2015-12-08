@@ -9,30 +9,53 @@ import java.util.Map;
 
 /**
  * Base persistent OBD command.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public abstract class PersistentCommand extends ObdCommand {
 
     private static Map<String, String> knownValues = new HashMap<String, String>();
     private static Map<String, ArrayList<Integer>> knownBuffers = new HashMap<String, ArrayList<Integer>>();
 
+    /**
+     * <p>Constructor for PersistentCommand.</p>
+     *
+     * @param command a {@link java.lang.String} object.
+     */
     public PersistentCommand(String command) {
         super(command);
     }
 
+    /**
+     * <p>Constructor for PersistentCommand.</p>
+     *
+     * @param other a {@link com.github.pires.obd.commands.ObdCommand} object.
+     */
     public PersistentCommand(ObdCommand other) {
         this(other.cmd);
     }
 
+    /**
+     * <p>reset.</p>
+     */
     public static void reset() {
         knownValues = new HashMap<String, String>();
         knownBuffers = new HashMap<String, ArrayList<Integer>>();
     }
 
+    /**
+     * <p>knows.</p>
+     *
+     * @param cmd a {@link java.lang.Class} object.
+     * @return a boolean.
+     */
     public static boolean knows(Class cmd) {
         String key = cmd.getSimpleName();
         return knownValues.containsKey(key);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void readResult(InputStream in) throws IOException {
         super.readResult(in);
@@ -41,6 +64,7 @@ public abstract class PersistentCommand extends ObdCommand {
         knownBuffers.put(key, new ArrayList<Integer>(buffer));
     }
 
+    /** {@inheritDoc} */
     @Override
     public void run(InputStream in, OutputStream out) throws IOException, InterruptedException {
         String key = getClass().getSimpleName();

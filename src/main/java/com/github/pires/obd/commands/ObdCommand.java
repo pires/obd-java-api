@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 /**
  * Base OBD command.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public abstract class ObdCommand {
 
@@ -136,7 +139,7 @@ public abstract class ObdCommand {
     protected abstract void performCalculations();
 
     /**
-     *
+     * <p>fillBuffer.</p>
      */
     protected void fillBuffer() {
         rawData = rawData.replaceAll("\\s", ""); //removes all [ \t\n\x0B\f\r]
@@ -223,6 +226,8 @@ public abstract class ObdCommand {
     }
 
     /**
+     * <p>getResult.</p>
+     *
      * @return the raw command response in string representation.
      */
     public String getResult() {
@@ -230,16 +235,22 @@ public abstract class ObdCommand {
     }
 
     /**
+     * <p>getFormattedResult.</p>
+     *
      * @return a formatted command response in string representation.
      */
     public abstract String getFormattedResult();
 
     /**
+     * <p>getCalculatedResult.</p>
+     *
      * @return the command response in string representation, without formatting.
      */
     public abstract String getCalculatedResult();
 
     /**
+     * <p>Getter for the field <code>buffer</code>.</p>
+     *
      * @return a list of integers
      */
     protected ArrayList<Integer> getBuffer() {
@@ -247,6 +258,8 @@ public abstract class ObdCommand {
     }
 
     /**
+     * <p>useImperialUnits.</p>
+     *
      * @return true if imperial units are used, or false otherwise
      */
     public boolean useImperialUnits() {
@@ -273,6 +286,8 @@ public abstract class ObdCommand {
     }
 
     /**
+     * <p>getName.</p>
+     *
      * @return the OBD command name.
      */
     public abstract String getName();
@@ -289,29 +304,55 @@ public abstract class ObdCommand {
     /**
      * Time the command waits before returning from #sendCommand()
      *
-     * @param responseTimeDelay
+     * @param responseTimeDelay a long.
      */
     public void setResponseTimeDelay(long responseTimeDelay) {
         this.responseTimeDelay = responseTimeDelay;
     }
 
     //fixme resultunit
+    /**
+     * <p>Getter for the field <code>start</code>.</p>
+     *
+     * @return a long.
+     */
     public long getStart() {
         return start;
     }
 
+    /**
+     * <p>Setter for the field <code>start</code>.</p>
+     *
+     * @param start a long.
+     */
     public void setStart(long start) {
         this.start = start;
     }
 
+    /**
+     * <p>Getter for the field <code>end</code>.</p>
+     *
+     * @return a long.
+     */
     public long getEnd() {
         return end;
     }
 
+    /**
+     * <p>Setter for the field <code>end</code>.</p>
+     *
+     * @param end a long.
+     */
     public void setEnd(long end) {
         this.end = end;
     }
 
+    /**
+     * <p>getCommandPID.</p>
+     *
+     * @return a {@link java.lang.String} object.
+     * @since 1.0-RC12
+     */
     public final String getCommandPID() {
         return cmd.substring(3);
     }

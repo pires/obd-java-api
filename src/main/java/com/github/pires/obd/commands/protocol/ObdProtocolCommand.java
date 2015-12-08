@@ -2,6 +2,12 @@ package com.github.pires.obd.commands.protocol;
 
 import com.github.pires.obd.commands.ObdCommand;
 
+/**
+ * <p>Abstract ObdProtocolCommand class.</p>
+ *
+ * @author pires
+ * @version $Id: $Id
+ */
 public abstract class ObdProtocolCommand extends ObdCommand {
     /**
      * Default ctor to use
@@ -21,15 +27,22 @@ public abstract class ObdProtocolCommand extends ObdCommand {
         this(other.cmd);
     }
 
+    /**
+     * <p>performCalculations.</p>
+     */
     protected void performCalculations() {
         // ignore
     }
 
+    /**
+     * <p>fillBuffer.</p>
+     */
     protected void fillBuffer() {
         // settings commands don't return a value appropriate to place into the
         // buffer, so do nothing
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return String.valueOf(getResult());

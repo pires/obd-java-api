@@ -3,6 +3,12 @@ package com.github.pires.obd.commands.engine;
 import com.github.pires.obd.commands.PercentageObdCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 
+/**
+ * <p>AbsoluteLoadCommand class.</p>
+ *
+ * @author pires
+ * @version $Id: $Id
+ */
 public class AbsoluteLoadCommand extends PercentageObdCommand {
 
     /**
@@ -15,12 +21,13 @@ public class AbsoluteLoadCommand extends PercentageObdCommand {
     /**
      * Copy ctor.
      *
-     * @param other a {@link AbsoluteLoadCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.engine.AbsoluteLoadCommand} object.
      */
     public AbsoluteLoadCommand(AbsoluteLoadCommand other) {
         super(other);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
         // ignore first two bytes [hh hh] of the response
@@ -30,12 +37,15 @@ public class AbsoluteLoadCommand extends PercentageObdCommand {
     }
 
     /**
+     * <p>getRatio.</p>
+     *
      * @return a double.
      */
     public double getRatio() {
         return percentage;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.ABS_LOAD.getValue();

@@ -2,6 +2,9 @@ package com.github.pires.obd.enums;
 
 /**
  * All OBD protocols.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public enum ObdProtocols {
 

@@ -13,6 +13,9 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  * stoichiometric is 14.64:1 ratio. If the fuel control system was commanded an
  * equivalence ratio of 0.95, the commanded A/F ratio to the engine would be
  * 14.64 * 0.95 = 13.9 A/F.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public class EquivalentRatioCommand extends PercentageObdCommand {
 
@@ -27,12 +30,13 @@ public class EquivalentRatioCommand extends PercentageObdCommand {
     /**
      * Copy ctor.
      *
-     * @param other a {@link EquivalentRatioCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.control.EquivalentRatioCommand} object.
      */
     public EquivalentRatioCommand(EquivalentRatioCommand other) {
         super(other);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
         // ignore first two bytes [hh hh] of the response
@@ -43,12 +47,15 @@ public class EquivalentRatioCommand extends PercentageObdCommand {
 
 
     /**
+     * <p>getRatio.</p>
+     *
      * @return a double.
      */
     public double getRatio() {
         return (double) percentage;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.EQUIV_RATIO.getValue();

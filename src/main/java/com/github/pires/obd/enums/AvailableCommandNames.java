@@ -2,6 +2,9 @@ package com.github.pires.obd.enums;
 
 /**
  * Names of all available commands.
+ *
+ * @author pires
+ * @version $Id: $Id
  */
 public enum AvailableCommandNames {
 
@@ -53,7 +56,9 @@ public enum AvailableCommandNames {
     }
 
     /**
-     * @return a {@link String} object.
+     * <p>Getter for the field <code>value</code>.</p>
+     *
+     * @return a {@link java.lang.String} object.
      */
     public final String getValue() {
         return value;

@@ -1,5 +1,12 @@
 package com.github.pires.obd.utils;
 
+/**
+ * <p>Abstract CommandAvailabilityHelper class.</p>
+ *
+ * @author pires
+ * @version $Id: $Id
+ * @since 1.0-RC12
+ */
 public abstract class CommandAvailabilityHelper {
 
     /*
@@ -12,6 +19,7 @@ public abstract class CommandAvailabilityHelper {
      *
      * @param availabilityString An 8*n (where n is an integer) character string containing only numbers and uppercase letters from A to F
      * @return An integer array containing the digested information
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static int[] digestAvailabilityString(final String availabilityString) throws IllegalArgumentException {
         //The string must have 8*n characters, n being an integer
@@ -89,8 +97,13 @@ public abstract class CommandAvailabilityHelper {
     /**
      * Implementation of {@link #isAvailable(String, int[])} isAvailable} which returns the specified safetyReturn boolean instead of
      * throwing and exception in the event of supplying an availabilityString which doesn't include information about the specified command
-     * <p/>
+     *
      * This is a direct call to {@link #isAvailable(String, int[], boolean)} with built-in String digestion
+     *
+     * @param commandPid a {@link java.lang.String} object.
+     * @param availabilityString a {@link java.lang.String} object.
+     * @param safetyReturn a boolean.
+     * @return a boolean.
      */
     public static boolean isAvailable(final String commandPid, final String availabilityString, boolean safetyReturn) {
         return isAvailable(commandPid, digestAvailabilityString(availabilityString), safetyReturn);
@@ -98,8 +111,13 @@ public abstract class CommandAvailabilityHelper {
 
     /**
      * Checks whether the command identified by commandPid is available, as noted by availabilityString.
-     * <p/>
-     * This is a direct call to {@link CommandAvailabilityHelper#isAvailable(String, int[])} with built-in String digestion
+     *
+     * This is a direct call to {@link com.github.pires.obd.utils.CommandAvailabilityHelper#isAvailable(String, int[])} with built-in String digestion
+     *
+     * @param commandPid a {@link java.lang.String} object.
+     * @param availabilityString a {@link java.lang.String} object.
+     * @return a boolean.
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static boolean isAvailable(final String commandPid, final String availabilityString) throws IllegalArgumentException {
         return isAvailable(commandPid, digestAvailabilityString(availabilityString));
@@ -108,6 +126,11 @@ public abstract class CommandAvailabilityHelper {
     /**
      * Implementation of {@link #isAvailable(String, int[])} isAvailable} which returns the specified safetyReturn boolean instead of
      * throwing and exception in the event of supplying an availabilityString which doesn't include information about the specified command
+     *
+     * @param commandPid a {@link java.lang.String} object.
+     * @param availabilityArray an array of int.
+     * @param safetyReturn a boolean.
+     * @return a boolean.
      */
     public static boolean isAvailable(final String commandPid, final int[] availabilityArray, boolean safetyReturn) {
         try {
@@ -119,6 +142,11 @@ public abstract class CommandAvailabilityHelper {
 
     /**
      * Checks whether the command identified by commandPid is available, as noted by availabilityArray
+     *
+     * @param commandPid a {@link java.lang.String} object.
+     * @param availabilityArray an array of int.
+     * @return a boolean.
+     * @throws java.lang.IllegalArgumentException if any.
      */
     public static boolean isAvailable(final String commandPid, final int[] availabilityArray) throws IllegalArgumentException {
 

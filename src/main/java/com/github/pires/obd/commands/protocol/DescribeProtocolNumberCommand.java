@@ -11,16 +11,25 @@ import com.github.pires.obd.enums.ObdProtocols;
  * enabled, the number will be preceded with the letter
  * ‘A’. The number is the same one that is used with the
  * set obdProtocol and test obdProtocol commands.
+ *
+ * @author pires
+ * @version $Id: $Id
+ * @since 1.0-RC12
  */
 public class DescribeProtocolNumberCommand extends ObdCommand {
 
     private ObdProtocols obdProtocol = ObdProtocols.AUTO;
 
+    /**
+     * <p>Constructor for DescribeProtocolNumberCommand.</p>
+     */
     public DescribeProtocolNumberCommand() {
         super("AT DPN");
     }
 
     /**
+     * {@inheritDoc}
+     *
      * This method exists so that for each command, there must be a method that is
      * called only once to perform calculations.
      */
@@ -40,24 +49,29 @@ public class DescribeProtocolNumberCommand extends ObdCommand {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getFormattedResult() {
         return getResult();
     }
 
-    /**
-     * @return the command response in string representation, without formatting.
-     */
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return obdProtocol.name();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.DESCRIBE_PROTOCOL_NUMBER.getValue();
     }
 
+    /**
+     * <p>Getter for the field <code>obdProtocol</code>.</p>
+     *
+     * @return a {@link com.github.pires.obd.enums.ObdProtocols} object.
+     */
     public ObdProtocols getObdProtocol() {
         return obdProtocol;
     }

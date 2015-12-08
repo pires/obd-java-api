@@ -5,6 +5,12 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 
 import javax.xml.bind.DatatypeConverter;
 
+/**
+ * <p>VinCommand class.</p>
+ *
+ * @author pires
+ * @version $Id: $Id
+ */
 public class VinCommand extends PersistentCommand {
 
     String vin = "";
@@ -19,12 +25,13 @@ public class VinCommand extends PersistentCommand {
     /**
      * Copy ctor.
      *
-     * @param other a {@link VinCommand} object.
+     * @param other a {@link com.github.pires.obd.commands.control.VinCommand} object.
      */
     public VinCommand(VinCommand other) {
         super(other);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void performCalculations() {
         final String result = getResult();
@@ -38,21 +45,25 @@ public class VinCommand extends PersistentCommand {
         vin = new String(bytes).replaceAll("[\u0000-\u001f]", "");
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getFormattedResult() {
         return String.valueOf(vin);
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getName() {
         return AvailableCommandNames.VIN.getValue();
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getCalculatedResult() {
         return String.valueOf(vin);
     }
 
+    /** {@inheritDoc} */
     @Override
     protected void fillBuffer() {
     }
