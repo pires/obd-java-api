@@ -95,13 +95,6 @@ public abstract class ObdCommand {
         out.write((cmd + "\r").getBytes());
         out.flush();
 
-    /*
-     * HACK GOLDEN HAMMER ahead!!
-     *
-     * Due to the time that some systems may take to respond, let's give it
-     * 200ms.
-     */
-        Thread.sleep(responseTimeDelay);
     }
 
     /**
@@ -173,12 +166,8 @@ public abstract class ObdCommand {
 
         // read until '>' arrives OR end of stream reached
         char c;
-        while (true) {
-            b = (byte) in.read();
-            if (b == -1) // -1 if the end of the stream is reached
-            {
-                break;
-            }
+        // -1 if the end of the stream is reached
+        while (((b = (byte) in.read()) > -1)) {
             c = (char) b;
             if (c == '>') // read until '>' arrives
             {
