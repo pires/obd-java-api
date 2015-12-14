@@ -25,14 +25,14 @@ mvn clean install
 <dependency>
   <groupId>com.github.pires</groupId>
   <artifactId>obd-java-api</artifactId>
-  <version>1.0-RC13</version>
+  <version>1.0-RC14</version>
 </dependency>
 ```
 
 ### Gradle ###
 ```
 dependencies {
-    compile 'com.github.pires:obd-java-api:1.0-RC13'
+    compile 'com.github.pires:obd-java-api:1.0-RC14'
 }
 ```
 
