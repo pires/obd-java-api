@@ -3,14 +3,6 @@ package com.github.pires.obd.commands.control;
 import com.github.pires.obd.commands.PersistentCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
 
-import javax.xml.bind.DatatypeConverter;
-
-/**
- * <p>VinCommand class.</p>
- *
- * @author pires
- * @version $Id: $Id
- */
 public class VinCommand extends PersistentCommand {
 
     String vin = "";
@@ -31,7 +23,9 @@ public class VinCommand extends PersistentCommand {
         super(other);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void performCalculations() {
         final String result = getResult();
@@ -41,31 +35,54 @@ public class VinCommand extends PersistentCommand {
         } else {//ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
             workingData = result.replaceAll("49020.", "");
         }
-        byte[] bytes = DatatypeConverter.parseHexBinary(workingData);
-        vin = new String(bytes).replaceAll("[\u0000-\u001f]", "");
+        String hexToString = convertHexToString(workingData);
+        vin = hexToString.replaceAll("[\u0000-\u001f]", "");
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getFormattedResult() {
         return String.valueOf(vin);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getName() {
         return AvailableCommandNames.VIN.getValue();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getCalculatedResult() {
         return String.valueOf(vin);
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void fillBuffer() {
+    }
+
+    public String convertHexToString(String hex) {
+        StringBuilder sb = new StringBuilder();
+        //49204c6f7665204a617661 split into two characters 49, 20, 4c...
+        for (int i = 0; i < hex.length() - 1; i += 2) {
+
+            //grab the hex in pairs
+            String output = hex.substring(i, (i + 2));
+            //convert hex to decimal
+            int decimal = Integer.parseInt(output, 16);
+            //convert the decimal to character
+            sb.append((char) decimal);
+        }
+        return sb.toString();
     }
 }
 
