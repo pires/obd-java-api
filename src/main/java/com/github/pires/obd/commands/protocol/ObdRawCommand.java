@@ -6,14 +6,14 @@ package com.github.pires.obd.commands.protocol;
  * @author pires
  * @version $Id: $Id
  */
-public class OdbRawCommand extends ObdProtocolCommand {
+public class ObdRawCommand extends ObdProtocolCommand {
 
     /**
-     * <p>Constructor for OdbRawCommand.</p>
+     * <p>Constructor for ObdRawCommand.</p>
      *
      * @param command a {@link java.lang.String} object.
      */
-    public OdbRawCommand(String command) {
+    public ObdRawCommand( String command) {
         super(command);
     }
 
