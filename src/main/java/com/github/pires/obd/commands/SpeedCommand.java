@@ -59,7 +59,7 @@ public class SpeedCommand extends ObdCommand implements SystemOfUnits {
      * @return a float.
      */
     public float getImperialUnit() {
-        return Double.valueOf(metricSpeed * 0.621371192).floatValue();
+        return metricSpeed * 0.621371192F;
     }
 
     /**

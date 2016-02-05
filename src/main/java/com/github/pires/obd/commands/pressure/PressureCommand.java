@@ -75,7 +75,7 @@ public abstract class PressureCommand extends ObdCommand implements
      * @return the pressure in psi
      */
     public float getImperialUnit() {
-        return Double.valueOf(pressure * 0.145037738).floatValue();
+        return pressure * 0.145037738F;
     }
 
     /** {@inheritDoc} */
