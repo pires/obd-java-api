@@ -15,8 +15,8 @@ import java.util.Map;
  */
 public abstract class PersistentCommand extends ObdCommand {
 
-    private static Map<String, String> knownValues = new HashMap<String, String>();
-    private static Map<String, ArrayList<Integer>> knownBuffers = new HashMap<String, ArrayList<Integer>>();
+    private static Map<String, String> knownValues = new HashMap<>();
+    private static Map<String, ArrayList<Integer>> knownBuffers = new HashMap<>();
 
     /**
      * <p>Constructor for PersistentCommand.</p>
@@ -40,8 +40,8 @@ public abstract class PersistentCommand extends ObdCommand {
      * <p>reset.</p>
      */
     public static void reset() {
-        knownValues = new HashMap<String, String>();
-        knownBuffers = new HashMap<String, ArrayList<Integer>>();
+        knownValues = new HashMap<>();
+        knownBuffers = new HashMap<>();
     }
 
     /**
@@ -61,7 +61,7 @@ public abstract class PersistentCommand extends ObdCommand {
         super.readResult(in);
         String key = getClass().getSimpleName();
         knownValues.put(key, rawData);
-        knownBuffers.put(key, new ArrayList<Integer>(buffer));
+        knownBuffers.put(key, new ArrayList<>(buffer));
     }
 
     /** {@inheritDoc} */

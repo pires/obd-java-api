@@ -17,7 +17,7 @@ public enum FuelTrim {
     LONG_TERM_BANK_2(0x09, "Long Term Fuel Trim Bank 2");
 
     /** Constant <code>map</code> */
-    private static Map<Integer, FuelTrim> map = new HashMap<Integer, FuelTrim>();
+    private static Map<Integer, FuelTrim> map = new HashMap<>();
 
     static {
         for (FuelTrim error : FuelTrim.values())

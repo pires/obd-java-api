@@ -19,7 +19,7 @@ public class ObdMultiCommand {
      * Default ctor.
      */
     public ObdMultiCommand() {
-        this.commands = new ArrayList<ObdCommand>();
+        this.commands = new ArrayList<>();
     }
 
     /**
