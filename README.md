@@ -3,7 +3,7 @@ obd-java-api
 
 OBD-II Java API
 
-[![Build Status](https://drone.io/github.com/pires/obd-java-api/status.png)](https://drone.io/github.com/pires/obd-java-api/latest)
+[![Build status](https://circleci.com/gh/pires/obd-java-api.svg?style=svg)](https://circleci.com/gh/pires/obd-java-api)
 
 ## Build ##
 
