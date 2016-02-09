@@ -38,7 +38,7 @@ public class FuelTrimCommand extends PercentageObdCommand {
      * @return
      */
     private float prepareTempValue(final int value) {
-        return Double.valueOf((value - 128) * (100.0 / 128)).floatValue();
+        return (value - 128) * (100.0F / 128);
     }
 
     /**

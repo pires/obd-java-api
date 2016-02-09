@@ -64,7 +64,7 @@ public class DistanceMILOnCommand extends ObdCommand
     /** {@inheritDoc} */
     @Override
     public float getImperialUnit() {
-        return Double.valueOf(km * 0.621371192).floatValue();
+        return km * 0.621371192F;
     }
 
     /**
