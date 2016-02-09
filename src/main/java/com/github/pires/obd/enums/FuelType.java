@@ -35,7 +35,7 @@ public enum FuelType {
     HYBRID_REGENERATIVE(0x16, "Hybrid Regenerative");
 
     /** Constant <code>map</code> */
-    private static Map<Integer, FuelType> map = new HashMap<Integer, FuelType>();
+    private static Map<Integer, FuelType> map = new HashMap<>();
 
     static {
         for (FuelType error : FuelType.values())

@@ -42,7 +42,7 @@ public abstract class ObdCommand {
      */
     public ObdCommand(String command) {
         this.cmd = command;
-        this.buffer = new ArrayList<Integer>();
+        this.buffer = new ArrayList<>();
     }
 
     /**
