@@ -111,7 +111,7 @@ public abstract class ObdCommand {
         out.write("\r".getBytes());
         out.flush();
         if (responseDelayInMs != null && responseDelayInMs > 0) {
-            Thread.sleep(responseTimeDelay);
+            Thread.sleep(responseDelayInMs);
         }
     }
 
