@@ -94,7 +94,7 @@ public abstract class ObdCommand {
         // Carriage return
         out.write((cmd + "\r").getBytes());
         out.flush();
-
+        Thread.sleep(responseTimeDelay);
     }
 
     /**
@@ -108,6 +108,7 @@ public abstract class ObdCommand {
             InterruptedException {
         out.write("\r".getBytes());
         out.flush();
+        Thread.sleep(responseTimeDelay);
     }
 
     /**
