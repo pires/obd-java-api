@@ -31,7 +31,7 @@ public abstract class ObdCommand {
     protected String cmd = null;
     protected boolean useImperialUnits = false;
     protected String rawData = null;
-    protected long responseTimeDelay = 200;
+    protected Long responseDelayInMs = null;
     private long start;
     private long end;
 
@@ -94,7 +94,9 @@ public abstract class ObdCommand {
         // Carriage return
         out.write((cmd + "\r").getBytes());
         out.flush();
-        Thread.sleep(responseTimeDelay);
+        if (responseDelayInMs != null && responseDelayInMs > 0) {
+            Thread.sleep(responseDelayInMs);
+        }
     }
 
     /**
@@ -108,7 +110,9 @@ public abstract class ObdCommand {
             InterruptedException {
         out.write("\r".getBytes());
         out.flush();
-        Thread.sleep(responseTimeDelay);
+        if (responseDelayInMs != null && responseDelayInMs > 0) {
+            Thread.sleep(responseTimeDelay);
+        }
     }
 
     /**
@@ -285,19 +289,19 @@ public abstract class ObdCommand {
     /**
      * Time the command waits before returning from #sendCommand()
      *
-     * @return delay in ms
+     * @return delay in ms (may be null)
      */
-    public long getResponseTimeDelay() {
-        return responseTimeDelay;
+    public Long getResponseTimeDelay() {
+        return responseDelayInMs;
     }
 
     /**
      * Time the command waits before returning from #sendCommand()
      *
-     * @param responseTimeDelay a long.
+     * @param responseDelayInMs a Long (can be null)
      */
-    public void setResponseTimeDelay(long responseTimeDelay) {
-        this.responseTimeDelay = responseTimeDelay;
+    public void setResponseTimeDelay(Long responseDelayInMs) {
+        this.responseDelayInMs = responseDelayInMs;
     }
 
     //fixme resultunit
