@@ -54,14 +54,17 @@ public class TroubleCodesCommand extends ObdCommand {
         final String result = getResult();
         String workingData;
         int startIndex = 0;//Header size.
-        if (result.length() % 4 == 0) {//CAN(ISO-15765) protocol one frame.
-            workingData = getResult();//43yy{codes}
+
+        String canOneFrame = result.replaceAll("[\r\n]", "");
+        int canOneFrameLength = canOneFrame.length();
+        if (canOneFrameLength <= 16 && canOneFrameLength % 4 == 0) {//CAN(ISO-15765) protocol one frame.
+            workingData = canOneFrame;//43yy{codes}
             startIndex = 4;//Header is 43yy, yy showing the number of data items.
         } else if (result.contains(":")) {//CAN(ISO-15765) protocol two and more frames.
-            workingData = getResult().replaceAll("[\r\n].:", "");//xxx43yy{codes}
+            workingData = result.replaceAll("[\r\n].:", "");//xxx43yy{codes}
             startIndex = 7;//Header is xxx43yy, xxx is bytes of information to follow, yy showing the number of data items.
         } else {//ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
-            workingData = result.replaceAll("[\r\n]?43", "");
+            workingData = result.replaceAll("^43|[\r\n]43|[\r\n]", "");
         }
         for (int begin = startIndex; begin < workingData.length(); begin += 4) {
             String dtc = "";
