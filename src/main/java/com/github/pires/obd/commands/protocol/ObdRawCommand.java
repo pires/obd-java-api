@@ -10,7 +10,7 @@ public class ObdRawCommand extends ObdProtocolCommand {
      *
      * @param command a {@link java.lang.String} object.
      */
-    public ObdRawCommand( String command) {
+    public ObdRawCommand(String command) {
         super(command);
     }
 
