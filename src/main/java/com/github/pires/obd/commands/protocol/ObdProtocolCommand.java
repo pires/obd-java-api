@@ -4,9 +4,6 @@ import com.github.pires.obd.commands.ObdCommand;
 
 /**
  * <p>Abstract ObdProtocolCommand class.</p>
- *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class ObdProtocolCommand extends ObdCommand {
     /**
