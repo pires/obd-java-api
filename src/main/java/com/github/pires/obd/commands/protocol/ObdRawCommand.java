@@ -2,9 +2,6 @@ package com.github.pires.obd.commands.protocol;
 
 /**
  * This class allows for an unspecified command to be sent.
- *
- * @author pires
- * @version $Id: $Id
  */
 public class ObdRawCommand extends ObdProtocolCommand {
 
