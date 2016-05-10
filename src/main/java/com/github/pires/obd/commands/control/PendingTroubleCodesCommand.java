@@ -66,7 +66,7 @@ public class PendingTroubleCodesCommand extends ObdCommand {
         } else {//ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
             workingData = result.replaceAll("^47|[\r\n]47|[\r\n]", "");
         }
-        for (int begin = startIndex; begin+4 < workingData.length(); begin += 4) {
+        for (int begin = startIndex; begin+5 < workingData.length(); begin += 4) {
             String dtc = "";
             byte b1 = hexStringToByteArray(workingData.charAt(begin));
             int ch1 = ((b1 & 0xC0) >> 6);
