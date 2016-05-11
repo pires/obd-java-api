@@ -12,7 +12,7 @@ public class UnsupportedCommandException extends ResponseException {
      * <p>Constructor for UnsupportedCommandException.</p>
      */
     public UnsupportedCommandException() {
-        super("7F 0[0-9] 12", true);
+        super("7F 0[0-A] 1[1-2]", true);
     }
 
 }
