@@ -32,6 +32,12 @@ public class VinCommand extends PersistentCommand {
         String workingData;
         if (result.contains(":")) {//CAN(ISO-15765) protocol.
             workingData = result.replaceAll(".:", "").substring(9);//9 is xxx490201, xxx is bytes of information to follow.
+            Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(convertHexToString(workingData));
+            if(m.find())
+            {
+                workingData = result.replaceAll("0:49", "").replaceAll(".:","");
+            }
         } else {//ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
             workingData = result.replaceAll("49020.", "");
         }
