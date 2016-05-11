@@ -2,8 +2,6 @@ package com.github.pires.obd.commands.control;
 
 import com.github.pires.obd.commands.PersistentCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class VinCommand extends PersistentCommand {
 
