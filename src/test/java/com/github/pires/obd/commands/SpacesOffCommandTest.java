@@ -31,8 +31,8 @@ public class SpacesOffCommandTest {
     /**
      * @throws java.io.IOException, java.lang.InterruptedException
      */
-    @Test(expectedExceptions = NoDataException.class)
-    public void testValidSpeedMetricWithMessage() throws IOException, InterruptedException {
+    @Test
+    public void testSpacesOffCommand() throws IOException, InterruptedException {
         // mock InputStream read
         mockIn = createMock(InputStream.class);
         mockIn.read();
@@ -42,7 +42,8 @@ public class SpacesOffCommandTest {
         replayAll();
 
         // call the method to test
-        command.run(mockIn, new ByteArrayOutputStream());
+        command.readResult(mockIn);
+        assertEquals(command.getFormattedResult(), "OK");
 
         verifyAll();
     }
