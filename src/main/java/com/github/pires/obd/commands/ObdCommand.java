@@ -72,10 +72,12 @@ public abstract class ObdCommand {
      */
     public void run(InputStream in, OutputStream out) throws IOException,
             InterruptedException {
-        start = System.currentTimeMillis();
-        sendCommand(out);
-        readResult(in);
-        end = System.currentTimeMillis();
+        synchronized (ObdCommand.class) {//Only one command can write and read a data in one time.
+            start = System.currentTimeMillis();
+            sendCommand(out);
+            readResult(in);
+            end = System.currentTimeMillis();
+        }
     }
 
     /**
@@ -349,6 +351,21 @@ public abstract class ObdCommand {
      */
     public final String getCommandPID() {
         return cmd.substring(3);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ObdCommand that = (ObdCommand) o;
+
+        return cmd != null ? cmd.equals(that.cmd) : that.cmd == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return cmd != null ? cmd.hashCode() : 0;
     }
 
 }
