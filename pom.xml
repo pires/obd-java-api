@@ -139,6 +139,33 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>2.11</version>
+                <inherited>false</inherited>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <header>${basedir}/COPYRIGHT</header>
+                    <strictCheck>true</strictCheck>
+                    <includes>
+                        <include>**/src/main/java/**/*.java</include>
+                        <include>**/src/test/java/**/*.java</include>
+                        <include>**/src/main/**/*.xml</include>
+                        <include>**/src/test/**/*.xml</include>
+                    </includes>
+                    <useDefaultExcludes>true</useDefaultExcludes>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
