@@ -5,6 +5,13 @@ OBD-II Java API
 
 [![Build status](https://circleci.com/gh/pires/obd-java-api.svg?style=svg)](https://circleci.com/gh/pires/obd-java-api)
 
+## Important resources
+
+Before opening an issue or using this library, please take a look at the following resources:
+
+* [Understanding OBD](https://www.elmelectronics.com/help/obd/tips/#UnderstandingOBD)
+* [The ELM327](https://www.elmelectronics.com/help/obd/tips/#327_Commands)
+
 ## Build ##
 
 ### Requisites ###
