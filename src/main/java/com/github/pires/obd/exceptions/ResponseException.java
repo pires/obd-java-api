@@ -15,8 +15,6 @@ package com.github.pires.obd.exceptions;
 /**
  * Generic message error
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ResponseException extends RuntimeException {
 

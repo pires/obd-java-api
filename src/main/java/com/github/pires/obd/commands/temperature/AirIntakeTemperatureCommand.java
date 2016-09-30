@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Temperature of intake air.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class AirIntakeTemperatureCommand extends TemperatureCommand {
 

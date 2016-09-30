@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * <p>FuelPressureCommand class.</p>
  *
- * @author pires
- * @version $Id: $Id
  */
 public class FuelPressureCommand extends PressureCommand {
 

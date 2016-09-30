@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Retrieve available PIDs ranging from 41 to 60.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class AvailablePidsCommand_41_60 extends AvailablePidsCommand {
 

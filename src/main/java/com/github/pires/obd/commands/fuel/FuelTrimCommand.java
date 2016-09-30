@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.FuelTrim;
 /**
  * Fuel Trim.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class FuelTrimCommand extends PercentageObdCommand {
 

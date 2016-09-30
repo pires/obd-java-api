@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * AFR
  *
- * @author pires
- * @version $Id: $Id
  */
 public class AirFuelRatioCommand extends ObdCommand {
 

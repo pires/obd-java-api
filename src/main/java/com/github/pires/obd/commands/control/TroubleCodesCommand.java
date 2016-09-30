@@ -25,8 +25,6 @@ import java.io.InputStream;
  * In one frame are stored 3 DTC.
  * If we find out DTC P0000 that mean no message are we can end.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class TroubleCodesCommand extends ObdCommand {
 

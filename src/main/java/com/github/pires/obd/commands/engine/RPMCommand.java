@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Displays the current engine revolutions per minute (RPM).
  *
- * @author pires
- * @version $Id: $Id
  */
 public class RPMCommand extends ObdCommand {
 

@@ -20,8 +20,6 @@ import java.util.ArrayList;
 /**
  * Container for multiple {@link com.github.pires.obd.commands.ObdMultiCommand} instances.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ObdMultiCommand {
 

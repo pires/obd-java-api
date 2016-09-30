@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Timing Advance
  *
- * @author pires
- * @version $Id: $Id
  */
 public class TimingAdvanceCommand extends PercentageObdCommand {
 

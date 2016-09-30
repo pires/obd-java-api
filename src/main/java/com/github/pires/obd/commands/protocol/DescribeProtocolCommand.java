@@ -22,8 +22,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  * shows the actual protocol names, not the numbers
  * used by the protocol setting commands.
  *
- * @author pires
- * @version $Id: $Id
  * @since 1.0-RC12
  */
 public class DescribeProtocolCommand extends ObdProtocolCommand {

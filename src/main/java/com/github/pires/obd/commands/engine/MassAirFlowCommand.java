@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Mass Air Flow (MAF)
  *
- * @author pires
- * @version $Id: $Id
  */
 public class MassAirFlowCommand extends ObdCommand {
 

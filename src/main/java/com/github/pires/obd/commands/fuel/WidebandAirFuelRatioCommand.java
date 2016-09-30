@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Wideband AFR
  *
- * @author pires
- * @version $Id: $Id
  */
 public class WidebandAirFuelRatioCommand extends ObdCommand {
 

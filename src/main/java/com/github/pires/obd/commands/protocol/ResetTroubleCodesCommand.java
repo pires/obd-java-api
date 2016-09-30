@@ -17,8 +17,6 @@ import com.github.pires.obd.commands.ObdCommand;
 /**
  * Reset trouble codes.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ResetTroubleCodesCommand extends ObdCommand {
 

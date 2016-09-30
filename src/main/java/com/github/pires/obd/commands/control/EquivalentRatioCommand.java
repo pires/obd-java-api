@@ -26,8 +26,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  * equivalence ratio of 0.95, the commanded A/F ratio to the engine would be
  * 14.64 * 0.95 = 13.9 A/F.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class EquivalentRatioCommand extends PercentageObdCommand {
 

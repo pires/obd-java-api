@@ -15,8 +15,6 @@ package com.github.pires.obd.commands;
 /**
  * Abstract class for percentage commands.
  *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class PercentageObdCommand extends ObdCommand {
 

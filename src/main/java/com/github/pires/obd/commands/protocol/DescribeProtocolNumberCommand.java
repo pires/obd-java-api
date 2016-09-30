@@ -24,8 +24,6 @@ import com.github.pires.obd.enums.ObdProtocols;
  * ‘A’. The number is the same one that is used with the
  * set obdProtocol and test obdProtocol commands.
  *
- * @author pires
- * @version $Id: $Id
  * @since 1.0-RC12
  */
 public class DescribeProtocolNumberCommand extends ObdCommand {

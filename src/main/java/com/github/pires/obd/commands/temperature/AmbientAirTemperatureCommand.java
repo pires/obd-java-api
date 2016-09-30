@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Ambient Air Temperature.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class AmbientAirTemperatureCommand extends TemperatureCommand {
 

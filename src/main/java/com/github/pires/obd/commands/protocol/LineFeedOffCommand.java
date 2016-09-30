@@ -15,8 +15,6 @@ package com.github.pires.obd.commands.protocol;
 /**
  * Turns off line-feed.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class LineFeedOffCommand extends ObdProtocolCommand {
 

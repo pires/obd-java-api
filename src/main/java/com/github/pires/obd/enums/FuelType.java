@@ -19,8 +19,6 @@ import java.util.Map;
  * MODE 1 PID 0x51 will return one of the following values to identify the fuel
  * type of the vehicle.
  *
- * @author pires
- * @version $Id: $Id
  */
 public enum FuelType {
     GASOLINE(0x01, "Gasoline"),

@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Intake Manifold Pressure
  *
- * @author pires
- * @version $Id: $Id
  */
 public class IntakeManifoldPressureCommand extends PressureCommand {
 

@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Get fuel level in percentage
  *
- * @author pires
- * @version $Id: $Id
  */
 public class FuelLevelCommand extends PercentageObdCommand {
 

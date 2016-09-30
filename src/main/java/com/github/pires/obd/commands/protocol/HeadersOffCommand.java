@@ -15,8 +15,6 @@ package com.github.pires.obd.commands.protocol;
 /**
  * Turn-off headers.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class HeadersOffCommand extends ObdProtocolCommand {
 

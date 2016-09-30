@@ -15,8 +15,6 @@ package com.github.pires.obd.commands.protocol;
 /**
  * Warm-start the OBD connection.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ObdWarmstartCommand extends ObdProtocolCommand {
 

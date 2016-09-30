@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Displays the current engine Oil temperature.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class OilTempCommand extends TemperatureCommand {
 

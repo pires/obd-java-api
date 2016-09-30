@@ -22,8 +22,6 @@ import java.util.ArrayList;
 /**
  * Base OBD command.
  *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class ObdCommand {
 

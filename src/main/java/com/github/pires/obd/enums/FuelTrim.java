@@ -18,8 +18,6 @@ import java.util.Map;
 /**
  * Select one of the Fuel Trim percentage banks to access.
  *
- * @author pires
- * @version $Id: $Id
  */
 public enum FuelTrim {
 

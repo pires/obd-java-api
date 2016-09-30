@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * <p>AbsoluteLoadCommand class.</p>
  *
- * @author pires
- * @version $Id: $Id
  */
 public class AbsoluteLoadCommand extends PercentageObdCommand {
 

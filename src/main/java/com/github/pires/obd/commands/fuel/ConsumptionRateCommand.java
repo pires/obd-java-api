@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Fuel Consumption Rate per hour.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ConsumptionRateCommand extends ObdCommand {
 

@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.ObdProtocols;
 /**
  * Select the protocol to use.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class SelectProtocolCommand extends ObdProtocolCommand {
 

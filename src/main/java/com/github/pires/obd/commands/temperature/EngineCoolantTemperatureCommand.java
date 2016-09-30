@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Engine Coolant Temperature.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class EngineCoolantTemperatureCommand extends TemperatureCommand {
 

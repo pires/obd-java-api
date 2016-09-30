@@ -15,8 +15,6 @@ package com.github.pires.obd.enums;
 /**
  * Names of all available commands.
  *
- * @author pires
- * @version $Id: $Id
  */
 public enum AvailableCommandNames {
 

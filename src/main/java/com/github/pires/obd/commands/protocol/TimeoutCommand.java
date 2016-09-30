@@ -16,8 +16,6 @@ package com.github.pires.obd.commands.protocol;
  * This will set the value of time in milliseconds (ms) that the OBD interface
  * will wait for a response from the ECU. If exceeds, the response is "NO DATA".
  *
- * @author pires
- * @version $Id: $Id
  */
 public class TimeoutCommand extends ObdProtocolCommand {
 

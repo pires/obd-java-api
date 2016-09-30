@@ -19,8 +19,6 @@ import com.github.pires.obd.enums.FuelType;
 /**
  * This command is intended to determine the vehicle fuel type.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class FindFuelTypeCommand extends ObdCommand {
 

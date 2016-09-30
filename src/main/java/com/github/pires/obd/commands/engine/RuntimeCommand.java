@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Engine runtime.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class RuntimeCommand extends ObdCommand {
 

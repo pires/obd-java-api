@@ -19,8 +19,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * <p>DistanceMILOnCommand class.</p>
  *
- * @author pires
- * @version $Id: $Id
  */
 public class DistanceMILOnCommand extends ObdCommand
         implements SystemOfUnits {

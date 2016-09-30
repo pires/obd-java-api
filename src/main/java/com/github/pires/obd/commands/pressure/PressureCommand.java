@@ -18,8 +18,6 @@ import com.github.pires.obd.commands.SystemOfUnits;
 /**
  * Abstract pressure command.
  *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class PressureCommand extends ObdCommand implements
         SystemOfUnits {

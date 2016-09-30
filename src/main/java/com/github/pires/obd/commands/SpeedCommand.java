@@ -17,8 +17,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Current speed.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class SpeedCommand extends ObdCommand implements SystemOfUnits {
 

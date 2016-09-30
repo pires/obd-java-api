@@ -15,8 +15,6 @@ package com.github.pires.obd.commands.protocol;
 /**
  * Reset the OBD connection.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ObdResetCommand extends ObdProtocolCommand {
 

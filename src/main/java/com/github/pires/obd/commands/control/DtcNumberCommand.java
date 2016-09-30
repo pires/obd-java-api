@@ -23,8 +23,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  * the response in order to store information about the availability and
  * completeness of certain on-board tests.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class DtcNumberCommand extends ObdCommand {
 

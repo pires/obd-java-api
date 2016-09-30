@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Calculated Engine Load value.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class LoadCommand extends PercentageObdCommand {
 

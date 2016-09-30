@@ -18,8 +18,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Read the throttle position in percentage.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class ThrottlePositionCommand extends PercentageObdCommand {
 

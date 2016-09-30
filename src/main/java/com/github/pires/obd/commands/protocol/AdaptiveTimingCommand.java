@@ -18,8 +18,6 @@ package com.github.pires.obd.commands.protocol;
  * while AT2 is a more aggressive version of AT1 (the effect is more noticeable for very
  * slow connections – you may not see much difference with faster OBD systems.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class AdaptiveTimingCommand extends ObdProtocolCommand {
 

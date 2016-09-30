@@ -17,8 +17,6 @@ import com.github.pires.obd.commands.PersistentCommand;
 /**
  * Retrieve available PIDs ranging from 21 to 40.
  *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class AvailablePidsCommand extends PersistentCommand {
 

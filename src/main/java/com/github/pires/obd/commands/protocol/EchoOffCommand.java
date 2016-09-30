@@ -15,8 +15,6 @@ package com.github.pires.obd.commands.protocol;
 /**
  * Turn-off echo.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class EchoOffCommand extends ObdProtocolCommand {
 

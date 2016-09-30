@@ -15,8 +15,6 @@ package com.github.pires.obd.exceptions;
 /**
  * Thrown when there is a "BUS INIT... ERROR" message
  *
- * @author pires
- * @version $Id: $Id
  */
 public class BusInitException extends ResponseException {
 

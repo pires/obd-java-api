@@ -15,8 +15,6 @@ package com.github.pires.obd.utils;
 /**
  * <p>Abstract CommandAvailabilityHelper class.</p>
  *
- * @author pires
- * @version $Id: $Id
  * @since 1.0-RC12
  */
 public abstract class CommandAvailabilityHelper {

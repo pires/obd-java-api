@@ -18,8 +18,6 @@ import com.github.pires.obd.commands.SystemOfUnits;
 /**
  * Abstract temperature command.
  *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class TemperatureCommand extends ObdCommand implements
         SystemOfUnits {

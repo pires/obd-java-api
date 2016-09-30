@@ -19,8 +19,6 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 /**
  * Distance traveled since codes cleared-up.
  *
- * @author pires
- * @version $Id: $Id
  */
 public class DistanceSinceCCCommand extends ObdCommand
         implements SystemOfUnits {

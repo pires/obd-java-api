@@ -22,8 +22,6 @@ import java.util.Map;
 /**
  * Base persistent OBD command.
  *
- * @author pires
- * @version $Id: $Id
  */
 public abstract class PersistentCommand extends ObdCommand {
 
