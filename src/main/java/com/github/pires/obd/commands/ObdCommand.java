@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Base OBD command.
@@ -148,14 +149,28 @@ public abstract class ObdCommand {
      */
     protected abstract void performCalculations();
 
+
+    private static Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
+    private static Pattern BUSINIT_PATTERN = Pattern.compile("(BUS INIT)|(BUSINIT)|(\\.)");
+    private static Pattern SEARCHING_PATTERN = Pattern.compile("SEARCHING");
+    private static Pattern DIGITS_LETTERS_PATTERN = Pattern.compile("([0-9A-F])+");
+
+    protected String replaceAll(Pattern pattern, String input, String replacement) {
+        return pattern.matcher(input).replaceAll(replacement);
+    }
+
+    protected String removeAll(Pattern pattern, String input) {
+        return pattern.matcher(input).replaceAll("");
+    }
+
     /**
      * <p>fillBuffer.</p>
      */
     protected void fillBuffer() {
-        rawData = rawData.replaceAll("\\s", ""); //removes all [ \t\n\x0B\f\r]
-        rawData = rawData.replaceAll("(BUS INIT)|(BUSINIT)|(\\.)", "");
+        rawData = removeAll(WHITESPACE_PATTERN, rawData); //removes all [ \t\n\x0B\f\r]
+        rawData = removeAll(BUSINIT_PATTERN, rawData);
 
-        if (!rawData.matches("([0-9A-F])+")) {
+        if (!DIGITS_LETTERS_PATTERN.matcher(rawData).matches()) {
             throw new NonNumericResponseException(rawData);
         }
 
@@ -201,7 +216,7 @@ public abstract class ObdCommand {
      * is actually TWO bytes (two chars) in the socket. So, we must do some more
      * processing..
      */
-        rawData = res.toString().replaceAll("SEARCHING", "");
+        rawData = removeAll(SEARCHING_PATTERN, res.toString());
 
     /*
      * Data may have echo or informative text like "INIT BUS..." or similar.
@@ -209,7 +224,7 @@ public abstract class ObdCommand {
      * everything from the last carriage return before those two (trimmed above).
      */
         //kills multiline.. rawData = rawData.substring(rawData.lastIndexOf(13) + 1);
-        rawData = rawData.replaceAll("\\s", "");//removes all [ \t\n\x0B\f\r]
+        rawData = removeAll(WHITESPACE_PATTERN, rawData);//removes all [ \t\n\x0B\f\r]
     }
 
     void checkForErrors() {
