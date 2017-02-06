@@ -378,6 +378,19 @@ public abstract class ObdCommand {
         return cmd.substring(3);
     }
 
+    /**
+     * <p>getCommandMode.</p>
+     *
+     * @return a {@link java.lang.String} object.
+     */
+    public final String getCommandMode() {
+        if (cmd.length() >= 2) {
+            return cmd.substring(0, 2);
+        } else {
+            return cmd;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
