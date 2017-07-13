@@ -17,25 +17,28 @@ package com.github.pires.obd.commands.protocol;
  */
 public class ObdRawCommand extends ObdProtocolCommand {
 
-    /**
-     * <p>Constructor for ObdRawCommand.</p>
-     *
-     * @param command a {@link java.lang.String} object.
-     */
-    public ObdRawCommand(String command) {
-        super(command);
-    }
+	/**
+	 * <p>
+	 * Constructor for ObdRawCommand.
+	 * </p>
+	 *
+	 * @param command
+	 *            a {@link java.lang.String} object.
+	 */
+	public ObdRawCommand(String command) {
+		super(command);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getFormattedResult() {
-        return getResult();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getFormattedResult() {
+		return getResult();
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getName() {
-        return "Custom command " + getCommandPID();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getName() {
+		return "Custom command " + getCommandPID();
+	}
 
 }

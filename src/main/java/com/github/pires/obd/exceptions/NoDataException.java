@@ -18,11 +18,18 @@ package com.github.pires.obd.exceptions;
  */
 public class NoDataException extends ResponseException {
 
-    /**
-     * <p>Constructor for NoDataException.</p>
-     */
-    public NoDataException() {
-        super("NO DATA");
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * <p>
+	 * Constructor for NoDataException.
+	 * </p>
+	 */
+	public NoDataException() {
+		super("NO DATA");
+	}
 
 }

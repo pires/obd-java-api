@@ -30,120 +30,120 @@ import static org.testng.Assert.assertEquals;
 @PrepareForTest(InputStream.class)
 public class DistanceSinceCCCommandTest {
 
-    private DistanceSinceCCCommand command;
-    private InputStream mockIn;
+	private DistanceSinceCCCommand command;
+	private InputStream mockIn;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new DistanceSinceCCCommand();
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new DistanceSinceCCCommand();
+	}
 
-    /**
-     * Test for valid InputStream read, 65535 km.
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testMaxDistanceValue() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '3');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 65535 km.
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testMaxDistanceValue() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '3');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        assertEquals(command.getKm(), 65535);
+		// call the method to test
+		command.readResult(mockIn);
+		assertEquals(command.getKm(), 65535);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, 17731 kms
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testSomeRuntimeValue() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '3');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '5');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '3');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 17731 kms
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testSomeRuntimeValue() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '3');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '5');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '3');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        assertEquals(command.getKm(), 17731);
+		// call the method to test
+		command.readResult(mockIn);
+		assertEquals(command.getKm(), 17731);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, 0 km.
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testMinRuntimeValue() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '3');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 0 km.
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testMinRuntimeValue() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '3');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        assertEquals(command.getKm(), 0);
+		// call the method to test
+		command.readResult(mockIn);
+		assertEquals(command.getKm(), 0);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Clear resources.
-     */
-    @AfterClass
-    public void tearDown() {
-        command = null;
-        mockIn = null;
-    }
+	/**
+	 * Clear resources.
+	 */
+	@AfterClass
+	public void tearDown() {
+		command = null;
+		mockIn = null;
+	}
 
 }

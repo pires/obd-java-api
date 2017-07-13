@@ -29,37 +29,38 @@ import static org.powermock.api.easymock.PowerMock.*;
 @PrepareForTest(InputStream.class)
 public class NonNumericResponseExceptionTest {
 
-    private SpeedCommand command;
-    private InputStream mockIn;
+	private SpeedCommand command;
+	private InputStream mockIn;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new SpeedCommand();
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new SpeedCommand();
+	}
 
-    /**
-     * Test for valid InputStream read with echo
-     *
-     * @throws java.io.IOException, java.lang.InterruptedException
-     */
-    @Test(expectedExceptions = NonNumericResponseException.class)
-    public void testValidSpeedMetricWithMessage() throws IOException, InterruptedException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) 'O');
-        expectLastCall().andReturn((byte) 'K');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read with echo
+	 *
+	 * @throws java.io.IOException,
+	 *             java.lang.InterruptedException
+	 */
+	@Test(expectedExceptions = NonNumericResponseException.class)
+	public void testValidSpeedMetricWithMessage() throws IOException, InterruptedException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) 'O');
+		expectLastCall().andReturn((byte) 'K');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.run(mockIn, new ByteArrayOutputStream());
+		// call the method to test
+		command.run(mockIn, new ByteArrayOutputStream());
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
 }

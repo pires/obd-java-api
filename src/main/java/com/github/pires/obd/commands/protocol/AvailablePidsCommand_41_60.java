@@ -20,25 +20,28 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class AvailablePidsCommand_41_60 extends AvailablePidsCommand {
 
-    /**
-     * Default ctor.
-     */
-    public AvailablePidsCommand_41_60() {
-        super("01 40");
-    }
+	/**
+	 * Default ctor.
+	 */
+	public AvailablePidsCommand_41_60() {
+		super("01 40");
+	}
 
-    /**
-     * Copy ctor.
-     *
-     * @param other a {@link com.github.pires.obd.commands.protocol.AvailablePidsCommand} object.
-     */
-    public AvailablePidsCommand_41_60(AvailablePidsCommand_41_60 other) {
-        super(other);
-    }
+	/**
+	 * Copy ctor.
+	 *
+	 * @param other
+	 *            a
+	 *            {@link com.github.pires.obd.commands.protocol.AvailablePidsCommand}
+	 *            object.
+	 */
+	public AvailablePidsCommand_41_60(AvailablePidsCommand_41_60 other) {
+		super(other);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getName() {
-        return AvailableCommandNames.PIDS_41_60.getValue();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getName() {
+		return AvailableCommandNames.PIDS_41_60.getValue();
+	}
 }
