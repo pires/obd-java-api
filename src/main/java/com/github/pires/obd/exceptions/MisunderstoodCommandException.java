@@ -18,11 +18,18 @@ package com.github.pires.obd.exceptions;
  */
 public class MisunderstoodCommandException extends ResponseException {
 
-    /**
-     * <p>Constructor for MisunderstoodCommandException.</p>
-     */
-    public MisunderstoodCommandException() {
-        super("?");
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * <p>
+	 * Constructor for MisunderstoodCommandException.
+	 * </p>
+	 */
+	public MisunderstoodCommandException() {
+		super("?");
+	}
 
 }

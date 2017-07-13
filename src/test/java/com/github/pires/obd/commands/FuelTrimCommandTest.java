@@ -34,103 +34,103 @@ import static org.testng.Assert.assertEquals;
 @PrepareForTest(InputStream.class)
 public class FuelTrimCommandTest {
 
-    private FuelTrimCommand command;
-    private InputStream mockIn;
-    private FuelTrim fuelTrimBank = FuelTrim.LONG_TERM_BANK_1;
+	private FuelTrimCommand command;
+	private InputStream mockIn;
+	private FuelTrim fuelTrimBank = FuelTrim.LONG_TERM_BANK_1;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new FuelTrimCommand(FuelTrim.LONG_TERM_BANK_1);
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new FuelTrimCommand(FuelTrim.LONG_TERM_BANK_1);
+	}
 
-    /**
-     * Test for valid InputStream read, 99.22%
-     *
-     * @throws IOException
-     */
-    @Test(enabled = false)
-    public void testMaxFuelTrimValue() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn(0x41);
-        expectLastCall().andReturn(fuelTrimBank.getValue());
-        expectLastCall().andReturn(0xFF);
-        expectLastCall().andReturn(0x3E); // '>'
+	/**
+	 * Test for valid InputStream read, 99.22%
+	 *
+	 * @throws IOException
+	 */
+	@Test(enabled = false)
+	public void testMaxFuelTrimValue() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn(0x41);
+		expectLastCall().andReturn(fuelTrimBank.getValue());
+		expectLastCall().andReturn(0xFF);
+		expectLastCall().andReturn(0x3E); // '>'
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        assertEquals(command.getValue(), 99.22f);
+		// call the method to test
+		command.readResult(mockIn);
+		assertEquals(command.getCalculatedResult(), 99.22f);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, 56.25%
-     *
-     * @throws IOException
-     */
-    @Test(enabled = false)
-    public void testSomeValue() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn(0x41);
-        expectLastCall().andReturn(0x20);
-        expectLastCall().andReturn(fuelTrimBank.getValue());
-        expectLastCall().andReturn(0x20);
-        expectLastCall().andReturn(0xC8);
-        expectLastCall().andReturn(0x20);
-        expectLastCall().andReturn(0x3E); // '>'
+	/**
+	 * Test for valid InputStream read, 56.25%
+	 *
+	 * @throws IOException
+	 */
+	@Test(enabled = false)
+	public void testSomeValue() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn(0x41);
+		expectLastCall().andReturn(0x20);
+		expectLastCall().andReturn(fuelTrimBank.getValue());
+		expectLastCall().andReturn(0x20);
+		expectLastCall().andReturn(0xC8);
+		expectLastCall().andReturn(0x20);
+		expectLastCall().andReturn(0x3E); // '>'
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        assertEquals(command.getValue(), 56.25f);
+		// call the method to test
+		command.readResult(mockIn);
+		assertEquals(command.getCalculatedResult(), 56.25f);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, -100.00%
-     *
-     * @throws IOException
-     */
-    @Test(enabled = false)
-    public void testMinFuelTrimValue() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn(0x41);
-        expectLastCall().andReturn(0x20);
-        expectLastCall().andReturn(fuelTrimBank.getValue());
-        expectLastCall().andReturn(0x20);
-        expectLastCall().andReturn(0x00);
-        expectLastCall().andReturn(0x20);
-        expectLastCall().andReturn(0x3E); // '>'
+	/**
+	 * Test for valid InputStream read, -100.00%
+	 *
+	 * @throws IOException
+	 */
+	@Test(enabled = false)
+	public void testMinFuelTrimValue() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn(0x41);
+		expectLastCall().andReturn(0x20);
+		expectLastCall().andReturn(fuelTrimBank.getValue());
+		expectLastCall().andReturn(0x20);
+		expectLastCall().andReturn(0x00);
+		expectLastCall().andReturn(0x20);
+		expectLastCall().andReturn(0x3E); // '>'
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        assertEquals(command.getValue(), -100f);
+		// call the method to test
+		command.readResult(mockIn);
+		assertEquals(command.getCalculatedResult(), -100f);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Clear resources.
-     */
-    @AfterClass
-    public void tearDown() {
-        command = null;
-        mockIn = null;
-    }
+	/**
+	 * Clear resources.
+	 */
+	@AfterClass
+	public void tearDown() {
+		command = null;
+		mockIn = null;
+	}
 
 }

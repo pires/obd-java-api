@@ -20,26 +20,29 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class IntakeManifoldPressureCommand extends PressureCommand {
 
-    /**
-     * Default ctor.
-     */
-    public IntakeManifoldPressureCommand() {
-        super("01 0B");
-    }
+	/**
+	 * Default Constructor.
+	 */
+	public IntakeManifoldPressureCommand() {
+		super("01 0B");
+	}
 
-    /**
-     * Copy ctor.
-     *
-     * @param other a {@link com.github.pires.obd.commands.pressure.IntakeManifoldPressureCommand} object.
-     */
-    public IntakeManifoldPressureCommand(IntakeManifoldPressureCommand other) {
-        super(other);
-    }
+	/**
+	 * Copy Constructor.
+	 *
+	 * @param other
+	 *            a
+	 *            {@link com.github.pires.obd.commands.pressure.IntakeManifoldPressureCommand}
+	 *            object.
+	 */
+	public IntakeManifoldPressureCommand(IntakeManifoldPressureCommand other) {
+		super(other);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getName() {
-        return AvailableCommandNames.INTAKE_MANIFOLD_PRESSURE.getValue();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getName() {
+		return AvailableCommandNames.INTAKE_MANIFOLD_PRESSURE.getValue();
+	}
 
 }

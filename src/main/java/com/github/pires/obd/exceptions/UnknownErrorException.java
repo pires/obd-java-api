@@ -18,11 +18,18 @@ package com.github.pires.obd.exceptions;
  */
 public class UnknownErrorException extends ResponseException {
 
-    /**
-     * <p>Constructor for UnknownErrorException.</p>
-     */
-    public UnknownErrorException() {
-        super("ERROR");
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * <p>
+	 * Constructor for UnknownErrorException.
+	 * </p>
+	 */
+	public UnknownErrorException() {
+		super("ERROR");
+	}
 
 }

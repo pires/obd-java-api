@@ -19,35 +19,42 @@ package com.github.pires.obd.commands.protocol;
  */
 public class TimeoutCommand extends ObdProtocolCommand {
 
-    /**
-     * <p>Constructor for TimeoutCommand.</p>
-     *
-     * @param timeout value between 0 and 255 that multiplied by 4 results in the
-     *                desired timeout in milliseconds (ms).
-     */
-    public TimeoutCommand(int timeout) {
-        super("AT ST " + Integer.toHexString(0xFF & timeout));
-    }
+	/**
+	 * <p>
+	 * Constructor for TimeoutCommand.
+	 * </p>
+	 *
+	 * @param timeout
+	 *            value between 0 and 255 that multiplied by 4 results in the
+	 *            desired timeout in milliseconds (ms).
+	 */
+	public TimeoutCommand(int timeout) {
+		super("AT ST " + Integer.toHexString(0xFF & timeout));
+	}
 
-    /**
-     * <p>Constructor for TimeoutCommand.</p>
-     *
-     * @param other a {@link com.github.pires.obd.commands.protocol.TimeoutCommand} object.
-     */
-    public TimeoutCommand(TimeoutCommand other) {
-        super(other);
-    }
+	/**
+	 * <p>
+	 * Constructor for TimeoutCommand.
+	 * </p>
+	 *
+	 * @param other
+	 *            a {@link com.github.pires.obd.commands.protocol.TimeoutCommand}
+	 *            object.
+	 */
+	public TimeoutCommand(TimeoutCommand other) {
+		super(other);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getFormattedResult() {
-        return getResult();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getFormattedResult() {
+		return getResult();
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getName() {
-        return "Timeout";
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getName() {
+		return "Timeout";
+	}
 
 }

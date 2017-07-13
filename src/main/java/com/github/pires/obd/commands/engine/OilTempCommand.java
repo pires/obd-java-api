@@ -21,26 +21,28 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class OilTempCommand extends TemperatureCommand {
 
-    /**
-     * Default ctor.
-     */
-    public OilTempCommand() {
-        super("01 5C");
-    }
+	/**
+	 * Default Constructor.
+	 */
+	public OilTempCommand() {
+		super("01 5C");
+	}
 
-    /**
-     * Copy ctor.
-     *
-     * @param other a {@link com.github.pires.obd.commands.engine.OilTempCommand} object.
-     */
-    public OilTempCommand(OilTempCommand other) {
-        super(other);
-    }
+	/**
+	 * Copy Constructor.
+	 *
+	 * @param other
+	 *            a {@link com.github.pires.obd.commands.engine.OilTempCommand}
+	 *            object.
+	 */
+	public OilTempCommand(OilTempCommand other) {
+		super(other);
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getName() {
-        return AvailableCommandNames.ENGINE_OIL_TEMP.getValue();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getName() {
+		return AvailableCommandNames.ENGINE_OIL_TEMP.getValue();
+	}
 
 }

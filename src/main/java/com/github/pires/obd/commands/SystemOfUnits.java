@@ -19,11 +19,13 @@ package com.github.pires.obd.commands;
  */
 public interface SystemOfUnits {
 
-    /**
-     * <p>getImperialUnit.</p>
-     *
-     * @return a float.
-     */
-    float getImperialUnit();
+	/**
+	 * <p>
+	 * getImperialUnit.
+	 * </p>
+	 *
+	 * @return a float.
+	 */
+	float getImperialUnit();
 
 }

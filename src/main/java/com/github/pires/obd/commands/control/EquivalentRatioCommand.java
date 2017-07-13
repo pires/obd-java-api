@@ -29,46 +29,49 @@ import com.github.pires.obd.enums.AvailableCommandNames;
  */
 public class EquivalentRatioCommand extends PercentageObdCommand {
 
+	/**
+	 * Default Constructor.
+	 */
+	public EquivalentRatioCommand() {
+		super("01 44");
+	}
 
-    /**
-     * Default ctor.
-     */
-    public EquivalentRatioCommand() {
-        super("01 44");
-    }
+	/**
+	 * Copy Constructor.
+	 *
+	 * @param other
+	 *            a
+	 *            {@link com.github.pires.obd.commands.control.EquivalentRatioCommand}
+	 *            object.
+	 */
+	public EquivalentRatioCommand(EquivalentRatioCommand other) {
+		super(other);
+	}
 
-    /**
-     * Copy ctor.
-     *
-     * @param other a {@link com.github.pires.obd.commands.control.EquivalentRatioCommand} object.
-     */
-    public EquivalentRatioCommand(EquivalentRatioCommand other) {
-        super(other);
-    }
+	/** {@inheritDoc} */
+	@Override
+	protected void performCalculations() {
+		// ignore first two bytes [hh hh] of the response
+		int a = buffer.get(2);
+		int b = buffer.get(3);
+		percentage = (a * 256 + b) / 32768;
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    protected void performCalculations() {
-        // ignore first two bytes [hh hh] of the response
-        int a = buffer.get(2);
-        int b = buffer.get(3);
-        percentage = (a * 256 + b) / 32768;
-    }
+	/**
+	 * <p>
+	 * getRatio.
+	 * </p>
+	 *
+	 * @return a double.
+	 */
+	public double getRatio() {
+		return percentage;
+	}
 
-
-    /**
-     * <p>getRatio.</p>
-     *
-     * @return a double.
-     */
-    public double getRatio() {
-        return (double) percentage;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getName() {
-        return AvailableCommandNames.EQUIV_RATIO.getValue();
-    }
+	/** {@inheritDoc} */
+	@Override
+	public String getName() {
+		return AvailableCommandNames.EQUIV_RATIO.getValue();
+	}
 
 }
