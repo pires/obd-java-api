@@ -95,9 +95,9 @@ public class TroubleCodesCommandTest {
 		expectLastCall().andReturn((byte) '>');
 
 		replayAll();
-		String res = "P0003\n";
+		String res = "B21AB\n";
 		res += "C1104\n";
-		res += "B21AB\n";
+		res += "P0003\n";
 		res += "U3106\n";
 
 		// call the method to test

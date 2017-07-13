@@ -14,6 +14,8 @@ package com.github.pires.obd.commands.control;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.github.pires.obd.commands.ObdCommand;
 import com.github.pires.obd.enums.AvailableCommandNames;
@@ -32,7 +34,7 @@ public class TroubleCodesCommand extends ObdCommand {
 	/** Constant <code>hexArray="0123456789ABCDEF".toCharArray()</code> */
 	protected final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
-	protected StringBuilder codes = null;
+	protected Set<String> troubleCodes = null;
 
 	/**
 	 * <p>
@@ -41,7 +43,7 @@ public class TroubleCodesCommand extends ObdCommand {
 	 */
 	public TroubleCodesCommand() {
 		super("03");
-		codes = new StringBuilder();
+		troubleCodes = new TreeSet<>();
 	}
 
 	/**
@@ -54,7 +56,7 @@ public class TroubleCodesCommand extends ObdCommand {
 	 */
 	public TroubleCodesCommand(TroubleCodesCommand other) {
 		super(other);
-		codes = new StringBuilder();
+		troubleCodes = new TreeSet<>();
 	}
 
 	/** {@inheritDoc} */
@@ -67,18 +69,22 @@ public class TroubleCodesCommand extends ObdCommand {
 	protected void performCalculations() {
 		final String result = getResult();
 		String workingData;
-		int startIndex = 0;// Header size.
+		int startIndex = 0;  // Header size.
 
 		String canOneFrame = result.replaceAll("[\r\n]", "");
 		int canOneFrameLength = canOneFrame.length();
-		if (canOneFrameLength <= 16 && canOneFrameLength % 4 == 0) {// CAN(ISO-15765) protocol one frame.
-			workingData = canOneFrame;// 43yy{codes}
-			startIndex = 4;// Header is 43yy, yy showing the number of data items.
-		} else if (result.contains(":")) {// CAN(ISO-15765) protocol two and more frames.
-			workingData = result.replaceAll("[\r\n].:", "");// xxx43yy{codes}
-			startIndex = 7;// Header is xxx43yy, xxx is bytes of information to follow, yy showing the
-							// number of data items.
-		} else {// ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
+		
+		// CAN(ISO-15765) protocol one frame.
+		if (canOneFrameLength <= 16 && canOneFrameLength % 4 == 0) {
+			workingData = canOneFrame;  // 43yy{codes}
+			startIndex = 4;  // Header is 43yy, yy showing the number of data items.
+		// CAN(ISO-15765) protocol two and more frames.
+		} else if (result.contains(":")) {
+			workingData = result.replaceAll("[\r\n].:", "");  // xxx43yy{codes}
+			startIndex = 7;  // Header is xxx43yy, xxx is bytes of information to follow, yy showing the
+							 // number of data items.
+		// ISO9141-2, KWP2000 Fast and KWP2000 5Kbps (ISO15031) protocols.
+		} else {
 			workingData = result.replaceAll("^43|[\r\n]43|[\r\n]", "");
 		}
 		for (int begin = startIndex; begin < workingData.length(); begin += 4) {
@@ -92,8 +98,7 @@ public class TroubleCodesCommand extends ObdCommand {
 			if ("P0000".equals(dtc)) {
 				return;
 			}
-			codes.append(dtc);
-			codes.append('\n');
+			troubleCodes.add(dtc);
 		}
 	}
 
@@ -111,13 +116,17 @@ public class TroubleCodesCommand extends ObdCommand {
 	 */
 	@Deprecated
 	public String formatResult() {
-		return codes.toString();
+		return getCalculatedResult();
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public String getCalculatedResult() {
-		return String.valueOf(codes);
+		StringBuilder sb = new StringBuilder();
+		for (String code : troubleCodes) {
+			sb.append(code).append("\n");
+		}
+		return sb.toString();
 	}
 
 	/** {@inheritDoc} */
@@ -145,13 +154,12 @@ public class TroubleCodesCommand extends ObdCommand {
 		}
 
 		rawData = res.toString().trim();
-
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public String getFormattedResult() {
-		return codes.toString();
+		return getCalculatedResult();
 	}
 
 	/** {@inheritDoc} */
