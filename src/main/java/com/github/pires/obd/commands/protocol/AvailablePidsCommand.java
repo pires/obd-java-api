@@ -21,7 +21,7 @@ import com.github.pires.obd.commands.PersistentCommand;
 public abstract class AvailablePidsCommand extends PersistentCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 *
 	 * @param command
 	 *            a {@link java.lang.String} object.
@@ -31,7 +31,7 @@ public abstract class AvailablePidsCommand extends PersistentCommand {
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a

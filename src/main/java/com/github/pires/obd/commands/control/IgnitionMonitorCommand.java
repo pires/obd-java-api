@@ -20,14 +20,14 @@ public class IgnitionMonitorCommand extends ObdCommand {
 	private boolean ignitionOn = false;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public IgnitionMonitorCommand() {
 		super("AT IGN");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link IgnitionMonitorCommand} object.

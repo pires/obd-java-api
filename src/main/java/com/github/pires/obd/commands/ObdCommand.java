@@ -12,13 +12,21 @@
  */
 package com.github.pires.obd.commands;
 
-import com.github.pires.obd.exceptions.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+
+import com.github.pires.obd.exceptions.BusInitException;
+import com.github.pires.obd.exceptions.MisunderstoodCommandException;
+import com.github.pires.obd.exceptions.NoDataException;
+import com.github.pires.obd.exceptions.NonNumericResponseException;
+import com.github.pires.obd.exceptions.ResponseException;
+import com.github.pires.obd.exceptions.StoppedException;
+import com.github.pires.obd.exceptions.UnableToConnectException;
+import com.github.pires.obd.exceptions.UnknownErrorException;
+import com.github.pires.obd.exceptions.UnsupportedCommandException;
 
 /**
  * Base OBD command.
@@ -41,7 +49,7 @@ public abstract class ObdCommand {
 	private long end;
 
 	/**
-	 * Default ctor to use
+	 * Default Constructor to use
 	 *
 	 * @param command
 	 *            the command to send
@@ -59,7 +67,7 @@ public abstract class ObdCommand {
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            the ObdCommand to copy.
@@ -71,7 +79,7 @@ public abstract class ObdCommand {
 	/**
 	 * Sends the OBD-II request and deals with the response.
 	 * <p>
-	 * This method CAN be overriden in fake commands.
+	 * This method CAN be override in fake commands.
 	 *
 	 * @param in
 	 *            a {@link java.io.InputStream} object.

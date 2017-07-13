@@ -22,14 +22,14 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class OilTempCommand extends TemperatureCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public OilTempCommand() {
 		super("01 5C");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.engine.OilTempCommand}

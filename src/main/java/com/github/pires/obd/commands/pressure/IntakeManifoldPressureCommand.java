@@ -21,14 +21,14 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class IntakeManifoldPressureCommand extends PressureCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public IntakeManifoldPressureCommand() {
 		super("01 0B");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a

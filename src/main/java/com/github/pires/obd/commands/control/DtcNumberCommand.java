@@ -30,14 +30,14 @@ public class DtcNumberCommand extends ObdCommand {
 	private boolean milOn = false;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public DtcNumberCommand() {
 		super("01 01");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.control.DtcNumberCommand}
@@ -63,6 +63,7 @@ public class DtcNumberCommand extends ObdCommand {
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
+	@Override
 	public String getFormattedResult() {
 		final String res = milOn ? "MIL is ON" : "MIL is OFF";
 		return res + codeCount + " codes";

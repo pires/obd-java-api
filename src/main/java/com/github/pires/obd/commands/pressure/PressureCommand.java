@@ -35,7 +35,7 @@ public abstract class PressureCommand extends ObdCommand implements SystemOfUnit
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.pressure.PressureCommand}
@@ -62,6 +62,7 @@ public abstract class PressureCommand extends ObdCommand implements SystemOfUnit
 	 * performCalculations.
 	 * </p>
 	 */
+	@Override
 	protected void performCalculations() {
 		// ignore first two bytes [hh hh] of the response
 		pressure = preparePressureValue();
@@ -92,6 +93,7 @@ public abstract class PressureCommand extends ObdCommand implements SystemOfUnit
 	 *
 	 * @return the pressure in psi
 	 */
+	@Override
 	public float getImperialUnit() {
 		return pressure * 0.145037738F;
 	}

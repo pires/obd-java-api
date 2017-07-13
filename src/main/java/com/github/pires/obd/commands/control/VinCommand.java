@@ -12,24 +12,25 @@
  */
 package com.github.pires.obd.commands.control;
 
-import com.github.pires.obd.commands.PersistentCommand;
-import com.github.pires.obd.enums.AvailableCommandNames;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.github.pires.obd.commands.PersistentCommand;
+import com.github.pires.obd.enums.AvailableCommandNames;
 
 public class VinCommand extends PersistentCommand {
 
 	String vin = "";
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public VinCommand() {
 		super("09 02");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.control.VinCommand} object.

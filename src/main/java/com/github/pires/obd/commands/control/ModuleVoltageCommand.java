@@ -27,14 +27,14 @@ public class ModuleVoltageCommand extends ObdCommand {
 	private double voltage = 0.00;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public ModuleVoltageCommand() {
 		super("01 42");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a

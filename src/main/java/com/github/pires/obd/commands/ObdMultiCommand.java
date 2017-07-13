@@ -27,7 +27,7 @@ public class ObdMultiCommand {
 	private ArrayList<ObdCommand> commands;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public ObdMultiCommand() {
 		this.commands = new ArrayList<>();

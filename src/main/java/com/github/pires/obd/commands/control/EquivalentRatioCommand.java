@@ -30,14 +30,14 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class EquivalentRatioCommand extends PercentageObdCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public EquivalentRatioCommand() {
 		super("01 44");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a
@@ -65,7 +65,7 @@ public class EquivalentRatioCommand extends PercentageObdCommand {
 	 * @return a double.
 	 */
 	public double getRatio() {
-		return (double) percentage;
+		return percentage;
 	}
 
 	/** {@inheritDoc} */

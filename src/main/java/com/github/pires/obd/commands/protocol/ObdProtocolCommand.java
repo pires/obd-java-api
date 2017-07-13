@@ -31,7 +31,7 @@ public abstract class ObdProtocolCommand extends ObdCommand {
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            the ObdCommand to copy.
@@ -45,6 +45,7 @@ public abstract class ObdProtocolCommand extends ObdCommand {
 	 * performCalculations.
 	 * </p>
 	 */
+	@Override
 	protected void performCalculations() {
 		// ignore
 	}
@@ -54,6 +55,7 @@ public abstract class ObdProtocolCommand extends ObdCommand {
 	 * fillBuffer.
 	 * </p>
 	 */
+	@Override
 	protected void fillBuffer() {
 		// settings commands don't return a value appropriate to place into the
 		// buffer, so do nothing

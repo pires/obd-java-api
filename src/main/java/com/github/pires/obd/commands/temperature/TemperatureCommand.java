@@ -24,7 +24,7 @@ public abstract class TemperatureCommand extends ObdCommand implements SystemOfU
 	private float temperature = 0.0f;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 *
 	 * @param cmd
 	 *            a {@link java.lang.String} object.
@@ -34,7 +34,7 @@ public abstract class TemperatureCommand extends ObdCommand implements SystemOfU
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a
@@ -93,6 +93,7 @@ public abstract class TemperatureCommand extends ObdCommand implements SystemOfU
 	 *
 	 * @return the temperature in Fahrenheit.
 	 */
+	@Override
 	public float getImperialUnit() {
 		return temperature * 1.8f + 32;
 	}
@@ -115,6 +116,7 @@ public abstract class TemperatureCommand extends ObdCommand implements SystemOfU
 	 *
 	 * @return the OBD command name.
 	 */
+	@Override
 	public abstract String getName();
 
 }

@@ -24,7 +24,7 @@ public class FuelTrimCommand extends PercentageObdCommand {
 	private final FuelTrim bank;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 * <p>
 	 * Will read the bank from parameters and construct the command accordingly.
 	 * Please, see FuelTrim enum for more details.
@@ -73,6 +73,7 @@ public class FuelTrimCommand extends PercentageObdCommand {
 	 * @return the readed Fuel Trim percentage value.
 	 * @deprecated use #getCalculatedResult()
 	 */
+	@Deprecated
 	public final float getValue() {
 		return percentage;
 	}

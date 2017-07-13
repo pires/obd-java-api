@@ -24,14 +24,14 @@ public class MassAirFlowCommand extends ObdCommand {
 	private float maf = -1.0f;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public MassAirFlowCommand() {
 		super("01 10");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.engine.MassAirFlowCommand}

@@ -23,14 +23,14 @@ public class SpeedCommand extends ObdCommand implements SystemOfUnits {
 	private int metricSpeed = 0;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public SpeedCommand() {
 		super("01 0D");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.SpeedCommand} object.
@@ -73,6 +73,7 @@ public class SpeedCommand extends ObdCommand implements SystemOfUnits {
 	 *
 	 * @return a float.
 	 */
+	@Override
 	public float getImperialUnit() {
 		return metricSpeed * 0.621371192F;
 	}
@@ -84,6 +85,7 @@ public class SpeedCommand extends ObdCommand implements SystemOfUnits {
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
+	@Override
 	public String getFormattedResult() {
 		return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
 				: String.format("%d%s", getMetricSpeed(), getResultUnit());

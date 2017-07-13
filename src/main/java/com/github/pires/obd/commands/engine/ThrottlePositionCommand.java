@@ -22,14 +22,14 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class ThrottlePositionCommand extends PercentageObdCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public ThrottlePositionCommand() {
 		super("01 11");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a

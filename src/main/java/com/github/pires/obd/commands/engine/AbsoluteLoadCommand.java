@@ -24,14 +24,14 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class AbsoluteLoadCommand extends PercentageObdCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public AbsoluteLoadCommand() {
 		super("01 43");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.engine.AbsoluteLoadCommand}

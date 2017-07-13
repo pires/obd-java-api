@@ -27,14 +27,14 @@ public class DistanceMILOnCommand extends ObdCommand implements SystemOfUnits {
 	private int km = 0;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public DistanceMILOnCommand() {
 		super("01 21");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a
@@ -59,6 +59,7 @@ public class DistanceMILOnCommand extends ObdCommand implements SystemOfUnits {
 	 *
 	 * @return a {@link java.lang.String} object.
 	 */
+	@Override
 	public String getFormattedResult() {
 		return useImperialUnits ? String.format("%.2f%s", getImperialUnit(), getResultUnit())
 				: String.format("%d%s", km, getResultUnit());

@@ -12,11 +12,11 @@
  */
 package com.github.pires.obd.commands.control;
 
-import com.github.pires.obd.commands.ObdCommand;
-import com.github.pires.obd.enums.AvailableCommandNames;
-
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.github.pires.obd.commands.ObdCommand;
+import com.github.pires.obd.enums.AvailableCommandNames;
 
 /**
  * It is not needed no know how many DTC are stored. Because when no DTC are
@@ -45,7 +45,7 @@ public class PermanentTroubleCodesCommand extends ObdCommand {
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a
@@ -109,6 +109,7 @@ public class PermanentTroubleCodesCommand extends ObdCommand {
 	 * @return the formatted result of this command in string representation.
 	 * @deprecated use #getCalculatedResult instead
 	 */
+	@Deprecated
 	public String formatResult() {
 		return codes.toString();
 	}

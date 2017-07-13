@@ -24,14 +24,14 @@ public class RuntimeCommand extends ObdCommand {
 	private int value = 0;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public RuntimeCommand() {
 		super("01 1F");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.engine.RuntimeCommand}

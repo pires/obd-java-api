@@ -24,14 +24,14 @@ public class RPMCommand extends ObdCommand {
 	private int rpm = -1;
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public RPMCommand() {
 		super("01 0C");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a {@link com.github.pires.obd.commands.engine.RPMCommand} object.

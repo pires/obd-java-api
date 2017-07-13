@@ -21,14 +21,14 @@ import com.github.pires.obd.enums.AvailableCommandNames;
 public class AvailablePidsCommand_41_60 extends AvailablePidsCommand {
 
 	/**
-	 * Default ctor.
+	 * Default Constructor.
 	 */
 	public AvailablePidsCommand_41_60() {
 		super("01 40");
 	}
 
 	/**
-	 * Copy ctor.
+	 * Copy Constructor.
 	 *
 	 * @param other
 	 *            a
