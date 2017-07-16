@@ -154,6 +154,7 @@ public abstract class ObdCommand {
     private static Pattern BUSINIT_PATTERN = Pattern.compile("(BUS INIT)|(BUSINIT)|(\\.)");
     private static Pattern SEARCHING_PATTERN = Pattern.compile("SEARCHING");
     private static Pattern DIGITS_LETTERS_PATTERN = Pattern.compile("([0-9A-F])+");
+    private static Pattern COLON_PATTERN = Pattern.compile(":");
 
     protected String replaceAll(Pattern pattern, String input, String replacement) {
         return pattern.matcher(input).replaceAll(replacement);
@@ -169,6 +170,7 @@ public abstract class ObdCommand {
     protected void fillBuffer() {
         rawData = removeAll(WHITESPACE_PATTERN, rawData); //removes all [ \t\n\x0B\f\r]
         rawData = removeAll(BUSINIT_PATTERN, rawData);
+        rawData = removeAll(COLON_PATTERN, rawData);
 
         if (!DIGITS_LETTERS_PATTERN.matcher(rawData).matches()) {
             throw new NonNumericResponseException(rawData);
