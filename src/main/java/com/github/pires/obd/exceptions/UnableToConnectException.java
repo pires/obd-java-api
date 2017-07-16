@@ -18,11 +18,18 @@ package com.github.pires.obd.exceptions;
  */
 public class UnableToConnectException extends ResponseException {
 
-    /**
-     * <p>Constructor for UnableToConnectException.</p>
-     */
-    public UnableToConnectException() {
-        super("UNABLE TO CONNECT");
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * <p>
+	 * Constructor for UnableToConnectException.
+	 * </p>
+	 */
+	public UnableToConnectException() {
+		super("UNABLE TO CONNECT");
+	}
 
 }

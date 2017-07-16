@@ -30,84 +30,84 @@ import static org.testng.Assert.assertEquals;
 @PrepareForTest(InputStream.class)
 public class IntakeManifoldPressureCommandTest {
 
-    private IntakeManifoldPressureCommand command;
-    private InputStream mockIn;
+	private IntakeManifoldPressureCommand command;
+	private InputStream mockIn;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new IntakeManifoldPressureCommand();
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new IntakeManifoldPressureCommand();
+	}
 
-    /**
-     * Test for valid InputStream read, 100kPa
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testValidPressureMetric() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) 'B');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '6');
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 100kPa
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testValidPressureMetric() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) 'B');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '6');
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.useImperialUnits(false);
-        assertEquals(command.getMetricUnit(), 100);
+		// call the method to test
+		command.readResult(mockIn);
+		command.useImperialUnits(false);
+		assertEquals(command.getMetricUnit(), 100);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, 14.50psi
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testValidPressureImperial() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) 'B');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '6');
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 14.50psi
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testValidPressureImperial() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) 'B');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '6');
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.useImperialUnits(true);
-        assertEquals(command.getImperialUnit(), 14.503774f);
+		// call the method to test
+		command.readResult(mockIn);
+		command.useImperialUnits(true);
+		assertEquals(command.getImperialUnit(), 14.503774f);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Clear resources.
-     */
-    @AfterClass
-    public void tearDown() {
-        command = null;
-        mockIn = null;
-    }
+	/**
+	 * Clear resources.
+	 */
+	@AfterClass
+	public void tearDown() {
+		command = null;
+		mockIn = null;
+	}
 
 }

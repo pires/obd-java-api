@@ -18,11 +18,18 @@ package com.github.pires.obd.exceptions;
  */
 public class StoppedException extends ResponseException {
 
-    /**
-     * <p>Constructor for StoppedException.</p>
-     */
-    public StoppedException() {
-        super("STOPPED");
-    }
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * <p>
+	 * Constructor for StoppedException.
+	 * </p>
+	 */
+	public StoppedException() {
+		super("STOPPED");
+	}
 
 }

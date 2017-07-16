@@ -29,67 +29,69 @@ import static org.powermock.api.easymock.PowerMock.*;
 @PrepareForTest(InputStream.class)
 public class UnsupportedCommandExceptionTest {
 
-    private SpeedCommand command;
-    private InputStream mockIn;
+	private SpeedCommand command;
+	private InputStream mockIn;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new SpeedCommand();
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new SpeedCommand();
+	}
 
-    /**
-     * Test for valid InputStream read with echo
-     *
-     * @throws java.io.IOException, java.lang.InterruptedException
-     */
-    @Test(expectedExceptions = UnsupportedCommandException.class)
-    public void testUnsupportedVin() throws IOException, InterruptedException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '7');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '9');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) '2');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read with echo
+	 *
+	 * @throws java.io.IOException,
+	 *             java.lang.InterruptedException
+	 */
+	@Test(expectedExceptions = UnsupportedCommandException.class)
+	public void testUnsupportedVin() throws IOException, InterruptedException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '7');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '9');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) '2');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.run(mockIn, new ByteArrayOutputStream());
+		// call the method to test
+		command.run(mockIn, new ByteArrayOutputStream());
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read with echo
-     *
-     * @throws java.io.IOException, java.lang.InterruptedException
-     */
-    @Test(expectedExceptions = UnsupportedCommandException.class)
-    public void testUnsupportedSpeed() throws IOException, InterruptedException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '7');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) '2');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read with echo
+	 *
+	 * @throws java.io.IOException,
+	 *             java.lang.InterruptedException
+	 */
+	@Test(expectedExceptions = UnsupportedCommandException.class)
+	public void testUnsupportedSpeed() throws IOException, InterruptedException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '7');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) '2');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.run(mockIn, new ByteArrayOutputStream());
+		// call the method to test
+		command.run(mockIn, new ByteArrayOutputStream());
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
 }

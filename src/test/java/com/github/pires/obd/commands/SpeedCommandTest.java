@@ -29,115 +29,115 @@ import static org.testng.Assert.assertEquals;
 @PrepareForTest(InputStream.class)
 public class SpeedCommandTest {
 
-    private SpeedCommand command;
-    private InputStream mockIn;
+	private SpeedCommand command;
+	private InputStream mockIn;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new SpeedCommand();
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new SpeedCommand();
+	}
 
-    /**
-     * Test for valid InputStream read, 64km/h
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testValidSpeedMetric() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) 'D');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 64km/h
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testValidSpeedMetric() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) 'D');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.getFormattedResult();
-        assertEquals(command.getMetricSpeed(), 64);
+		// call the method to test
+		command.readResult(mockIn);
+		command.getFormattedResult();
+		assertEquals(command.getMetricSpeed(), 64);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, 42.87mph
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testValidSpeedImperial() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) 'D');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '5');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 42.87mph
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testValidSpeedImperial() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) 'D');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '5');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.useImperialUnits = true;
-        command.getFormattedResult();
-        assertEquals(command.getImperialSpeed(), 42.874615f);
+		// call the method to test
+		command.readResult(mockIn);
+		command.useImperialUnits = true;
+		command.getFormattedResult();
+		assertEquals(command.getImperialSpeed(), 42.874615f);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, 0km/h
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testZeroSpeedMetric() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) 'D');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, 0km/h
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testZeroSpeedMetric() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) 'D');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.getFormattedResult();
-        assertEquals(command.getMetricSpeed(), 0);
+		// call the method to test
+		command.readResult(mockIn);
+		command.getFormattedResult();
+		assertEquals(command.getMetricSpeed(), 0);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Clear resources.
-     */
-    @AfterClass
-    public void tearDown() {
-        command = null;
-        mockIn = null;
-    }
+	/**
+	 * Clear resources.
+	 */
+	@AfterClass
+	public void tearDown() {
+		command = null;
+		mockIn = null;
+	}
 
 }

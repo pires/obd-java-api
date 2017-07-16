@@ -18,66 +18,84 @@ package com.github.pires.obd.exceptions;
  */
 public class ResponseException extends RuntimeException {
 
-    private String message;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    private String response;
+	private String message;
 
-    private String command;
+	private String response;
 
-    private boolean matchRegex;
+	private String command;
 
-    /**
-     * <p>Constructor for ResponseException.</p>
-     *
-     * @param message a {@link java.lang.String} object.
-     */
-    protected ResponseException(String message) {
-        this.message = message;
-    }
+	private boolean matchRegex;
 
-    /**
-     * <p>Constructor for ResponseException.</p>
-     *
-     * @param message a {@link java.lang.String} object.
-     * @param matchRegex a boolean.
-     */
-    protected ResponseException(String message, boolean matchRegex) {
-        this.message = message;
-        this.matchRegex = matchRegex;
-    }
+	/**
+	 * <p>
+	 * Constructor for ResponseException.
+	 * </p>
+	 *
+	 * @param message
+	 *            a {@link java.lang.String} object.
+	 */
+	protected ResponseException(String message) {
+		this.message = message;
+	}
 
-    private static String clean(String s) {
-        return s == null ? "" : s.replaceAll("\\s", "").toUpperCase();
-    }
+	/**
+	 * <p>
+	 * Constructor for ResponseException.
+	 * </p>
+	 *
+	 * @param message
+	 *            a {@link java.lang.String} object.
+	 * @param matchRegex
+	 *            a boolean.
+	 */
+	protected ResponseException(String message, boolean matchRegex) {
+		this.message = message;
+		this.matchRegex = matchRegex;
+	}
 
-    /**
-     * <p>isError.</p>
-     *
-     * @param response a {@link java.lang.String} object.
-     * @return a boolean.
-     */
-    public boolean isError(String response) {
-        this.response = response;
-        if (matchRegex) {
-            return clean(response).matches(clean(message));
-        } else {
-            return clean(response).contains(clean(message));
-        }
-    }
+	private static String clean(String s) {
+		return s == null ? "" : s.replaceAll("\\s", "").toUpperCase();
+	}
 
-    /**
-     * <p>Setter for the field <code>command</code>.</p>
-     *
-     * @param command a {@link java.lang.String} object.
-     */
-    public void setCommand(String command) {
-        this.command = command;
-    }
+	/**
+	 * <p>
+	 * isError.
+	 * </p>
+	 *
+	 * @param response
+	 *            a {@link java.lang.String} object.
+	 * @return a boolean.
+	 */
+	public boolean isError(String response) {
+		this.response = response;
+		if (matchRegex) {
+			return clean(response).matches(clean(message));
+		} else {
+			return clean(response).contains(clean(message));
+		}
+	}
 
-    /** {@inheritDoc} */
-    @Override
-    public String getMessage() {
-        return "Error running " + command + ", response: " + response;
-    }
+	/**
+	 * <p>
+	 * Setter for the field <code>command</code>.
+	 * </p>
+	 *
+	 * @param command
+	 *            a {@link java.lang.String} object.
+	 */
+	public void setCommand(String command) {
+		this.command = command;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public String getMessage() {
+		return "Error running " + command + ", response: " + response;
+	}
 
 }

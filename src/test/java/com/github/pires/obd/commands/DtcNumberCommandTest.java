@@ -30,88 +30,88 @@ import static org.testng.Assert.*;
 @PrepareForTest(InputStream.class)
 public class DtcNumberCommandTest {
 
-    private DtcNumberCommand command;
-    private InputStream mockIn;
+	private DtcNumberCommand command;
+	private InputStream mockIn;
 
-    /**
-     * @throws Exception
-     */
-    @BeforeMethod
-    public void setUp() throws Exception {
-        command = new DtcNumberCommand();
-    }
+	/**
+	 * @throws Exception
+	 */
+	@BeforeMethod
+	public void setUp() throws Exception {
+		command = new DtcNumberCommand();
+	}
 
-    /**
-     * Test for valid InputStream read, MIL on.
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testMILOn() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '9');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, MIL on.
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testMILOn() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '9');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.getFormattedResult();
+		// call the method to test
+		command.readResult(mockIn);
+		command.getFormattedResult();
 
-        assertTrue(command.getMilOn());
-        assertEquals(command.getTotalAvailableCodes(), 31);
+		assertTrue(command.getMilOn());
+		assertEquals(command.getTotalAvailableCodes(), 31);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Test for valid InputStream read, MIL off.
-     *
-     * @throws IOException
-     */
-    @Test
-    public void testMILOff() throws IOException {
-        // mock InputStream read
-        mockIn = createMock(InputStream.class);
-        mockIn.read();
-        expectLastCall().andReturn((byte) '4');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) '1');
-        expectLastCall().andReturn((byte) ' ');
-        expectLastCall().andReturn((byte) '0');
-        expectLastCall().andReturn((byte) 'F');
-        expectLastCall().andReturn((byte) '>');
+	/**
+	 * Test for valid InputStream read, MIL off.
+	 *
+	 * @throws IOException
+	 */
+	@Test
+	public void testMILOff() throws IOException {
+		// mock InputStream read
+		mockIn = createMock(InputStream.class);
+		mockIn.read();
+		expectLastCall().andReturn((byte) '4');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) '1');
+		expectLastCall().andReturn((byte) ' ');
+		expectLastCall().andReturn((byte) '0');
+		expectLastCall().andReturn((byte) 'F');
+		expectLastCall().andReturn((byte) '>');
 
-        replayAll();
+		replayAll();
 
-        // call the method to test
-        command.readResult(mockIn);
-        command.getFormattedResult();
+		// call the method to test
+		command.readResult(mockIn);
+		command.getFormattedResult();
 
-        assertFalse(command.getMilOn());
-        assertEquals(command.getTotalAvailableCodes(), 15);
+		assertFalse(command.getMilOn());
+		assertEquals(command.getTotalAvailableCodes(), 15);
 
-        verifyAll();
-    }
+		verifyAll();
+	}
 
-    /**
-     * Clear resources.
-     */
-    @AfterClass
-    public void tearDown() {
-        command = null;
-        mockIn = null;
-    }
+	/**
+	 * Clear resources.
+	 */
+	@AfterClass
+	public void tearDown() {
+		command = null;
+		mockIn = null;
+	}
 
 }
